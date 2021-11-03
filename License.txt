@@ -1,3 +1,7 @@
 Данная скомпилированная игра пока распространяется бесплатно на территории России и СНГ. Для активации продукта введите кодовое слово "xUSSR". Авторство на графику принадлежит двум людям: Ринату Гильманшину [Dart Hydra] и Александру Баженову[Izzy Moreno], программный код принадлежит
 компании "Fox Soft Inc." а так же CEO компании и фрилансеру Александру Баженову, Россия, Санкт-Петербург.
 October, Copyright© 2020 г.
+
+This compiled game is still distributed free of charge in Russia and the CIS. To activate the product, enter the code word "xUSSR". The authorship of the graphics belongs to two people: Rinat Gilmanshin [Dart Hydra] and Alexander Bazhenov [Izzy Moreno], the program code belongs to
+Fox Soft Inc. as well as the CEO of the company and freelancer Alexander Bazhenov, Russia, St. Petersburg.
+October, Copyright © 2020.
