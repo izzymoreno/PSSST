@@ -49,8 +49,8 @@ type
      TFormLoading = class(TForm)
      TimerBar: TTimer;
      Bar: TProgressBar;
-     procedure FormCreate(Sender: TObject);
-     procedure TimerBarTimer(Sender: TObject);
+//     procedure FormCreate(Sender: TObject);
+//     procedure TimerBarTimer(Sender: TObject);
      end;
 
 type
@@ -119,7 +119,7 @@ type
                            RectBox: TRect
                            ):Boolean;
     Function InitGame():boolean;
-    Procedure InitLevel;
+    Procedure InitLevel();
     Procedure DestroyLevel;
   end;
 
@@ -130,6 +130,7 @@ var
   SettingsForm : TSettingsForm;
   MaxWorm: integer;
   MaxFly: integer;
+  LevelNumber: integer;
   //Заводим виртуальный Canvas
   VirtBitmap: TBitmap;
   BackGroundBitmap: TBitmap;
@@ -210,7 +211,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
 InitGame();
-//InitLevel;
+InitLevel();
 end;
 
 Function TForm1.InitGame():boolean;
@@ -242,21 +243,20 @@ VirtBitmap.Width := XScreenMax;//Image1.Width;
 VirtBitmap.Height := YScreenMax;//Image1.Height;
 Form1.Image1.Width := XScreenMax;
 Form1.Image1.Height := YScreenMax;
+
 BackGroundBitmap := TBitmap.Create;
-(*
-BackGroundBitmap.LoadFromFile('Field.bmp');
- *)
+//BackGroundBitmap.LoadFromFile('Field.bmp');
 
 Randomize;
 
  //Создаём форму с загрузкой компонентов
 
-FormLoading := TFormLoading.Create(self);
+//FormLoading := TFormLoading.Create(self);
 
-procedure TFormLoading.FormCreate(Sender: TObject);
-begin
+//procedure TFormLoading.FormCreate(Sender: TObject);
+//begin
 
-end;
+//end;
 
 //Загружаем все спрайты мух лево
 FlySpritesArrLeft := TList.Create;
@@ -569,15 +569,16 @@ FormLoading.Free;
 //Обнуляем количество уничтоженых гусениц и мух
 SettingsForm := TSettingsForm.Create(self);
 mresult := SettingsForm.ShowModal;
-Form1.Caption := 'Играет: ' + SettingsForm.EditPlayerName.Text;
+LevelNumber:= SettingsForm.TrackBarLevels.Position;
+//Form1.Caption := 'Играет: ' + SettingsForm.EditPlayerName.Text;
 end;
 
-procedure TFormLoading.TimerBarTimer(Sender: TObject);
-begin
-FormLoading.ProgressBar1.StepIt;
-end;
+//procedure TFormLoading.TimerBarTimer(Sender: TObject);
+//begin
+//FormLoading.ProgressBar1.StepIt;
+//end;
 
-Procedure TForm1.InitLevel;
+Procedure TForm1.InitLevel();
 var
 //WX,WY,SX,SY:integer;
 i, rnd: byte;
@@ -587,36 +588,78 @@ begin
 Form1.TableWormsScore := 0;
 Form1.TableFlyesScore := 0;
 Form1.Caption := '';
+Form1.Caption := 'Играет игрок по имени: ' + (SettingsForm.EditPlayerName.Text);
 MaxWorm := SettingsForm.TrackBarWorms.Position;
 SetLength(Worms, MaxWorm);
 
 MaxFly := SettingsForm.TrackBarFlyes.Position;
 SetLength(Flyes, MaxFly);
 
-//Создаём гусениц
-if length(Worms) > 0 then
-  begin
-  for i := 0 to MaxWorm - 1 do
-    begin
-    //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
-    Worms[i] := TMyWorm.CreateWorm( Form1, WormSpritesArrLeft, WormSpritesArrRight,
+//Если счётчик уровня равен 1 то создаём на данном уровне только гусениц
+if LevelNumber = 1 then
+   begin
+   //Form1.Caption := IntToStr(LevelNumber);
+   if length(Worms) > 0 then
+      begin
+      for i := 0 to MaxWorm - 1 do
+         begin
+         //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
+         Worms[i] := TMyWorm.CreateWorm( Form1, WormSpritesArrLeft, WormSpritesArrRight,
                                   WormSpritesArrHitLeft, WormSpritesArrHitRight);
    //Только для отладки
 //   Worms[i].Xworm := 400;
 //   Worms[i].Yworm := 250;
-    end;
-  end;
+         end;
+      end;
+   end;
 
-//Создаём мух
-if length(Flyes) > 0 then
-  begin
-  for i := 0 to MaxFly - 1 do
-    begin
-    //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
-    Flyes[i] := TMyFly.CreateFly( Form1, FlySpritesArrLeft, FlySpritesArrRight,
+//Если счётчик уровня равен 2 то создаём на данном уровне только мух
+if LevelNumber = 2 then
+   begin
+   //Создаём мух
+   if length(Flyes) > 0 then
+      begin
+      for i := 0 to MaxFly - 1 do
+         begin
+         //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
+         Flyes[i] := TMyFly.CreateFly( Form1, FlySpritesArrLeft, FlySpritesArrRight,
                                   FlySpritesArrHitLeft, FlySpritesArrHitRight);
-    end;
-  end;
+         end;
+      end;
+   end;
+
+//Если счётчик уровня равен 3 то создаём на данном уровне гусениц и мух
+
+if LevelNumber = 3 then
+   begin
+   //Form1.Caption := IntToStr(LevelNumber);
+   if length(Worms) > 0 then
+      begin
+      for i := 0 to MaxWorm - 1 do
+         begin
+         //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
+         Worms[i] := TMyWorm.CreateWorm( Form1, WormSpritesArrLeft, WormSpritesArrRight,
+                                  WormSpritesArrHitLeft, WormSpritesArrHitRight);
+   //Только для отладки
+//   Worms[i].Xworm := 400;
+//   Worms[i].Yworm := 250;
+         end;
+      end;
+
+   //Создаём мух
+   if length(Flyes) > 0 then
+      begin
+      for i := 0 to MaxFly - 1 do
+         begin
+         //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
+         Flyes[i] := TMyFly.CreateFly( Form1, FlySpritesArrLeft, FlySpritesArrRight,
+                                  FlySpritesArrHitLeft, FlySpritesArrHitRight);
+         end;
+      end;
+   end;
+
+
+
 //Создаём сову
 If (SettingsForm.RadioGroup1.ItemIndex = 0) then
   begin
@@ -627,6 +670,11 @@ If (SettingsForm.RadioGroup1.ItemIndex = 0) then
    begin
    Owl[0] := TMyOwl.CreateOwl(Form1, CrowSpritesArrLeft, CrowSpritesArrRight,
                              CrowSpritesArrHitLeft, CrowSpritesArrHitRight);
+   end;
+
+If (SettingsForm.CheckBox1.Checked = true) then
+   begin
+   Form1.Owl[0].OwlState := stGodMode;
    end;
 
 //Создаём оружие-спрэйи
@@ -678,10 +726,10 @@ if length(Bullets) > 0 then
     Bullets[i] := nil;
     end;
   end;
-//Шаг по Икс и по Игрэк Савёнка
+//Шаг по Икс и по Игрэк Совёнка
 OwlXStep := 5;
 OwlYStep := 5;
-//Отрисовываем Савёнка
+//Отрисовываем Совёнка
 Owl[0].Show;
 //Левая стена
 if length(Bricks) > 0 then
@@ -695,6 +743,24 @@ if length(Bricks) > 0 then
     //Brick[1].Show;
     end;
   end;
+
+//Проверяем кто играет CheatMode
+if Form1.Caption = 'Играет игрок по имени: Билл Гейтс' then TheVictory := true;
+if Form1.Caption = 'Играет игрок по имени: Стив Балмер' then
+   begin
+   if LevelNumber = 1 then
+       begin
+       for i:= 1 to MaxWorm-1 do
+          begin
+          Worms[i].WormState := stHit;
+          end;
+       end;
+if Form1.Caption = 'Стив Джобс' then
+   begin
+   end;
+
+   end;
+//
 
 if (mresult = mrClose) then
     begin
