@@ -13,31 +13,31 @@ Const
 OwlXStep = 5;
 OwlYStep = 5;
 //MyCanvasMax = 1;
-//Êîëè÷åñòâî ñòåí
+//Количество стен
 MaxBrick = 2;
-//Êîëè÷åñòâî ñîâ
+//Количество сов
 MaxOwl = 1;
-//Êîëè÷åñòâî ãóñåíèö
+//Количество гусениц
 //MaxWorm = 10; //20
-//Êîëè÷åñòâî ìóõ
+//Количество мух
 //MaxFly = 10; //20
-//Êîëè÷åñòâî ïîäñîëíóõîâ
+//Количество подсолнухов
 MaxSunflower = 1;
-//Êîëè÷åñòâî ÷ëåíèêîâ ïîäñîëíóõà
+//Количество члеников подсолнуха
 //MaxSunflowerStem = 150;
-//Àìïëèòóäà äâèæåíèÿ ìóõ
+//Амплитуда движения мух
 SinFlyMax = 8; //50
-//Ìàêñèìàëüíîå êîëè÷åñòâî ïóëü
+//Максимальное количество пуль
 MaxBullet = 10;
-//Êîëè÷åñòâî ñïðýéåâ
+//Количество спрэйев
 MaxSpray = 2;
-//Ìàêñèìàëüíîå çíà÷åíèå ñïðàéòîâ îðóæèÿ
+//Максимальное значение спрайтов оружия
 MaxImageWeapon = 1;
-//Äëÿ ìîëíèé Òåñëààãðåãàòà
+//Для молний Теслаагрегата
 MaxImageSpriteWeapon = 1;
-//Êîëè÷åñòâî îáëàêîâ â èãðå
+//Количество облаков в игре
 MaxInGameClouds = 1;
-//Ðàçìåð ïðèëîæåíèÿ
+//Размер приложения
 xmax = 800;
 ymax = 600;
 xmin = 0;
@@ -69,30 +69,30 @@ type
     { Private declarations }
   public
     { Public declarations }
-        //Î÷êè äëÿ òàáëèöû ðåêîðäîâ
-    //Ãóñåíèöû
+        //Очки для таблицы рекордов
+    //Гусеницы
     TableWormsScore: integer;
-    //Ìóõè
+    //Мухи
     TableFlyesScore: integer;
-    //Øàã ñîâû â ïåðåäâèæåíèè ñ ïîìîùüþ êëàâèø
+    //Шаг совы в передвижении с помощью клавиш
     OwlXStep, OwlYStep: integer;
     TheVictory: boolean;
-    //Ìàññèâ ãóñåíèö
+    //Массив гусениц
 //    Worms:  array[0..MaxWorm - 1] of TMyWorm;
     Worms:  array of TMyWorm;
-    //Ìàññèâ ìóõ
+    //Массив мух
     Flyes:  array of TMyFly;
-    //Ìàññèâ ñîâ
+    //Массив сов
     Owl:    array[0..MaxOwl - 1] of TMyOwl;
-    //Ìàññèâ ïîäñîëíóõîâ
+    //Массив подсолнухов
     Sunflowers: array[0..MaxSunflower - 1] of TSunflower;
-    //Ìàññèâ ïóëü
+    //Массив пуль
     Bullets: array[0..MaxBullet - 1] of TBullet;
-    //Ñïðýè
+    //Спрэи
     Weapons: array[0..MaxSpray - 1] of TWeapon;
-    //Ìàññèâ ñòåí
+    //Массив стен
     Bricks:  array[0..MaxBrick - 1] of TBrick;
-    //Ìàññèâ îáëàêîâ
+    //Массив облаков
     Clouds: array[0..MaxInGameClouds - 1] of TCloud;
     //    SunflowersHead:TMySunflower;
     BulletTick: Longint;
@@ -131,7 +131,7 @@ var
   MaxWorm: integer;
   MaxFly: integer;
   LevelNumber: integer;
-  //Çàâîäèì âèðòóàëüíûé Canvas
+  //Заводим виртуальный Canvas
   VirtBitmap: TBitmap;
   BackGroundBitmap: TBitmap;
 
@@ -183,9 +183,9 @@ begin
   begin
   VirtBitmap.Canvas.Font.Size := 18;
   VirtBitmap.Canvas.Font.Color:=clWhite;
-  VirtBitmap.Canvas.TextOut(200,30,'Æàëü ! Âû ïðîèãðàëè ...');
-  VirtBitmap.Canvas.TextOut(200,60,'Âû óáèëè: '+IntToStr({Form1.}TableWormsScore)+' Ãóñåíèö');
-  VirtBitmap.Canvas.TextOut(200,90,'Âû óáèëè: '+IntToStr({Form1.}TableFlyesScore)+' Ìóõ');
+  VirtBitmap.Canvas.TextOut(200,30,'Жаль ! Вы проиграли ...');
+  VirtBitmap.Canvas.TextOut(200,60,'Вы убили: '+IntToStr({Form1.}TableWormsScore)+' Гусениц');
+  VirtBitmap.Canvas.TextOut(200,90,'Вы убили: '+IntToStr({Form1.}TableFlyesScore)+' Мух');
   end;
 end;
 
@@ -196,7 +196,7 @@ if self.Sunflowers[0].ShowHeadOn <> 0 then
   begin
   VirtBitmap.Canvas.Font.Size := 18;
   VirtBitmap.Canvas.Font.Color:=clWhite;
-  VirtBitmap.Canvas.TextOut(200,30,'Óðà ! Âû ïîáåäèëè âñåõ ìóõ è ãóñåíèö');
+  VirtBitmap.Canvas.TextOut(200,30,'Ура ! Вы победили всех мух и гусениц');
   //SettingsForm.EditPlayerName
   end;
 end;
@@ -205,7 +205,7 @@ end;
 //begin
 //VirtBitmap.Canvas.Font.Size := 18;
 //VirtBitmap.Canvas.Font.Color:=clWhite;
-//VirtBitmap.Canvas.TextOut(200,30,'Æàëü ! Âû ïðîèãðàëè ...');
+//VirtBitmap.Canvas.TextOut(200,30,'Жаль ! Вы проиграли ...');
 //end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -231,12 +231,12 @@ SetLength(Flyes, 0);
 BulletTick := gettickcount();
 self.TimerFPS.Enabled := false;
 self.TimerFPS.Interval := 20;   //20
-//Çàïîëíÿåì Canvas ÷¸ðíûì öâåòîì
+//Заполняем Canvas чёрным цветом
 //Form1.Image1.Canvas.Brush.Color:=clBlack;
 //Form1.Image1.Canvas.FillRect(Rect(xmin,ymin,XScreenMax,YScreenMax));
 Form1.Image1.Width := XScreenMax;
 Form1.Image1.Height := YScreenMax;
-//Ñîçäà¸ì âèðòóàëüíûé Bitmap
+//Создаём виртуальный Bitmap
 VirtBitmap := TBitmap.Create;
 VirtBitmap.Canvas.Brush.Color := clBlack;
 VirtBitmap.Width := XScreenMax;//Image1.Width;
@@ -249,7 +249,7 @@ BackGroundBitmap := TBitmap.Create;
 
 Randomize;
 
- //Ñîçäà¸ì ôîðìó ñ çàãðóçêîé êîìïîíåíòîâ
+ //Создаём форму с загрузкой компонентов
 
 //FormLoading := TFormLoading.Create(self);
 
@@ -258,7 +258,7 @@ Randomize;
 
 //end;
 
-//Çàãðóæàåì âñå ñïðàéòû ìóõ ëåâî
+//Загружаем все спрайты мух лево
 FlySpritesArrLeft := TList.Create;
 For i := 0 to MaxImageFly - 1 Do
    begin
@@ -269,7 +269,7 @@ For i := 0 to MaxImageFly - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    FlySpritesArrLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì âñå ñïðàéòû ìóõ ïðàâî
+//Загружаем все спрайты мух право
 FlySpritesArrRight := TList.Create;
 For i := 0 to MaxImageFly - 1 Do
    begin
@@ -281,7 +281,7 @@ For i := 0 to MaxImageFly - 1 Do
    FlySpritesArrRight.Add(tmpBitmap);
    end;
 
-//Çàãðóæàåì âñå ñïðàéòû ðàçðóøåíèÿ ìóõ âëåâî
+//Загружаем все спрайты разрушения мух влево
 FlySpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageHitLeftWorm - 1 Do
    begin
@@ -292,7 +292,7 @@ For i := 0 to MaxImageHitLeftWorm - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    FlySpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì âñå ñïðàéòû ðàçðóøåíèÿ ìóõ âïðàâî
+//Загружаем все спрайты разрушения мух вправо
 FlySpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageHitRightWorm - 1 Do
    begin
@@ -304,7 +304,7 @@ For i := 0 to MaxImageHitRightWorm - 1 Do
    FlySpritesArrHitRight.Add(tmpBitmap);
    end;
 
-//Çàãðóæàåì âñå ñïðàéòû ãóñåíèö âëåâî
+//Загружаем все спрайты гусениц влево
 WormSpritesArrLeft := TList.Create;
 For i := 0 to MaxImageWorm - 1 Do
    begin
@@ -315,7 +315,7 @@ For i := 0 to MaxImageWorm - 1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WormSpritesArrLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì âñå ñïðàéòû ãóñåíèö âïðàâî
+//Загружаем все спрайты гусениц вправо
 WormSpritesArrRight := TList.Create;
 For i := 0 to MaxImageWorm - 1 Do
    begin
@@ -328,7 +328,7 @@ For i := 0 to MaxImageWorm - 1 Do
    end;
 
 
-//Çàãðóæàåì âñå ñïðàéòû ðàçðóøåíèÿ ãóñåíèö âëåâî
+//Загружаем все спрайты разрушения гусениц влево
 WormSpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageHitLeftWorm - 1 Do
    begin
@@ -339,7 +339,7 @@ For i := 0 to MaxImageHitLeftWorm - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    WormSpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì âñå ñïðàéòû ðàçðóøåíèÿ ãóñåíèö âïðàâî
+//Загружаем все спрайты разрушения гусениц вправо
 WormSpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageHitRightWorm - 1 Do
    begin
@@ -350,7 +350,7 @@ For i := 0 to MaxImageHitRightWorm - 1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WormSpritesArrHitRight.Add(tmpBitmap);
    end;
-//Çàãðóæàåì â ñïðàéòû ñîâû ñìîòðÿùåé âëåâî
+//Загружаем в спрайты совы смотрящей влево
 OwlSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageLeftOwl Do
    begin
@@ -361,7 +361,7 @@ For i:=0 to MaxImageLeftOwl Do
    tmpBitmap.TransparentColor:=clBlack;
    OwlSpritesArrLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì â ñïðàéòû ñîâû ñìîòðÿùåé âïðàâî
+//Загружаем в спрайты совы смотрящей вправо
 OwlSpritesArrRight := TList.Create;
 For i:=0 to MaxImageRightOwl Do
    begin
@@ -372,7 +372,7 @@ For i:=0 to MaxImageRightOwl Do
    tmpBitmap.TransparentColor:=clBlack;
    OwlSpritesArrRight.Add(tmpBitmap);
    end;
-//Çàãðóæàåì â ñïðàéòû ñîâû ïîãèáàþùåé âëåâî
+//Загружаем в спрайты совы погибающей влево
 OwlSpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageLeftDieOwl Do
    begin
@@ -383,7 +383,7 @@ For i := 0 to MaxImageLeftDieOwl Do
    tmpBitmap.TransparentColor:=clBlack;
    OwlSpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì â ñïðàéòû ñîâû ïîãèáàþùåé âïðàâî
+//Загружаем в спрайты совы погибающей вправо
 OwlSpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageRightDieOwl Do
    begin
@@ -396,7 +396,7 @@ For i := 0 to MaxImageRightDieOwl Do
    OwlSpritesArrHitRight.Add(tmpBitmap);
    end;
 
-//Çàãðóæàåì âñå ñïðàéòû ñïðýÿ îáëà÷êà âëåâî
+//Загружаем все спрайты спрэя облачка влево
 BulletSpritesArrLeft := TList.Create;
 For i := 0 to MaxImageBullet - 1 Do
    begin
@@ -407,7 +407,7 @@ For i := 0 to MaxImageBullet - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    BulletSpritesArrLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì âñå ñïðàéòû ñïðýÿ îáëà÷êà âïðàâî
+//Загружаем все спрайты спрэя облачка вправо
 BulletSpritesArrRight := TList.Create;
 For i := 0 to MaxImageBullet - 1 Do
    begin
@@ -439,7 +439,7 @@ For i := 0 to MaxImageHead - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    HeadSpritesArr.Add(tmpBitmap);
    end;
-//Çàãðóæàåì ñïðàéòû îðóæèÿ äèõëîôîñà ñëåâà
+//Загружаем спрайты оружия дихлофоса слева
 WeaponPssstSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageWeapon-1 Do
    begin
@@ -450,7 +450,7 @@ For i:=0 to MaxImageWeapon-1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WeaponPssstSpritesArrLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì ñïðàéòû îðóæèÿ äèõëîôîñà ñïðàâà
+//Загружаем спрайты оружия дихлофоса справа
 WeaponPssstSpritesArrRight := TList.Create;
 For i:=0 to MaxImageWeapon-1 Do
    begin
@@ -462,7 +462,7 @@ For i:=0 to MaxImageWeapon-1 Do
    WeaponPssstSpritesArrRight.Add(tmpBitmap);
    end;
 
-//Çàãðóæàåì ñïðàéòû îðóæèÿ Òåñëàìàøèíû ñëåâà
+//Загружаем спрайты оружия Тесламашины слева
 WeaponLightSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageWeapon-1 Do
    begin
@@ -473,7 +473,7 @@ For i:=0 to MaxImageWeapon-1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WeaponLightSpritesArrLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì ñïðàéòû îðóæèÿ Òåñëàìàøèíû ñïðàâà
+//Загружаем спрайты оружия Тесламашины справа
 WeaponLightSpritesArrRight := TList.Create;
 For i:=0 to MaxImageWeapon-1 Do
    begin
@@ -484,8 +484,6 @@ For i:=0 to MaxImageWeapon-1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WeaponLightSpritesArrRight.Add(tmpBitmap);
    end;
-
-//Çàãðóæàåì ñïðàéòû îðóæèÿ Òåñëàìàøèíû ñëåâà
 LightSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageSpriteWeapon Do
    begin
@@ -496,7 +494,19 @@ For i:=0 to MaxImageSpriteWeapon Do
    tmpBitmap.TransparentColor:=clBlack;
    LightSpritesArrLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì ñïðàéòû îðóæèÿ Òåñëàìàøèíû ñïðàâà
+
+//Загружаем спрайты оружия Тесламашины слева
+LightSpritesArrLeft := TList.Create;
+For i:=0 to MaxImageSpriteWeapon Do
+   begin
+   tmpBitmap := TBitMap.Create;
+   tmpBitmap.LoadFromFile('LightLeft'+IntToStr(i)+'.bmp');
+   tmpBitmap.Transparent:=True;
+   tmpBitmap.TransparentMode:=tmFixed;
+   tmpBitmap.TransparentColor:=clBlack;
+   LightSpritesArrLeft.Add(tmpBitmap);
+   end;
+//Загружаем спрайты оружия Тесламашины справа
 LightSpritesArrRight := TList.Create;
 For i:=0 to MaxImageSpriteWeapon Do
    begin
@@ -508,7 +518,7 @@ For i:=0 to MaxImageSpriteWeapon Do
    LightSpritesArrRight.Add(tmpBitmap);
    end;
 
-//Çàãðóæàåì ñïðàéòû âîðîíà ñìîòðÿùåãî âëåâî
+//Загружаем спрайты ворона смотрящего влево
 CrowSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageLeftCrow Do
    begin
@@ -519,7 +529,7 @@ For i:=0 to MaxImageLeftCrow Do
    tmpBitmap.TransparentColor:=clBlack;
    CrowSpritesArrLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì ñïðàéòû ñîâû ñìîòðÿùåé âïðàâî
+//Загружаем спрайты совы смотрящей вправо
 CrowSpritesArrRight := TList.Create;
 For i:=0 to MaxImageRightCrow Do
    begin
@@ -530,7 +540,7 @@ For i:=0 to MaxImageRightCrow Do
    tmpBitmap.TransparentColor:=clBlack;
    CrowSpritesArrRight.Add(tmpBitmap);
    end;
-//Çàãðóæàåì ñïðàéòû ñîâû ïîãèáàþùåé âëåâî
+//Загружаем спрайты совы погибающей влево
 CrowSpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageLeftDieCrow Do
    begin
@@ -541,7 +551,7 @@ For i := 0 to MaxImageLeftDieCrow Do
    tmpBitmap.TransparentColor:=clBlack;
    CrowSpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Çàãðóæàåì ñïðàéòû ñîâû ïîãèáàþùåé âïðàâî
+//Загружаем спрайты совы погибающей вправо
 CrowSpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageRightDieCrow Do
    begin
@@ -552,7 +562,7 @@ For i := 0 to MaxImageRightDieCrow Do
    tmpBitmap.TransparentColor:=clBlack;
    CrowSpritesArrHitRight.Add(tmpBitmap);
    end;
-//Çàãðóæàåì ñïðàéòû äâóõ îáëàêîâ
+//Загружаем спрайты двух облаков
 CloudsSpritesArr := TList.Create;
 For i := 0 to MaxClouds Do
    begin
@@ -566,11 +576,11 @@ For i := 0 to MaxClouds Do
 
 FormLoading.Free;
 
-//Îáíóëÿåì êîëè÷åñòâî óíè÷òîæåíûõ ãóñåíèö è ìóõ
+//Обнуляем количество уничтоженых гусениц и мух
 SettingsForm := TSettingsForm.Create(self);
 mresult := SettingsForm.ShowModal;
 LevelNumber:= SettingsForm.TrackBarLevels.Position;
-//Form1.Caption := 'Èãðàåò: ' + SettingsForm.EditPlayerName.Text;
+//Form1.Caption := 'Играет: ' + SettingsForm.EditPlayerName.Text;
 end;
 
 //procedure TFormLoading.TimerBarTimer(Sender: TObject);
@@ -588,14 +598,14 @@ begin
 Form1.TableWormsScore := 0;
 Form1.TableFlyesScore := 0;
 Form1.Caption := '';
-Form1.Caption := 'Èãðàåò èãðîê ïî èìåíè: ' + (SettingsForm.EditPlayerName.Text);
+Form1.Caption := 'Играет игрок по имени: ' + (SettingsForm.EditPlayerName.Text);
 MaxWorm := SettingsForm.TrackBarWorms.Position;
 SetLength(Worms, MaxWorm);
 
 MaxFly := SettingsForm.TrackBarFlyes.Position;
 SetLength(Flyes, MaxFly);
 
-//Åñëè ñ÷¸ò÷èê óðîâíÿ ðàâåí 1 òî ñîçäà¸ì íà äàííîì óðîâíå òîëüêî ãóñåíèö
+//Если счётчик уровня равен 1 то создаём на данном уровне только гусениц
 if LevelNumber = 1 then
    begin
    //Form1.Caption := IntToStr(LevelNumber);
@@ -603,32 +613,32 @@ if LevelNumber = 1 then
       begin
       for i := 0 to MaxWorm - 1 do
          begin
-         //Ñîçäà¸ì ãóñåíèö è óñòàíàâëèâàåì ìàêñèìàëüíóþ êîîðäèíàòó ïî X è ñëó÷àéíóþ ïî Y
+         //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
          Worms[i] := TMyWorm.CreateWorm( Form1, WormSpritesArrLeft, WormSpritesArrRight,
                                   WormSpritesArrHitLeft, WormSpritesArrHitRight);
-   //Òîëüêî äëÿ îòëàäêè
+   //Только для отладки
 //   Worms[i].Xworm := 400;
 //   Worms[i].Yworm := 250;
          end;
       end;
    end;
 
-//Åñëè ñ÷¸ò÷èê óðîâíÿ ðàâåí 2 òî ñîçäà¸ì íà äàííîì óðîâíå òîëüêî ìóõ
+//Если счётчик уровня равен 2 то создаём на данном уровне только мух
 if LevelNumber = 2 then
    begin
-   //Ñîçäà¸ì ìóõ
+   //Создаём мух
    if length(Flyes) > 0 then
       begin
       for i := 0 to MaxFly - 1 do
          begin
-         //Ñîçäà¸ì ìóõ è óñòàíàâëèâàåì ìàêñèìàëüíóþ êîîðäèíàòó ïî X è ñëó÷àéíóþ ïî Y
+         //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
          Flyes[i] := TMyFly.CreateFly( Form1, FlySpritesArrLeft, FlySpritesArrRight,
                                   FlySpritesArrHitLeft, FlySpritesArrHitRight);
          end;
       end;
    end;
 
-//Åñëè ñ÷¸ò÷èê óðîâíÿ ðàâåí 3 òî ñîçäà¸ì íà äàííîì óðîâíå ãóñåíèö è ìóõ
+//Если счётчик уровня равен 3 то создаём на данном уровне гусениц и мух
 
 if LevelNumber = 3 then
    begin
@@ -637,21 +647,21 @@ if LevelNumber = 3 then
       begin
       for i := 0 to MaxWorm - 1 do
          begin
-         //Ñîçäà¸ì ãóñåíèö è óñòàíàâëèâàåì ìàêñèìàëüíóþ êîîðäèíàòó ïî X è ñëó÷àéíóþ ïî Y
+         //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
          Worms[i] := TMyWorm.CreateWorm( Form1, WormSpritesArrLeft, WormSpritesArrRight,
                                   WormSpritesArrHitLeft, WormSpritesArrHitRight);
-   //Òîëüêî äëÿ îòëàäêè
+   //Только для отладки
 //   Worms[i].Xworm := 400;
 //   Worms[i].Yworm := 250;
          end;
       end;
 
-   //Ñîçäà¸ì ìóõ
+   //Создаём мух
    if length(Flyes) > 0 then
       begin
       for i := 0 to MaxFly - 1 do
          begin
-         //Ñîçäà¸ì ìóõ è óñòàíàâëèâàåì ìàêñèìàëüíóþ êîîðäèíàòó ïî X è ñëó÷àéíóþ ïî Y
+         //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
          Flyes[i] := TMyFly.CreateFly( Form1, FlySpritesArrLeft, FlySpritesArrRight,
                                   FlySpritesArrHitLeft, FlySpritesArrHitRight);
          end;
@@ -660,7 +670,7 @@ if LevelNumber = 3 then
 
 
 
-//Ñîçäà¸ì ñîâó
+//Создаём сову
 If (SettingsForm.RadioGroup1.ItemIndex = 0) then
   begin
   Owl[0] := TMyOwl.CreateOwl(Form1, OwlSpritesArrLeft, OwlSpritesArrRight,
@@ -677,7 +687,7 @@ If (SettingsForm.CheckBox1.Checked = true) then
    Form1.Owl[0].OwlState := stGodMode;
    end;
 
-//Ñîçäà¸ì îðóæèå-ñïðýéè
+//Создаём оружие-спрэйи
 rnd := 0;
 if length(Weapons) > 0 then
   begin
@@ -690,7 +700,7 @@ if length(Weapons) > 0 then
     inc(rnd);
     end;
   end;
-//Ñîçäà¸ì ïîäñîëíóõ
+//Создаём подсолнух
 
 if length(Clouds) > 0 then
   begin
@@ -698,7 +708,7 @@ if length(Clouds) > 0 then
     begin
     Clouds[i]:=TCloud.CreateCloud(50,50, Form1, CloudsSpritesArr); // CreateSunflower(round(VirtBitmap.Width/2),VirtBitmap.Height-50, Form1);
 //    Sunflowers[i]:=TSunflower.CreateSunflower(Random(xmax)-60,Random(ymax)-20,Form1);
-//Âûçûâàåì ïðîöåäóðó âûâîäà îáëàêà
+//Вызываем процедуру вывода облака
     Clouds[i].Show;
     end;
   end;
@@ -710,43 +720,43 @@ if length(Sunflowers) > 0 then
     begin
     Sunflowers[i]:=TSunflower.CreateSunflower(round(VirtBitmap.Width/2),VirtBitmap.Height-50, Form1);
 //    Sunflowers[i]:=TSunflower.CreateSunflower(Random(xmax)-60,Random(ymax)-20,Form1);
-//Ðîñò ïîäñîëíóõà íà 1 ÷ëåíèê
+//Рост подсолнуха на 1 членик
     Sunflowers[i].Grown(1);
-//Âûçûâàåì ïðîöåäóðó âûâîäà ïîäñîëíóõà
+//Вызываем процедуру вывода подсолнуха
     Sunflowers[i].Show;
     end;
   end;
 
-//Èíèöèàëèçèðóåì ìàññèâ ïóëü, ò.å, çàïîëíÿåì åãî nil
+//Инициализируем массив пуль, т.е, заполняем его nil
 if length(Bullets) > 0 then
   begin
   for i := 0 to MaxBullet-1 do
     begin
-    //Ñîçäà¸ì ãóñåíèö è óñòàíàâëèâàåì ìàêñèìàëüíóþ êîîðäèíàòó ïî X è ñëó÷àéíóþ ïî Y
+    //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
     Bullets[i] := nil;
     end;
   end;
-//Øàã ïî Èêñ è ïî Èãðýê Ñîâ¸íêà
+//Шаг по Икс и по Игрэк Совёнка
 OwlXStep := 5;
 OwlYStep := 5;
-//Îòðèñîâûâàåì Ñîâ¸íêà
+//Отрисовываем Совёнка
 Owl[0].Show;
-//Ëåâàÿ ñòåíà
+//Левая стена
 if length(Bricks) > 0 then
   begin
   for i := 0 to MaxBrick-1 do
     begin
     Bricks[i] := TBrick.CreateBrick(round(0),round(VirtBitmap.Height - 190-i*130),directionBrickLeft,nil);
     Bricks[i].Show;
-    //Ëåâàÿ ñòåíà
+    //Левая стена
     //Brick[1]:=TBrick.CreateBrick(250,30,directionBrickRight,nil);
     //Brick[1].Show;
     end;
   end;
 
-//Ïðîâåðÿåì êòî èãðàåò CheatMode
-if Form1.Caption = 'Èãðàåò èãðîê ïî èìåíè: Áèëë Ãåéòñ' then TheVictory := true;
-if Form1.Caption = 'Èãðàåò èãðîê ïî èìåíè: Ñòèâ Áàëìåð' then
+//Проверяем кто играет CheatMode
+if Form1.Caption = 'Играет игрок по имени: Билл Гейтс' then TheVictory := true;
+if Form1.Caption = 'Играет игрок по имени: Стив Балмер' then
    begin
    if LevelNumber = 1 then
        begin
@@ -755,7 +765,7 @@ if Form1.Caption = 'Èãðàåò èãðîê ïî èìåíè: Ñòèâ Áàëìå
           Worms[i].WormState := stHit;
           end;
        end;
-if Form1.Caption = 'Ñòèâ Äæîáñ' then
+if Form1.Caption = 'Стив Джобс' then
    begin
    end;
 
@@ -764,12 +774,12 @@ if Form1.Caption = 'Ñòèâ Äæîáñ' then
 
 if (mresult = mrClose) then
     begin
-    //ïåðåçàïóñê èãðû
+    //перезапуск игры
     //Self.Destroy;
     postmessage(self.Handle, WM_CLOSE, 0, 0);
     end;
 
-//Âêëþ÷àåì òàéìåð îòðèñîâêè
+//Включаем таймер отрисовки
 self.TimerFPS.Enabled := true;
 end;
 
@@ -778,12 +788,12 @@ var
 i: byte;
 tmpBitmap: TBitmap;
 begin
-//Âûêëþ÷àåì òàéìåð îòðèñîâêè
+//Выключаем таймер отрисовки
 if BackGroundBitmap <> nil then FreeAndNil(BackGroundBitmap);
 self.TimerFPS.Enabled := false;
-//Óäàëÿåì èç ïàìÿòè ïîäñîëíóõ
+//Удаляем из памяти подсолнух
 //if Sunflowers[0]<>nil then Sunflowers[0].Free;
-//Óäàëÿåì èç ïàìÿòè ìàññèâ ãóñåíèö è ìóõ
+//Удаляем из памяти массив гусениц и мух
 if Length(Worms) > 0 then
   begin
   for i := 0 to MaxWorm - 1 do
@@ -817,19 +827,19 @@ if Length(Weapons) > 0 then
   end;
 end;
 
-//Âûãðóæàåì ïîäñîëíóõ, ãóñåíèö, ìóõ èç ïàìÿòè
+//Выгружаем подсолнух, гусениц, мух из памяти
 procedure TForm1.FormDestroy(Sender: TObject);
 var
 i: byte;
 tmpBitmap: TBitmap;
 begin
-//Âûçûâàåì ïðîöåäóðó, êîòîðàÿ óíè÷òîæàåò îáúåêòû èãðîâîãî ïðîñòðàíñòâà
+//Вызываем процедуру, которая уничтожает объекты игрового пространства
 DestroyLevel;
 
-//Çäåñü ìû óäàëÿåì èç ïàìÿòè ìóõ
+//Здесь мы удаляем из памяти мух
 For i := 0 to  MaxImageFly - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if FlySpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(FlySpritesArrLeft.Items[i]);
@@ -838,7 +848,7 @@ For i := 0 to  MaxImageFly - 1 Do
    end;
 For i := 0 to  MaxImageFly - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if FlySpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(FlySpritesArrRight.Items[i]);
@@ -848,7 +858,7 @@ For i := 0 to  MaxImageFly - 1 Do
 
 For i := 0 to  MaxImageHitLeftFly - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if FlySpritesArrHitLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(FlySpritesArrHitLeft.Items[i]);
@@ -857,7 +867,7 @@ For i := 0 to  MaxImageHitLeftFly - 1 Do
    end;
 For i := 0 to  MaxImageHitRightFly - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
   if WormSpritesArrHitRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(FlySpritesArrHitRight.Items[i]);
@@ -867,7 +877,7 @@ For i := 0 to  MaxImageHitRightFly - 1 Do
 
 For i := 0 to MaxImageWorm - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if WormSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(WormSpritesArrLeft.Items[i]);
@@ -876,7 +886,7 @@ For i := 0 to MaxImageWorm - 1 Do
    end;
 For i := 0 to MaxImageWorm - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if WormSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(WormSpritesArrRight.Items[i]);
@@ -885,7 +895,7 @@ For i := 0 to MaxImageWorm - 1 Do
    end;
 For i := 0 to MaxImageHitLeftWorm - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if WormSpritesArrHitLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(WormSpritesArrHitLeft.Items[i]);
@@ -894,27 +904,27 @@ For i := 0 to MaxImageHitLeftWorm - 1 Do
    end;
 For i := 0 to MaxImageHitRightWorm - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if WormSpritesArrHitRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(WormSpritesArrHitRight.Items[i]);
      Freeandnil(tmpBitmap);
      end;
   end;
-//Óäàëÿåì èç ïàìÿòè ñîâ¸íêà ëåâóþ ôàçó
+//Удаляем из памяти совёнка левую фазу
 For i := 0 to MaxImageLeftOwl Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if OwlSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(OwlSpritesArrLeft.Items[i]);
      Freeandnil(tmpBitmap);
      end;
    end;
-//È ïðàâóþ
+//И правую
 For i := 0 to MaxImageRightOwl Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if OwlSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(OwlSpritesArrRight.Items[i]);
@@ -922,20 +932,20 @@ For i := 0 to MaxImageRightOwl Do
      end;
    end;
 //
-//Óäàëÿåì èç ïàìÿòè ïîãèáàþùåãî ñîâ¸íêà ëåâóþ ôàçó
+//Удаляем из памяти погибающего совёнка левую фазу
 For i := 0 to MaxImageLeftDieOwl - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if OwlSpritesArrHitLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(OwlSpritesArrHitLeft.Items[i]);
      Freeandnil(tmpBitmap);
      end;
    end;
-//È ïðàâóþ
+//И правую
 For i := 0 to MaxImageRightDieOwl - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if OwlSpritesArrHitRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(OwlSpritesArrHitRight.Items[i]);
@@ -946,7 +956,7 @@ For i := 0 to MaxImageRightDieOwl - 1 Do
 
 For i := 0 to MaxImageBullet - 1 Do
   begin
-  //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+  //Если объект существует в памяти, то мы его удаляем
   if BulletSpritesArrLeft[i] <> nil then
     begin
     tmpBitmap := TBitmap(BulletSpritesArrLeft.Items[i]);
@@ -956,7 +966,7 @@ For i := 0 to MaxImageBullet - 1 Do
 //
 For i := 0 to MaxImageBullet - 1 Do
   begin
-  //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+  //Если объект существует в памяти, то мы его удаляем
   if BulletSpritesArrRight[i] <> nil then
     begin
     tmpBitmap := TBitmap(BulletSpritesArrRight.Items[i]);
@@ -984,10 +994,10 @@ For i := 0 to MaxImageHead - 1 Do
     end;
   end;
 
-//Âûãðóæàåì èç ïàìÿòè äèõëîôîñ
+//Выгружаем из памяти дихлофос
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if WeaponPssstSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(WeaponPssstSpritesArrLeft.Items[i]);
@@ -996,7 +1006,7 @@ For i:=0 to MaxImageWeapon - 1 Do
    end;
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if WeaponPssstSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(WeaponPssstSpritesArrRight.Items[i]);
@@ -1004,10 +1014,10 @@ For i:=0 to MaxImageWeapon - 1 Do
      end;
    end;
 
-   //Âûãðóæàåì èç ïàìÿòè Òåñëàìàøèíó
+   //Выгружаем из памяти Тесламашину
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if WeaponLightSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(WeaponLightSpritesArrLeft.Items[i]);
@@ -1016,7 +1026,7 @@ For i:=0 to MaxImageWeapon - 1 Do
    end;
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if WeaponLightSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(WeaponLightSpritesArrRight.Items[i]);
@@ -1024,10 +1034,10 @@ For i:=0 to MaxImageWeapon - 1 Do
      end;
    end;
 
-   //Âûãðóæàåì èç ïàìÿòè Ìîëíèè
+   //Выгружаем из памяти Молнии
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if LightSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(LightSpritesArrLeft.Items[i]);
@@ -1036,7 +1046,7 @@ For i:=0 to MaxImageWeapon - 1 Do
    end;
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Åñëè îáúåêò ñóùåñòâóåò â ïàìÿòè, òî ìû åãî óäàëÿåì
+   //Если объект существует в памяти, то мы его удаляем
    if LightSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(LightSpritesArrRight.Items[i]);
@@ -1044,7 +1054,7 @@ For i:=0 to MaxImageWeapon - 1 Do
      end;
    end;
 
-//Âûãðóæàåì âèðòóàëüíûé êàíâàñ
+//Выгружаем виртуальный канвас
 VirtBitmap.Free;
 end;
 
@@ -1073,7 +1083,7 @@ begin
           res := newtick - self.BulletTick;
           if res > 100 then
             begin
-            //Ñîõðàíÿåì íîâîå çíà÷åíèå tick
+            //Сохраняем новое значение tick
             self.BulletTick := newtick;
             for i := 0 to MaxBullet-1 do
               begin
@@ -1124,7 +1134,7 @@ begin
          end;
    vk_left:
          begin
-            //Ðàçâîðà÷èâàåì ñïðàéò ñîâû âëåâî ñ èíäåêñàìè 0 è 1
+            //Разворачиваем спрайт совы влево с индексами 0 и 1
             Owl[0].ThereMove := OwldirectionLeft;
             Owl[0].AnimationShag := 1;
 
@@ -1137,7 +1147,7 @@ begin
 
    vk_right:
          begin
-           //Ðàçâîðà÷èâàåì ñïðàéò ñîâû âïðàâî ñ èíäåêñàìè 2 è 3
+           //Разворачиваем спрайт совы вправо с индексами 2 и 3
 
             Owl[0].ThereMove:=OwldirectionRight;
             Owl[0].AnimationShag := 1;
@@ -1157,32 +1167,32 @@ begin
    end;
 end;
 
-//Äàëåå ñëåäóåò ïðîöåäóðà îïðîñà êëàâèàòóðû
+//Далее следует процедура опроса клавиатуры
 procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
    case key of
-//Îïðàøèâàåì êëàâèøó êóðñîðà ââåðõ
+//Опрашиваем клавишу курсора вверх
    vk_up:
          begin
          Owl[0].shagy:=0;
          Owl[0].AnimationShag:=0;
 //         VirtBitmap.Canvas.Draw(Owl[0].XOwl, Owl[0].YOwl, Owl[0].ImgMass[1])
          end;
-//Îïðàøèâàåì êëàâèøó êóðñîðà âëåâî
+//Опрашиваем клавишу курсора влево
    vk_left:
          begin
          Owl[0].shagx:=0;
          Owl[0].AnimationShag:=0;
 //         VirtBitmap.Canvas.Draw(Owl[0].XOwl, Owl[0].YOwl, Owl[0].ImgMass[1])
          end;
-//Îïðàøèâàåì êëàâèøó êóðñîðà âïðàâî
+//Опрашиваем клавишу курсора вправо
    vk_right:
          begin
          Owl[0].shagx:=0;
          Owl[0].AnimationShag:=0;
 //         VirtBitmap.Canvas.Draw(Owl[0].XOwl, Owl[0].YOwl, Owl[0].ImgMass[1])
          end;
-//Îïðàøèâàåì êëàâèøó êóðñîðà âíèç
+//Опрашиваем клавишу курсора вниз
    vk_down:
          begin
          Owl[0].shagy:=0;
@@ -1197,14 +1207,14 @@ begin
 
 end;
 
-//Ôóíêöèÿ ñðàâíåíèÿ íàëîæåíèÿ äâóõ ïðÿìîóãîëüíèêîâ äðóã íà äðóãà
+//Функция сравнения наложения двух прямоугольников друг на друга
 Function TForm1.FindCollision(RectBullet,
                               RectBox: TRect
                               ): Boolean;
 begin
-//ÂÍÈÌÀÍÈÅ !!! ÏÅÐÂÛÉ ÎÁÚÅÊÒ - ÝÒÎ ßÙÈÊ, À ÂÒÎÐÎÉ ÎÁÚÅÊÒ ÝÒÎ ÏÓËß
+//ВНИМАНИЕ !!! ПЕРВЫЙ ОБЪЕКТ - ЭТО ЯЩИК, А ВТОРОЙ ОБЪЕКТ ЭТО ПУЛЯ
 Result := false;
-//Áåð¸ì òî÷êó ëåâîãî âåðõíåãî óãëà âòîðîãî íàøåãî ïðÿìîóãîëüíèêà è ñðàâíèâàåì, âõîäèò ëè îíà âíóòðü ïåðâîãî ÷åòûð¸õóãîëüíèêà
+//Берём точку левого верхнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
 //                                                  width
 //   (RectBox.Left, RectBox.Top) +----------------------------------------+
 //                               |     +-----------                       |
@@ -1219,7 +1229,7 @@ If (RectBullet.Left >= RectBox.Left) and (RectBullet.Left <= RectBox.Right) and
   Result := true;
   exit;
   end;
-//Áåð¸ì òî÷êó ïðàâîãî âåðõíåãî óãëà âòîðîãî íàøåãî ïðÿìîóãîëüíèêà è ñðàâíèâàåì, âõîäèò ëè îíà âíóòðü ïåðâîãî ÷åòûð¸õóãîëüíèêà
+//Берём точку правого верхнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
 //                                                  width
 // (RectObj1.Left, RectObj1.Top) +-----------------------------------------+
 //                               |                            --------+    |
@@ -1233,7 +1243,7 @@ If (RectBullet.Right >= RectBox.Left) and (RectBullet.Right <= RectBox.Right) an
    Result := true;
   exit;
   end;
-//Áåð¸ì òî÷êó ïðàâîãî íèæíåãî óãëà âòîðîãî íàøåãî ïðÿìîóãîëüíèêà è ñðàâíèâàåì, âõîäèò ëè îíà âíóòðü ïåðâîãî ÷åòûð¸õóãîëüíèêà
+//Берём точку правого нижнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
 //                                                  width
 // (RectObj1.Left, RectObj1.Top) +-----------------------------------------+
 //                               |                                    |    |
@@ -1247,7 +1257,7 @@ If (RectBullet.Right >= RectBox.Left) and (RectBullet.Right <= RectBox.Right) an
   Result := true;
   exit;
   end;
-//Áåð¸ì òî÷êó ëåâîãî íèæíåãî óãëà âòîðîãî íàøåãî ïðÿìîóãîëüíèêà è ñðàâíèâàåì, âõîäèò ëè îíà âíóòðü ïåðâîãî ÷åòûð¸õóãîëüíèêà
+//Берём точку левого нижнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
 //                                                  width
 // (RectObj1.Left, RectObj1.Top) +-----------------------------------------+
 //                               |  |                                      |
@@ -1261,7 +1271,7 @@ If (RectBullet.Left >= RectBox.Left) and (RectBullet.Left <= RectBox.Right) and
   Result := true;
   exit;
   end;
-//Ïóëÿ áîëüøå, ÷åì îáúåêò è ïîëíîñòüþ íàêðûâàåò åãî
+//Пуля больше, чем объект и полностью накрывает его
 //                                                            width2
 // (RectObj2.Left, RectObj2.Top) +-------------------------------------------------------------+
 //                               |  +-----------------------------------------------------+    |
@@ -1280,7 +1290,7 @@ If (RectBox.Left >= RectBullet.Left) and (RectBox.Right <= RectBullet.Right) and
 end;
 
 
-//Ôóíêöèÿ ñðàâíåíèÿ íàëîæåíèÿ äâóõ ïðÿìîóãîëüíèêîâ äðóã íà äðóãà
+//Функция сравнения наложения двух прямоугольников друг на друга
 {
 Function TForm1.FindCollision(Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
                        Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer
@@ -1293,7 +1303,7 @@ begin
 //        |              |
 // x4, y4 +--------------+ x3, y3
 
-//Áåð¸ì òî÷êó ëåâîãî âåðõíåãî óãëà âòîðîãî íàøåãî ïðÿìîóãîëüíèêà è ñðàâíèâàåì, âõîäèò ëè îíà âíóòðü ïåðâîãî ÷åòûð¸õóãîëüíèêà
+//Берём точку левого верхнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
 //(Obj2X1, Obj2Y1)
 Result:=false;
 If (Obj2X1>=Obj1X1) and (Obj2X1<=Obj1X2) and (Obj2Y1>=Obj1Y1) and (Obj2Y1<=Obj1Y3) then
@@ -1301,20 +1311,20 @@ If (Obj2X1>=Obj1X1) and (Obj2X1<=Obj1X2) and (Obj2Y1>=Obj1Y1) and (Obj2Y1<=Obj1Y
   Result:=true;
   exit;
   end;
-//Áåð¸ì òî÷êó ïðàâîãî âåðõíåãî óãëà âòîðîãî íàøåãî ïðÿìîóãîëüíèêà è ñðàâíèâàåì, âõîäèò ëè îíà âíóòðü ïåðâîãî ÷åòûð¸õóãîëüíèêà
+//Берём точку правого верхнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
 //(Obj2X2, Obj2Y2)
 If (Obj2X2<=Obj1X3) and (Obj2X2>=Obj1X4) and (Obj2Y2>=Obj1Y1) and (Obj2Y2<=Obj1Y4) then
   begin
   Result:=true;
   exit;
   end;
-//Áåð¸ì òî÷êó ïðàâîãî íèæíåãî óãëà âòîðîãî íàøåãî ïðÿìîóãîëüíèêà è ñðàâíèâàåì, âõîäèò ëè îíà âíóòðü ïåðâîãî ÷åòûð¸õóãîëüíèêà
+//Берём точку правого нижнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
 If (Obj2X3>=Obj1X1) and (Obj2X3<=Obj1X2) and (Obj2Y3>=Obj1Y1) and (Obj2Y3<=Obj1Y4) then
   begin
   Result:=true;
   exit;
   end;
-//Áåð¸ì òî÷êó ëåâîãî íèæíåãî óãëà âòîðîãî íàøåãî ïðÿìîóãîëüíèêà è ñðàâíèâàåì, âõîäèò ëè îíà âíóòðü ïåðâîãî ÷åòûð¸õóãîëüíèêà
+//Берём точку левого нижнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
 If (Obj2X4<=Obj1X2) and (Obj2X4>=Obj1X1) and (Obj2Y4>=Obj1Y1) and (Obj2Y4<=Obj1Y4) then
   begin
   Result:=true;
@@ -1329,7 +1339,7 @@ i, n: integer;
 Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
 Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer;
 begin
-//åñëè îðóæèå óæå íàõîäèòüñÿ â ðóêàõ, òî íå íàäî ïðîâåðÿòü ñîïðèêîñíîâåíèå ñ ýòèì îðóæèåì
+//если оружие уже находиться в руках, то не надо проверять соприкосновение с этим оружием
 
 if Owl[0].Weapon <> nil then
 
@@ -1348,8 +1358,8 @@ if Owl[0].Weapon <> nil then
       begin
       if Bricks[n].Direction = directionBrickLeft then
        begin
-       Obj1X1 := Bricks[n].XBrick;//âåðõíèé ëåâûé óãîë
-       Obj1Y1 := Bricks[n].YBrick;//âåðõíèé ëåâûé óãîë
+       Obj1X1 := Bricks[n].XBrick;//верхний левый угол
+       Obj1Y1 := Bricks[n].YBrick;//верхний левый угол
        Obj1X2 := Obj1X1 + Bricks[n].ImgMassLeftBrick[0].Width;
        Obj1Y2 := Obj1Y1;
        Obj1X3 := Obj1X2;
@@ -1390,14 +1400,14 @@ if Owl[0].Weapon <> nil then
        Obj2Y4 := Obj2Y3;
        end;
 
-     //ñïðýé ñòîëêíóëñÿ ñî ñòåíîé
+     //спрэй столкнулся со стеной
      result:= FindCollision(Rect( Obj1X1, Obj1Y1, Obj1X3, Obj1Y3),
                            Rect( Obj2X1, Obj2Y1, Obj2X3, Obj2Y3));
      if Result = true then
        begin
        If Weapons[i].WeaponinBox = false then
          begin
-         //ïîëêà ñâîáîäíà
+         //полка свободна
          if Bricks[n].Weapon = nil then
            begin
            Weapons[i].WeaponDown(Owl[0], Bricks[n]);
@@ -1405,10 +1415,10 @@ if Owl[0].Weapon <> nil then
            end
          else
            begin
-           //ïîëêà çàíÿòà
+           //полка занята
            if Owl[0].Weapon = nil then
              begin
-             //ïðè ýòîì ó ñîâû íè÷åãî íåò
+             //при этом у совы ничего нет
              Weapons[i].WeaponTouch(Owl[0], Bricks[n]);
              Weapons[i].WeaponinBox := true;
              end;
@@ -1430,7 +1440,7 @@ i, n, weap: integer;
 Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
 Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer;
 begin
-//åñëè îðóæèå óæå íàõîäèòüñÿ â ðóêàõ, òî íå íàäî ïðîâåðÿòü ñîïðèêîñíîâåíèå ñ ýòèì îðóæèåì
+//если оружие уже находиться в руках, то не надо проверять соприкосновение с этим оружием
 //            width
 // x1, y1 +--------------+ x2, y2
 //        |              |
@@ -1440,7 +1450,7 @@ begin
 for weap := 0 to MaxSpray - 1 do
   begin
   if (Owl[0].Weapon <> nil) then exit;
-//Çäåñü ìû ïðîâåðÿåì òîëüêî íà îäèí âèä îðóæèÿ
+//Здесь мы проверяем только на один вид оружия
 //  if (Weapon[weap] = Owl[0].Weapon) then exit;
 
    if Weapons[weap].Direction = directionLeft then
@@ -1502,7 +1512,7 @@ for weap := 0 to MaxSpray - 1 do
   end;
 end;
 
-//Ôóíêöèÿ ñòîëêíîâåíèÿ ìóõ ìåæäó ñîáîé
+//Функция столкновения мух между собой
 Function TForm1.CheckCollisionsFlyes():boolean;
 var
 i,n:integer;
@@ -1510,9 +1520,9 @@ Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
 Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer;
 Fly1, Fly2: TMyFly;
 begin
-//Ñíà÷àëà ïðîâåðèì ñòîëêíîâåíè, ò.å. áåð¸ì ïåðâûé îáúåêò èç ìàññèâà è ñðàâíèâàåì åãî ñî âòîðûì îáúåêòîì èç ìàññèâà, ñ òðåòüèì è ò.ä. äî ïîñëåäíåãî
-//ïîòîì áåð¸ì âòîðîé îáúåêò èç ìàññèâà è ñðàâíèâàåì ñ òðåòüèì îáúåêòîì èç ìàññèâà, ÷åòâ¸ðòûì, ïÿòûì è ò.ä.
-//ïîòîì áåð¸ì òðåòèé îáúåêò èçìàññèâà è ñðàâíèâàåì åãî ñ ÷åòâ¸ðòûì îáúåêòîì èç ìàññèâà, ïÿòûì è ò.ä.
+//Сначала проверим столкновени, т.е. берём первый объект из массива и сравниваем его со вторым объектом из массива, с третьим и т.д. до последнего
+//потом берём второй объект из массива и сравниваем с третьим объектом из массива, четвёртым, пятым и т.д.
+//потом берём третий объект измассива и сравниваем его с четвёртым объектом из массива, пятым и т.д.
 For n := 0 to MaxFly - 1 do
 begin
 Fly1 := Flyes[n];
@@ -1532,7 +1542,7 @@ if (Fly1 <> nil) and
 //        |              |
 // x4, y4 +--------------+ x3, y3
 
-   //Ìóõà ëåòèò âëåâî
+   //Муха летит влево
    If (Fly1.ThereMove = directionLeft) then
       begin
       Obj1X2 := Obj1X1 + TBitMap(Fly1.ImgMassLeft.Items[Fly1.sprleftindex]).Width;
@@ -1543,7 +1553,7 @@ if (Fly1 <> nil) and
       Obj1Y4 := Obj1Y3;
 
       end;
-   //Ìóõà ëåòèò âïðàâî
+   //Муха летит вправо
    If (Fly1.ThereMove = directionRight) then
       begin
       Obj1X2 := Obj1X1 + TBitMap(Fly1.ImgMassRight.Items[Fly1.sprrightindex]).Width;
@@ -1557,7 +1567,7 @@ if (Fly1 <> nil) and
 for i := n to MaxFly-1 do
    begin
    Fly2 := Flyes[i];
-     //Ñîçäà¸ì ìóõ è óñòàíàâëèâàåì ìàêñèìàëüíóþ êîîðäèíàòó ïî X è ñëó÷àéíóþ ïî Y
+     //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
    if (Fly2 <> nil) and
       (Fly2.FlyState = stLive) then
      begin
@@ -1565,7 +1575,7 @@ for i := n to MaxFly-1 do
    begin
    Obj2X1 := Fly2.XFly;
    Obj2Y1 := Fly2.YFly;
-   //Ìóõà ëåòèò âëåâî
+   //Муха летит влево
    If (Fly2.ThereMove = directionLeft) then
       begin
       Obj2X2 := Obj2X1+TBitMap(Fly2.ImgMassLeft.Items[Fly2.sprleftindex]).Width;
@@ -1575,7 +1585,7 @@ for i := n to MaxFly-1 do
       Obj2X4 := Obj2X1;
       Obj2Y4 := Obj2Y3;
       end;
-   //Ìóõà ëåòèò âïðàâî
+   //Муха летит вправо
    If (Fly2.ThereMove = directionRight) then
       begin
       Obj2X2 := Obj2X1+TBitMap(Fly2.ImgMassRight.Items[Fly2.sprrightindex]).Width;
@@ -1608,7 +1618,7 @@ for i := n to MaxFly-1 do
    end;
 end;
 
-//Ôóíêöèÿ ñòîëêíîâåíèÿ ëèñòüåâ ïîäñîëíóõà è ãóñåíèö
+//Функция столкновения листьев подсолнуха и гусениц
 Function TForm1.CheckCollisionsFlowerWorm():boolean;
 var
 i,n,k:integer;
