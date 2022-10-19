@@ -1,3 +1,4 @@
+//Основной листинг. Ядро.
 unit Unit1;
 
 interface
@@ -124,6 +125,7 @@ type
     Clouds: array[0..MaxInGameClouds - 1] of TCloud;
     //    SunflowersHead:TMySunflower;
     BulletTick: Longint;
+    //Декларация основных функция
     Function CheckCollisionsBulletWorm():boolean;
     Function CheckCollisionsBulletFly():boolean;
 
@@ -165,44 +167,55 @@ var
   VirtBitmap: TBitmap;
   BackGroundBitmap: TBitmap;
 
+  //Декларация списков спрайтов
+  //Мух
   FlySpritesArrLeft: TList;
   FlySpritesArrRight: TList;
   FlySpritesArrHitLeft: TList;
   FlySpritesArrHitRight: TList;
-
+  
+  //Гусениц
   WormSpritesArrLeft: TList;
   WormSpritesArrRight: TList;
   WormSpritesArrHitLeft: TList;
   WormSpritesArrHitRight: TList;
-
+  
+  //Совы
   OwlSpritesArrLeft: TList;
   OwlSpritesArrRight: TList;
   OwlSpritesArrHitLeft: TList;
   OwlSpritesArrHitRight: TList;
 
+  //Выстрелов из флакончика
   BulletSpritesArrLeft: TList;
   BulletSpritesArrRight: TList;
 
   StemSpritesArr: TList;
   HeadSpritesArr: TList;
-
+  
+  //
   WeaponPssstSpritesArrLeft: TList;
   WeaponPssstSpritesArrRight: TList;
   WeaponLightSpritesArrLeft: TList;
   WeaponLightSpritesArrRight: TList;
-
+  
+  //Молнии теслаагрегат
   LightSpritesArrLeft: TList;
   LightSpritesArrRight: TList;
 
+  //Воронёнка
   CrowSpritesArrLeft: TList;
   CrowSpritesArrRight: TList;
   CrowSpritesArrHitLeft: TList;
   CrowSpritesArrHitRight: TList;
-
+  
+  //Облачко
   CloudsSpritesArr: TList;
 //  CloudSpritesArrSmall: TList;
-
+  
+  //Молнии из туч
   LightSpritesArr: TList;
+  //Дождя из туч
   RainSpritesArr: TList;
 
 implementation
