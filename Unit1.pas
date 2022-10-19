@@ -2,6 +2,8 @@ unit Unit1;
 
 interface
 
+//Используемые модули
+//Use modules
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, ComCtrls,
   Dialogs, ExtCtrls, USunflower, UFlyes, UWorms, ULeaf, UOwl, UBullets, UWeapon, UBrick, UClouds, uConstant,
