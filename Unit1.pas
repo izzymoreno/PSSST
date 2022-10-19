@@ -8,36 +8,51 @@ uses
   jpeg, Menus, USettings, ULoading;
 
 //Основные константы
+//Basic constants
 Const
 //Шаг совы в передвижении с помощью клавиш
+//Owl's step in moving with the keys
 OwlXStep = 5;
 OwlYStep = 5;
 //MyCanvasMax = 1;
 //Количество стен
+//Number of walls
 MaxBrick = 2;
 //Количество сов
+//Number of owls
 MaxOwl = 1;
 //Количество гусениц
+//Number of worms
 //MaxWorm = 10; //20
 //Количество мух
+//Number of flyes
 //MaxFly = 10; //20
 //Количество подсолнухов
+//Number of Sunflowers
 MaxSunflower = 1;
 //Количество члеников подсолнуха
+//Number of sunflower segments
 //MaxSunflowerStem = 150;
 //Амплитуда движения мух
+//Movement amplitude flyes
 SinFlyMax = 8; //50
 //Максимальное количество пуль
+//Max bullets
 MaxBullet = 10;
 //Количество спрэйев
+//Number of sprays
 MaxSpray = 2;
 //Максимальное значение спрайтов оружия
+//Max weapon sprite value
 MaxImageWeapon = 1;
 //Для молний Теслаагрегата
+//For lightning Tesla aggregate
 MaxImageSpriteWeapon = 1;
 //Количество облаков в игре
+//Number of clouds in the game
 MaxInGameClouds = 1;
 //Размер приложения
+// Application size
 xmax = 800;
 ymax = 600;
 xmin = 0;
@@ -70,29 +85,40 @@ type
   public
     { Public declarations }
         //Очки для таблицы рекордов
+        //Points for highscore table
     //Гусеницы
+    //Worms
     TableWormsScore: integer;
     //Мухи
+    //Flyes
     TableFlyesScore: integer;
     //Шаг совы в передвижении с помощью клавиш
+    //Owl's step in moving with the keys
     OwlXStep, OwlYStep: integer;
     TheVictory: boolean;
     //Массив гусениц
 //    Worms:  array[0..MaxWorm - 1] of TMyWorm;
     Worms:  array of TMyWorm;
     //Массив мух
+    //Array of flyes
     Flyes:  array of TMyFly;
     //Массив сов
+    //Array of owls
     Owl:    array[0..MaxOwl - 1] of TMyOwl;
     //Массив подсолнухов
+    //Array of Sunflowers
     Sunflowers: array[0..MaxSunflower - 1] of TSunflower;
     //Массив пуль
+    //Array of bullets
     Bullets: array[0..MaxBullet - 1] of TBullet;
     //Спрэи
+    //Sprays
     Weapons: array[0..MaxSpray - 1] of TWeapon;
     //Массив стен
+    //Array of Bricks
     Bricks:  array[0..MaxBrick - 1] of TBrick;
     //Массив облаков
+    //Array of Clouds
     Clouds: array[0..MaxInGameClouds - 1] of TCloud;
     //    SunflowersHead:TMySunflower;
     BulletTick: Longint;
@@ -132,6 +158,8 @@ var
   MaxFly: integer;
   LevelNumber: integer;
   //Заводим виртуальный Canvas
+  //Create a virtual Canvas
+  
   VirtBitmap: TBitmap;
   BackGroundBitmap: TBitmap;
 
@@ -232,11 +260,13 @@ BulletTick := gettickcount();
 self.TimerFPS.Enabled := false;
 self.TimerFPS.Interval := 20;   //20
 //Заполняем Canvas чёрным цветом
+//Fill the canvas with black
 //Form1.Image1.Canvas.Brush.Color:=clBlack;
 //Form1.Image1.Canvas.FillRect(Rect(xmin,ymin,XScreenMax,YScreenMax));
 Form1.Image1.Width := XScreenMax;
 Form1.Image1.Height := YScreenMax;
 //Создаём виртуальный Bitmap
+//Create a virtual Bitmap
 VirtBitmap := TBitmap.Create;
 VirtBitmap.Canvas.Brush.Color := clBlack;
 VirtBitmap.Width := XScreenMax;//Image1.Width;
@@ -250,6 +280,7 @@ BackGroundBitmap := TBitmap.Create;
 Randomize;
 
  //Создаём форму с загрузкой компонентов
+ //Create a form with loading components
 
 //FormLoading := TFormLoading.Create(self);
 
@@ -259,6 +290,7 @@ Randomize;
 //end;
 
 //Загружаем все спрайты мух лево
+//Load all fly sprites to the left
 FlySpritesArrLeft := TList.Create;
 For i := 0 to MaxImageFly - 1 Do
    begin
@@ -269,7 +301,8 @@ For i := 0 to MaxImageFly - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    FlySpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем все спрайты мух право
+//Загружаем все спрайты мух правосторонние
+//Load all right side flies sprites
 FlySpritesArrRight := TList.Create;
 For i := 0 to MaxImageFly - 1 Do
    begin
@@ -281,7 +314,8 @@ For i := 0 to MaxImageFly - 1 Do
    FlySpritesArrRight.Add(tmpBitmap);
    end;
 
-//Загружаем все спрайты разрушения мух влево
+//Загружаем все спрайты смерти мух левосторонние
+//Load all left side fly death sprites
 FlySpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageHitLeftWorm - 1 Do
    begin
@@ -292,7 +326,8 @@ For i := 0 to MaxImageHitLeftWorm - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    FlySpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Загружаем все спрайты разрушения мух вправо
+//Загружаем все спрайты смерти мух правосторонние
+//Load all right side fly death sprites
 FlySpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageHitRightWorm - 1 Do
    begin
@@ -304,7 +339,8 @@ For i := 0 to MaxImageHitRightWorm - 1 Do
    FlySpritesArrHitRight.Add(tmpBitmap);
    end;
 
-//Загружаем все спрайты гусениц влево
+//Загружаем все спрайты гусениц направленные влево
+//Load all caterpillar sprites pointing left
 WormSpritesArrLeft := TList.Create;
 For i := 0 to MaxImageWorm - 1 Do
    begin
@@ -315,7 +351,8 @@ For i := 0 to MaxImageWorm - 1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WormSpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем все спрайты гусениц вправо
+//Загружаем все спрайты гусениц направленные вправо
+//Load all caterpillar sprites pointing right
 WormSpritesArrRight := TList.Create;
 For i := 0 to MaxImageWorm - 1 Do
    begin
