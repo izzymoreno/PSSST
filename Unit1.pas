@@ -7,37 +7,37 @@ uses
   Dialogs, ExtCtrls, USunflower, UFlyes, UWorms, ULeaf, UOwl, UBullets, UWeapon, UBrick, UClouds, uConstant,
   jpeg, Menus, USettings, ULoading;
 
-//Основные константы
+//РћСЃРЅРѕРІРЅС‹Рµ РєРѕРЅСЃС‚Р°РЅС‚С‹
 Const
-//Шаг совы в передвижении с помощью клавиш
+//РЁР°Рі СЃРѕРІС‹ РІ РїРµСЂРµРґРІРёР¶РµРЅРёРё СЃ РїРѕРјРѕС‰СЊСЋ РєР»Р°РІРёС€
 OwlXStep = 5;
 OwlYStep = 5;
 //MyCanvasMax = 1;
-//Количество стен
+//ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±ГІГҐГ­
 MaxBrick = 2;
-//Количество сов
+//ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±Г®Гў
 MaxOwl = 1;
-//Количество гусениц
+//ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЈГіГ±ГҐГ­ГЁГ¶
 //MaxWorm = 10; //20
-//Количество мух
+//ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г¬ГіГµ
 //MaxFly = 10; //20
-//Количество подсолнухов
+//ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ®Гў
 MaxSunflower = 1;
-//Количество члеников подсолнуха
+//ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г·Г«ГҐГ­ГЁГЄГ®Гў ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ 
 //MaxSunflowerStem = 150;
-//Амплитуда движения мух
+//ГЂГ¬ГЇГ«ГЁГІГіГ¤Г  Г¤ГўГЁГ¦ГҐГ­ГЁГї Г¬ГіГµ
 SinFlyMax = 8; //50
-//Максимальное количество пуль
+//ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГіГ«Гј
 MaxBullet = 10;
-//Количество спрэйев
+//ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±ГЇГ°ГЅГ©ГҐГў
 MaxSpray = 2;
-//Максимальное значение спрайтов оружия
+//ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г±ГЇГ°Г Г©ГІГ®Гў Г®Г°ГіГ¦ГЁГї
 MaxImageWeapon = 1;
-//Для молний Теслаагрегата
+//Г„Г«Гї Г¬Г®Г«Г­ГЁГ© Г’ГҐГ±Г«Г Г ГЈГ°ГҐГЈГ ГІГ 
 MaxImageSpriteWeapon = 1;
-//Количество облаков в игре
+//ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г®ГЎГ«Г ГЄГ®Гў Гў ГЁГЈГ°ГҐ
 MaxInGameClouds = 1;
-//Размер приложения
+//ГђГ Г§Г¬ГҐГ° ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
 xmax = 800;
 ymax = 600;
 xmin = 0;
@@ -69,30 +69,30 @@ type
     { Private declarations }
   public
     { Public declarations }
-        //Очки для таблицы рекордов
-    //Гусеницы
+        //ГЋГ·ГЄГЁ Г¤Г«Гї ГІГ ГЎГ«ГЁГ¶Г» Г°ГҐГЄГ®Г°Г¤Г®Гў
+    //ГѓГіГ±ГҐГ­ГЁГ¶Г»
     TableWormsScore: integer;
-    //Мухи
+    //ГЊГіГµГЁ
     TableFlyesScore: integer;
-    //Шаг совы в передвижении с помощью клавиш
+    //ГГ ГЈ Г±Г®ГўГ» Гў ГЇГҐГ°ГҐГ¤ГўГЁГ¦ГҐГ­ГЁГЁ Г± ГЇГ®Г¬Г®Г№ГјГѕ ГЄГ«Г ГўГЁГё
     OwlXStep, OwlYStep: integer;
     TheVictory: boolean;
-    //Массив гусениц
+    //ГЊГ Г±Г±ГЁГў ГЈГіГ±ГҐГ­ГЁГ¶
 //    Worms:  array[0..MaxWorm - 1] of TMyWorm;
     Worms:  array of TMyWorm;
-    //Массив мух
+    //ГЊГ Г±Г±ГЁГў Г¬ГіГµ
     Flyes:  array of TMyFly;
-    //Массив сов
+    //ГЊГ Г±Г±ГЁГў Г±Г®Гў
     Owl:    array[0..MaxOwl - 1] of TMyOwl;
-    //Массив подсолнухов
+    //ГЊГ Г±Г±ГЁГў ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ®Гў
     Sunflowers: array[0..MaxSunflower - 1] of TSunflower;
-    //Массив пуль
+    //ГЊГ Г±Г±ГЁГў ГЇГіГ«Гј
     Bullets: array[0..MaxBullet - 1] of TBullet;
-    //Спрэи
+    //Г‘ГЇГ°ГЅГЁ
     Weapons: array[0..MaxSpray - 1] of TWeapon;
-    //Массив стен
+    //ГЊГ Г±Г±ГЁГў Г±ГІГҐГ­
     Bricks:  array[0..MaxBrick - 1] of TBrick;
-    //Массив облаков
+    //ГЊГ Г±Г±ГЁГў Г®ГЎГ«Г ГЄГ®Гў
     Clouds: array[0..MaxInGameClouds - 1] of TCloud;
     //    SunflowersHead:TMySunflower;
     BulletTick: Longint;
@@ -131,7 +131,7 @@ var
   MaxWorm: integer;
   MaxFly: integer;
   LevelNumber: integer;
-  //Заводим виртуальный Canvas
+  //Г‡Г ГўГ®Г¤ГЁГ¬ ГўГЁГ°ГІГіГ Г«ГјГ­Г»Г© Canvas
   VirtBitmap: TBitmap;
   BackGroundBitmap: TBitmap;
 
@@ -183,9 +183,9 @@ begin
   begin
   VirtBitmap.Canvas.Font.Size := 18;
   VirtBitmap.Canvas.Font.Color:=clWhite;
-  VirtBitmap.Canvas.TextOut(200,30,'Жаль ! Вы проиграли ...');
-  VirtBitmap.Canvas.TextOut(200,60,'Вы убили: '+IntToStr({Form1.}TableWormsScore)+' Гусениц');
-  VirtBitmap.Canvas.TextOut(200,90,'Вы убили: '+IntToStr({Form1.}TableFlyesScore)+' Мух');
+  VirtBitmap.Canvas.TextOut(200,30,'Г†Г Г«Гј ! Г‚Г» ГЇГ°Г®ГЁГЈГ°Г Г«ГЁ ...');
+  VirtBitmap.Canvas.TextOut(200,60,'Г‚Г» ГіГЎГЁГ«ГЁ: '+IntToStr({Form1.}TableWormsScore)+' ГѓГіГ±ГҐГ­ГЁГ¶');
+  VirtBitmap.Canvas.TextOut(200,90,'Г‚Г» ГіГЎГЁГ«ГЁ: '+IntToStr({Form1.}TableFlyesScore)+' ГЊГіГµ');
   end;
 end;
 
@@ -196,7 +196,7 @@ if self.Sunflowers[0].ShowHeadOn <> 0 then
   begin
   VirtBitmap.Canvas.Font.Size := 18;
   VirtBitmap.Canvas.Font.Color:=clWhite;
-  VirtBitmap.Canvas.TextOut(200,30,'Ура ! Вы победили всех мух и гусениц');
+  VirtBitmap.Canvas.TextOut(200,30,'Г“Г°Г  ! Г‚Г» ГЇГ®ГЎГҐГ¤ГЁГ«ГЁ ГўГ±ГҐГµ Г¬ГіГµ ГЁ ГЈГіГ±ГҐГ­ГЁГ¶');
   //SettingsForm.EditPlayerName
   end;
 end;
@@ -205,7 +205,7 @@ end;
 //begin
 //VirtBitmap.Canvas.Font.Size := 18;
 //VirtBitmap.Canvas.Font.Color:=clWhite;
-//VirtBitmap.Canvas.TextOut(200,30,'Жаль ! Вы проиграли ...');
+//VirtBitmap.Canvas.TextOut(200,30,'Г†Г Г«Гј ! Г‚Г» ГЇГ°Г®ГЁГЈГ°Г Г«ГЁ ...');
 //end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -231,12 +231,12 @@ SetLength(Flyes, 0);
 BulletTick := gettickcount();
 self.TimerFPS.Enabled := false;
 self.TimerFPS.Interval := 20;   //20
-//Заполняем Canvas чёрным цветом
+//Г‡Г ГЇГ®Г«Г­ГїГҐГ¬ Canvas Г·ВёГ°Г­Г»Г¬ Г¶ГўГҐГІГ®Г¬
 //Form1.Image1.Canvas.Brush.Color:=clBlack;
 //Form1.Image1.Canvas.FillRect(Rect(xmin,ymin,XScreenMax,YScreenMax));
 Form1.Image1.Width := XScreenMax;
 Form1.Image1.Height := YScreenMax;
-//Создаём виртуальный Bitmap
+//Г‘Г®Г§Г¤Г ВёГ¬ ГўГЁГ°ГІГіГ Г«ГјГ­Г»Г© Bitmap
 VirtBitmap := TBitmap.Create;
 VirtBitmap.Canvas.Brush.Color := clBlack;
 VirtBitmap.Width := XScreenMax;//Image1.Width;
@@ -249,7 +249,7 @@ BackGroundBitmap := TBitmap.Create;
 
 Randomize;
 
- //Создаём форму с загрузкой компонентов
+ //Г‘Г®Г§Г¤Г ВёГ¬ ГґГ®Г°Г¬Гі Г± Г§Г ГЈГ°ГіГ§ГЄГ®Г© ГЄГ®Г¬ГЇГ®Г­ГҐГ­ГІГ®Гў
 
 //FormLoading := TFormLoading.Create(self);
 
@@ -258,7 +258,7 @@ Randomize;
 
 //end;
 
-//Загружаем все спрайты мух лево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г¬ГіГµ Г«ГҐГўГ®
 FlySpritesArrLeft := TList.Create;
 For i := 0 to MaxImageFly - 1 Do
    begin
@@ -269,7 +269,7 @@ For i := 0 to MaxImageFly - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    FlySpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем все спрайты мух право
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г¬ГіГµ ГЇГ°Г ГўГ®
 FlySpritesArrRight := TList.Create;
 For i := 0 to MaxImageFly - 1 Do
    begin
@@ -281,7 +281,7 @@ For i := 0 to MaxImageFly - 1 Do
    FlySpritesArrRight.Add(tmpBitmap);
    end;
 
-//Загружаем все спрайты разрушения мух влево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г°Г Г§Г°ГіГёГҐГ­ГЁГї Г¬ГіГµ ГўГ«ГҐГўГ®
 FlySpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageHitLeftWorm - 1 Do
    begin
@@ -292,7 +292,7 @@ For i := 0 to MaxImageHitLeftWorm - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    FlySpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Загружаем все спрайты разрушения мух вправо
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г°Г Г§Г°ГіГёГҐГ­ГЁГї Г¬ГіГµ ГўГЇГ°Г ГўГ®
 FlySpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageHitRightWorm - 1 Do
    begin
@@ -304,7 +304,7 @@ For i := 0 to MaxImageHitRightWorm - 1 Do
    FlySpritesArrHitRight.Add(tmpBitmap);
    end;
 
-//Загружаем все спрайты гусениц влево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» ГЈГіГ±ГҐГ­ГЁГ¶ ГўГ«ГҐГўГ®
 WormSpritesArrLeft := TList.Create;
 For i := 0 to MaxImageWorm - 1 Do
    begin
@@ -315,7 +315,7 @@ For i := 0 to MaxImageWorm - 1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WormSpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем все спрайты гусениц вправо
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» ГЈГіГ±ГҐГ­ГЁГ¶ ГўГЇГ°Г ГўГ®
 WormSpritesArrRight := TList.Create;
 For i := 0 to MaxImageWorm - 1 Do
    begin
@@ -328,7 +328,7 @@ For i := 0 to MaxImageWorm - 1 Do
    end;
 
 
-//Загружаем все спрайты разрушения гусениц влево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г°Г Г§Г°ГіГёГҐГ­ГЁГї ГЈГіГ±ГҐГ­ГЁГ¶ ГўГ«ГҐГўГ®
 WormSpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageHitLeftWorm - 1 Do
    begin
@@ -339,7 +339,7 @@ For i := 0 to MaxImageHitLeftWorm - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    WormSpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Загружаем все спрайты разрушения гусениц вправо
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г°Г Г§Г°ГіГёГҐГ­ГЁГї ГЈГіГ±ГҐГ­ГЁГ¶ ГўГЇГ°Г ГўГ®
 WormSpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageHitRightWorm - 1 Do
    begin
@@ -350,7 +350,7 @@ For i := 0 to MaxImageHitRightWorm - 1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WormSpritesArrHitRight.Add(tmpBitmap);
    end;
-//Загружаем в спрайты совы смотрящей влево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Гў Г±ГЇГ°Г Г©ГІГ» Г±Г®ГўГ» Г±Г¬Г®ГІГ°ГїГ№ГҐГ© ГўГ«ГҐГўГ®
 OwlSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageLeftOwl Do
    begin
@@ -361,7 +361,7 @@ For i:=0 to MaxImageLeftOwl Do
    tmpBitmap.TransparentColor:=clBlack;
    OwlSpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем в спрайты совы смотрящей вправо
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Гў Г±ГЇГ°Г Г©ГІГ» Г±Г®ГўГ» Г±Г¬Г®ГІГ°ГїГ№ГҐГ© ГўГЇГ°Г ГўГ®
 OwlSpritesArrRight := TList.Create;
 For i:=0 to MaxImageRightOwl Do
    begin
@@ -372,7 +372,7 @@ For i:=0 to MaxImageRightOwl Do
    tmpBitmap.TransparentColor:=clBlack;
    OwlSpritesArrRight.Add(tmpBitmap);
    end;
-//Загружаем в спрайты совы погибающей влево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Гў Г±ГЇГ°Г Г©ГІГ» Г±Г®ГўГ» ГЇГ®ГЈГЁГЎГ ГѕГ№ГҐГ© ГўГ«ГҐГўГ®
 OwlSpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageLeftDieOwl Do
    begin
@@ -383,7 +383,7 @@ For i := 0 to MaxImageLeftDieOwl Do
    tmpBitmap.TransparentColor:=clBlack;
    OwlSpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Загружаем в спрайты совы погибающей вправо
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Гў Г±ГЇГ°Г Г©ГІГ» Г±Г®ГўГ» ГЇГ®ГЈГЁГЎГ ГѕГ№ГҐГ© ГўГЇГ°Г ГўГ®
 OwlSpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageRightDieOwl Do
    begin
@@ -396,7 +396,7 @@ For i := 0 to MaxImageRightDieOwl Do
    OwlSpritesArrHitRight.Add(tmpBitmap);
    end;
 
-//Загружаем все спрайты спрэя облачка влево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г±ГЇГ°ГЅГї Г®ГЎГ«Г Г·ГЄГ  ГўГ«ГҐГўГ®
 BulletSpritesArrLeft := TList.Create;
 For i := 0 to MaxImageBullet - 1 Do
    begin
@@ -407,7 +407,7 @@ For i := 0 to MaxImageBullet - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    BulletSpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем все спрайты спрэя облачка вправо
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г±ГЇГ°ГЅГї Г®ГЎГ«Г Г·ГЄГ  ГўГЇГ°Г ГўГ®
 BulletSpritesArrRight := TList.Create;
 For i := 0 to MaxImageBullet - 1 Do
    begin
@@ -439,7 +439,7 @@ For i := 0 to MaxImageHead - 1 Do
    tmpBitmap.TransparentColor := clBlack;
    HeadSpritesArr.Add(tmpBitmap);
    end;
-//Загружаем спрайты оружия дихлофоса слева
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г®Г°ГіГ¦ГЁГї Г¤ГЁГµГ«Г®ГґГ®Г±Г  Г±Г«ГҐГўГ 
 WeaponPssstSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageWeapon-1 Do
    begin
@@ -450,7 +450,7 @@ For i:=0 to MaxImageWeapon-1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WeaponPssstSpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем спрайты оружия дихлофоса справа
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г®Г°ГіГ¦ГЁГї Г¤ГЁГµГ«Г®ГґГ®Г±Г  Г±ГЇГ°Г ГўГ 
 WeaponPssstSpritesArrRight := TList.Create;
 For i:=0 to MaxImageWeapon-1 Do
    begin
@@ -462,7 +462,7 @@ For i:=0 to MaxImageWeapon-1 Do
    WeaponPssstSpritesArrRight.Add(tmpBitmap);
    end;
 
-//Загружаем спрайты оружия Тесламашины слева
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г®Г°ГіГ¦ГЁГї Г’ГҐГ±Г«Г Г¬Г ГёГЁГ­Г» Г±Г«ГҐГўГ 
 WeaponLightSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageWeapon-1 Do
    begin
@@ -473,7 +473,7 @@ For i:=0 to MaxImageWeapon-1 Do
    tmpBitmap.TransparentColor:=clBlack;
    WeaponLightSpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем спрайты оружия Тесламашины справа
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г®Г°ГіГ¦ГЁГї Г’ГҐГ±Г«Г Г¬Г ГёГЁГ­Г» Г±ГЇГ°Г ГўГ 
 WeaponLightSpritesArrRight := TList.Create;
 For i:=0 to MaxImageWeapon-1 Do
    begin
@@ -485,7 +485,7 @@ For i:=0 to MaxImageWeapon-1 Do
    WeaponLightSpritesArrRight.Add(tmpBitmap);
    end;
 
-//Загружаем спрайты оружия Тесламашины слева
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г®Г°ГіГ¦ГЁГї Г’ГҐГ±Г«Г Г¬Г ГёГЁГ­Г» Г±Г«ГҐГўГ 
 LightSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageSpriteWeapon Do
    begin
@@ -496,7 +496,7 @@ For i:=0 to MaxImageSpriteWeapon Do
    tmpBitmap.TransparentColor:=clBlack;
    LightSpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем спрайты оружия Тесламашины справа
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г®Г°ГіГ¦ГЁГї Г’ГҐГ±Г«Г Г¬Г ГёГЁГ­Г» Г±ГЇГ°Г ГўГ 
 LightSpritesArrRight := TList.Create;
 For i:=0 to MaxImageSpriteWeapon Do
    begin
@@ -508,7 +508,7 @@ For i:=0 to MaxImageSpriteWeapon Do
    LightSpritesArrRight.Add(tmpBitmap);
    end;
 
-//Загружаем спрайты ворона смотрящего влево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» ГўГ®Г°Г®Г­Г  Г±Г¬Г®ГІГ°ГїГ№ГҐГЈГ® ГўГ«ГҐГўГ®
 CrowSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageLeftCrow Do
    begin
@@ -519,7 +519,7 @@ For i:=0 to MaxImageLeftCrow Do
    tmpBitmap.TransparentColor:=clBlack;
    CrowSpritesArrLeft.Add(tmpBitmap);
    end;
-//Загружаем спрайты совы смотрящей вправо
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г±Г®ГўГ» Г±Г¬Г®ГІГ°ГїГ№ГҐГ© ГўГЇГ°Г ГўГ®
 CrowSpritesArrRight := TList.Create;
 For i:=0 to MaxImageRightCrow Do
    begin
@@ -530,7 +530,7 @@ For i:=0 to MaxImageRightCrow Do
    tmpBitmap.TransparentColor:=clBlack;
    CrowSpritesArrRight.Add(tmpBitmap);
    end;
-//Загружаем спрайты совы погибающей влево
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г±Г®ГўГ» ГЇГ®ГЈГЁГЎГ ГѕГ№ГҐГ© ГўГ«ГҐГўГ®
 CrowSpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageLeftDieCrow Do
    begin
@@ -541,7 +541,7 @@ For i := 0 to MaxImageLeftDieCrow Do
    tmpBitmap.TransparentColor:=clBlack;
    CrowSpritesArrHitLeft.Add(tmpBitmap);
    end;
-//Загружаем спрайты совы погибающей вправо
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г±Г®ГўГ» ГЇГ®ГЈГЁГЎГ ГѕГ№ГҐГ© ГўГЇГ°Г ГўГ®
 CrowSpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageRightDieCrow Do
    begin
@@ -552,7 +552,7 @@ For i := 0 to MaxImageRightDieCrow Do
    tmpBitmap.TransparentColor:=clBlack;
    CrowSpritesArrHitRight.Add(tmpBitmap);
    end;
-//Загружаем спрайты двух облаков
+//Г‡Г ГЈГ°ГіГ¦Г ГҐГ¬ Г±ГЇГ°Г Г©ГІГ» Г¤ГўГіГµ Г®ГЎГ«Г ГЄГ®Гў
 CloudsSpritesArr := TList.Create;
 For i := 0 to MaxClouds Do
    begin
@@ -566,11 +566,11 @@ For i := 0 to MaxClouds Do
 
 FormLoading.Free;
 
-//Обнуляем количество уничтоженых гусениц и мух
+//ГЋГЎГ­ГіГ«ГїГҐГ¬ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГіГ­ГЁГ·ГІГ®Г¦ГҐГ­Г»Гµ ГЈГіГ±ГҐГ­ГЁГ¶ ГЁ Г¬ГіГµ
 SettingsForm := TSettingsForm.Create(self);
 mresult := SettingsForm.ShowModal;
 LevelNumber:= SettingsForm.TrackBarLevels.Position;
-//Form1.Caption := 'Играет: ' + SettingsForm.EditPlayerName.Text;
+//Form1.Caption := 'Г€ГЈГ°Г ГҐГІ: ' + SettingsForm.EditPlayerName.Text;
 end;
 
 //procedure TFormLoading.TimerBarTimer(Sender: TObject);
@@ -588,14 +588,14 @@ begin
 Form1.TableWormsScore := 0;
 Form1.TableFlyesScore := 0;
 Form1.Caption := '';
-Form1.Caption := 'Играет игрок по имени: ' + (SettingsForm.EditPlayerName.Text);
+Form1.Caption := 'Г€ГЈГ°Г ГҐГІ ГЁГЈГ°Г®ГЄ ГЇГ® ГЁГ¬ГҐГ­ГЁ: ' + (SettingsForm.EditPlayerName.Text);
 MaxWorm := SettingsForm.TrackBarWorms.Position;
 SetLength(Worms, MaxWorm);
 
 MaxFly := SettingsForm.TrackBarFlyes.Position;
 SetLength(Flyes, MaxFly);
 
-//Если счётчик уровня равен 1 то создаём на данном уровне только гусениц
+//Г…Г±Г«ГЁ Г±Г·ВёГІГ·ГЁГЄ ГіГ°Г®ГўГ­Гї Г°Г ГўГҐГ­ 1 ГІГ® Г±Г®Г§Г¤Г ВёГ¬ Г­Г  Г¤Г Г­Г­Г®Г¬ ГіГ°Г®ГўГ­ГҐ ГІГ®Г«ГјГЄГ® ГЈГіГ±ГҐГ­ГЁГ¶
 if LevelNumber = 1 then
    begin
    //Form1.Caption := IntToStr(LevelNumber);
@@ -603,32 +603,32 @@ if LevelNumber = 1 then
       begin
       for i := 0 to MaxWorm - 1 do
          begin
-         //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
+         //Г‘Г®Г§Г¤Г ВёГ¬ ГЈГіГ±ГҐГ­ГЁГ¶ ГЁ ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­ГіГѕ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі ГЇГ® X ГЁ Г±Г«ГіГ·Г Г©Г­ГіГѕ ГЇГ® Y
          Worms[i] := TMyWorm.CreateWorm( Form1, WormSpritesArrLeft, WormSpritesArrRight,
                                   WormSpritesArrHitLeft, WormSpritesArrHitRight);
-   //Только для отладки
+   //Г’Г®Г«ГјГЄГ® Г¤Г«Гї Г®ГІГ«Г Г¤ГЄГЁ
 //   Worms[i].Xworm := 400;
 //   Worms[i].Yworm := 250;
          end;
       end;
    end;
 
-//Если счётчик уровня равен 2 то создаём на данном уровне только мух
+//Г…Г±Г«ГЁ Г±Г·ВёГІГ·ГЁГЄ ГіГ°Г®ГўГ­Гї Г°Г ГўГҐГ­ 2 ГІГ® Г±Г®Г§Г¤Г ВёГ¬ Г­Г  Г¤Г Г­Г­Г®Г¬ ГіГ°Г®ГўГ­ГҐ ГІГ®Г«ГјГЄГ® Г¬ГіГµ
 if LevelNumber = 2 then
    begin
-   //Создаём мух
+   //Г‘Г®Г§Г¤Г ВёГ¬ Г¬ГіГµ
    if length(Flyes) > 0 then
       begin
       for i := 0 to MaxFly - 1 do
          begin
-         //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
+         //Г‘Г®Г§Г¤Г ВёГ¬ Г¬ГіГµ ГЁ ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­ГіГѕ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі ГЇГ® X ГЁ Г±Г«ГіГ·Г Г©Г­ГіГѕ ГЇГ® Y
          Flyes[i] := TMyFly.CreateFly( Form1, FlySpritesArrLeft, FlySpritesArrRight,
                                   FlySpritesArrHitLeft, FlySpritesArrHitRight);
          end;
       end;
    end;
 
-//Если счётчик уровня равен 3 то создаём на данном уровне гусениц и мух
+//Г…Г±Г«ГЁ Г±Г·ВёГІГ·ГЁГЄ ГіГ°Г®ГўГ­Гї Г°Г ГўГҐГ­ 3 ГІГ® Г±Г®Г§Г¤Г ВёГ¬ Г­Г  Г¤Г Г­Г­Г®Г¬ ГіГ°Г®ГўГ­ГҐ ГЈГіГ±ГҐГ­ГЁГ¶ ГЁ Г¬ГіГµ
 
 if LevelNumber = 3 then
    begin
@@ -637,21 +637,21 @@ if LevelNumber = 3 then
       begin
       for i := 0 to MaxWorm - 1 do
          begin
-         //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
+         //Г‘Г®Г§Г¤Г ВёГ¬ ГЈГіГ±ГҐГ­ГЁГ¶ ГЁ ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­ГіГѕ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі ГЇГ® X ГЁ Г±Г«ГіГ·Г Г©Г­ГіГѕ ГЇГ® Y
          Worms[i] := TMyWorm.CreateWorm( Form1, WormSpritesArrLeft, WormSpritesArrRight,
                                   WormSpritesArrHitLeft, WormSpritesArrHitRight);
-   //Только для отладки
+   //Г’Г®Г«ГјГЄГ® Г¤Г«Гї Г®ГІГ«Г Г¤ГЄГЁ
 //   Worms[i].Xworm := 400;
 //   Worms[i].Yworm := 250;
          end;
       end;
 
-   //Создаём мух
+   //Г‘Г®Г§Г¤Г ВёГ¬ Г¬ГіГµ
    if length(Flyes) > 0 then
       begin
       for i := 0 to MaxFly - 1 do
          begin
-         //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
+         //Г‘Г®Г§Г¤Г ВёГ¬ Г¬ГіГµ ГЁ ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­ГіГѕ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі ГЇГ® X ГЁ Г±Г«ГіГ·Г Г©Г­ГіГѕ ГЇГ® Y
          Flyes[i] := TMyFly.CreateFly( Form1, FlySpritesArrLeft, FlySpritesArrRight,
                                   FlySpritesArrHitLeft, FlySpritesArrHitRight);
          end;
@@ -660,7 +660,7 @@ if LevelNumber = 3 then
 
 
 
-//Создаём сову
+//Г‘Г®Г§Г¤Г ВёГ¬ Г±Г®ГўГі
 If (SettingsForm.RadioGroup1.ItemIndex = 0) then
   begin
   Owl[0] := TMyOwl.CreateOwl(Form1, OwlSpritesArrLeft, OwlSpritesArrRight,
@@ -677,7 +677,7 @@ If (SettingsForm.CheckBox1.Checked = true) then
    Form1.Owl[0].OwlState := stGodMode;
    end;
 
-//Создаём оружие-спрэйи
+//Г‘Г®Г§Г¤Г ВёГ¬ Г®Г°ГіГ¦ГЁГҐ-Г±ГЇГ°ГЅГ©ГЁ
 rnd := 0;
 if length(Weapons) > 0 then
   begin
@@ -690,7 +690,7 @@ if length(Weapons) > 0 then
     inc(rnd);
     end;
   end;
-//Создаём подсолнух
+//Г‘Г®Г§Г¤Г ВёГ¬ ГЇГ®Г¤Г±Г®Г«Г­ГіГµ
 
 if length(Clouds) > 0 then
   begin
@@ -698,7 +698,7 @@ if length(Clouds) > 0 then
     begin
     Clouds[i]:=TCloud.CreateCloud(50,50, Form1, CloudsSpritesArr); // CreateSunflower(round(VirtBitmap.Width/2),VirtBitmap.Height-50, Form1);
 //    Sunflowers[i]:=TSunflower.CreateSunflower(Random(xmax)-60,Random(ymax)-20,Form1);
-//Вызываем процедуру вывода облака
+//Г‚Г»Г§Г»ГўГ ГҐГ¬ ГЇГ°Г®Г¶ГҐГ¤ГіГ°Гі ГўГ»ГўГ®Г¤Г  Г®ГЎГ«Г ГЄГ 
     Clouds[i].Show;
     end;
   end;
@@ -710,43 +710,43 @@ if length(Sunflowers) > 0 then
     begin
     Sunflowers[i]:=TSunflower.CreateSunflower(round(VirtBitmap.Width/2),VirtBitmap.Height-50, Form1);
 //    Sunflowers[i]:=TSunflower.CreateSunflower(Random(xmax)-60,Random(ymax)-20,Form1);
-//Рост подсолнуха на 1 членик
+//ГђГ®Г±ГІ ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ  Г­Г  1 Г·Г«ГҐГ­ГЁГЄ
     Sunflowers[i].Grown(1);
-//Вызываем процедуру вывода подсолнуха
+//Г‚Г»Г§Г»ГўГ ГҐГ¬ ГЇГ°Г®Г¶ГҐГ¤ГіГ°Гі ГўГ»ГўГ®Г¤Г  ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ 
     Sunflowers[i].Show;
     end;
   end;
 
-//Инициализируем массив пуль, т.е, заполняем его nil
+//Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°ГіГҐГ¬ Г¬Г Г±Г±ГЁГў ГЇГіГ«Гј, ГІ.ГҐ, Г§Г ГЇГ®Г«Г­ГїГҐГ¬ ГҐГЈГ® nil
 if length(Bullets) > 0 then
   begin
   for i := 0 to MaxBullet-1 do
     begin
-    //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
+    //Г‘Г®Г§Г¤Г ВёГ¬ ГЈГіГ±ГҐГ­ГЁГ¶ ГЁ ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­ГіГѕ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі ГЇГ® X ГЁ Г±Г«ГіГ·Г Г©Г­ГіГѕ ГЇГ® Y
     Bullets[i] := nil;
     end;
   end;
-//Шаг по Икс и по Игрэк Совёнка
+//ГГ ГЈ ГЇГ® Г€ГЄГ± ГЁ ГЇГ® Г€ГЈГ°ГЅГЄ Г‘Г®ГўВёГ­ГЄГ 
 OwlXStep := 5;
 OwlYStep := 5;
-//Отрисовываем Совёнка
+//ГЋГІГ°ГЁГ±Г®ГўГ»ГўГ ГҐГ¬ Г‘Г®ГўВёГ­ГЄГ 
 Owl[0].Show;
-//Левая стена
+//Г‹ГҐГўГ Гї Г±ГІГҐГ­Г 
 if length(Bricks) > 0 then
   begin
   for i := 0 to MaxBrick-1 do
     begin
     Bricks[i] := TBrick.CreateBrick(round(0),round(VirtBitmap.Height - 190-i*130),directionBrickLeft,nil);
     Bricks[i].Show;
-    //Левая стена
+    //Г‹ГҐГўГ Гї Г±ГІГҐГ­Г 
     //Brick[1]:=TBrick.CreateBrick(250,30,directionBrickRight,nil);
     //Brick[1].Show;
     end;
   end;
 
-//Проверяем кто играет CheatMode
-if Form1.Caption = 'Играет игрок по имени: Билл Гейтс' then TheVictory := true;
-if Form1.Caption = 'Играет игрок по имени: Стив Балмер' then
+//ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ ГЄГІГ® ГЁГЈГ°Г ГҐГІ CheatMode
+if Form1.Caption = 'Г€ГЈГ°Г ГҐГІ ГЁГЈГ°Г®ГЄ ГЇГ® ГЁГ¬ГҐГ­ГЁ: ГЃГЁГ«Г« ГѓГҐГ©ГІГ±' then TheVictory := true;
+if Form1.Caption = 'Г€ГЈГ°Г ГҐГІ ГЁГЈГ°Г®ГЄ ГЇГ® ГЁГ¬ГҐГ­ГЁ: Г‘ГІГЁГў ГЃГ Г«Г¬ГҐГ°' then
    begin
    if LevelNumber = 1 then
        begin
@@ -755,7 +755,7 @@ if Form1.Caption = 'Играет игрок по имени: Стив Балмер' then
           Worms[i].WormState := stHit;
           end;
        end;
-if Form1.Caption = 'Стив Джобс' then
+if Form1.Caption = 'Г‘ГІГЁГў Г„Г¦Г®ГЎГ±' then
    begin
    end;
 
@@ -764,12 +764,12 @@ if Form1.Caption = 'Стив Джобс' then
 
 if (mresult = mrClose) then
     begin
-    //перезапуск игры
+    //ГЇГҐГ°ГҐГ§Г ГЇГіГ±ГЄ ГЁГЈГ°Г»
     //Self.Destroy;
     postmessage(self.Handle, WM_CLOSE, 0, 0);
     end;
 
-//Включаем таймер отрисовки
+//Г‚ГЄГ«ГѕГ·Г ГҐГ¬ ГІГ Г©Г¬ГҐГ° Г®ГІГ°ГЁГ±Г®ГўГЄГЁ
 self.TimerFPS.Enabled := true;
 end;
 
@@ -778,12 +778,12 @@ var
 i: byte;
 tmpBitmap: TBitmap;
 begin
-//Выключаем таймер отрисовки
+//Г‚Г»ГЄГ«ГѕГ·Г ГҐГ¬ ГІГ Г©Г¬ГҐГ° Г®ГІГ°ГЁГ±Г®ГўГЄГЁ
 if BackGroundBitmap <> nil then FreeAndNil(BackGroundBitmap);
 self.TimerFPS.Enabled := false;
-//Удаляем из памяти подсолнух
+//Г“Г¤Г Г«ГїГҐГ¬ ГЁГ§ ГЇГ Г¬ГїГІГЁ ГЇГ®Г¤Г±Г®Г«Г­ГіГµ
 //if Sunflowers[0]<>nil then Sunflowers[0].Free;
-//Удаляем из памяти массив гусениц и мух
+//Г“Г¤Г Г«ГїГҐГ¬ ГЁГ§ ГЇГ Г¬ГїГІГЁ Г¬Г Г±Г±ГЁГў ГЈГіГ±ГҐГ­ГЁГ¶ ГЁ Г¬ГіГµ
 if Length(Worms) > 0 then
   begin
   for i := 0 to MaxWorm - 1 do
@@ -817,19 +817,19 @@ if Length(Weapons) > 0 then
   end;
 end;
 
-//Выгружаем подсолнух, гусениц, мух из памяти
+//Г‚Г»ГЈГ°ГіГ¦Г ГҐГ¬ ГЇГ®Г¤Г±Г®Г«Г­ГіГµ, ГЈГіГ±ГҐГ­ГЁГ¶, Г¬ГіГµ ГЁГ§ ГЇГ Г¬ГїГІГЁ
 procedure TForm1.FormDestroy(Sender: TObject);
 var
 i: byte;
 tmpBitmap: TBitmap;
 begin
-//Вызываем процедуру, которая уничтожает объекты игрового пространства
+//Г‚Г»Г§Г»ГўГ ГҐГ¬ ГЇГ°Г®Г¶ГҐГ¤ГіГ°Гі, ГЄГ®ГІГ®Г°Г Гї ГіГ­ГЁГ·ГІГ®Г¦Г ГҐГІ Г®ГЎГєГҐГЄГІГ» ГЁГЈГ°Г®ГўГ®ГЈГ® ГЇГ°Г®Г±ГІГ°Г Г­Г±ГІГўГ 
 DestroyLevel;
 
-//Здесь мы удаляем из памяти мух
+//Г‡Г¤ГҐГ±Гј Г¬Г» ГіГ¤Г Г«ГїГҐГ¬ ГЁГ§ ГЇГ Г¬ГїГІГЁ Г¬ГіГµ
 For i := 0 to  MaxImageFly - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if FlySpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(FlySpritesArrLeft.Items[i]);
@@ -838,7 +838,7 @@ For i := 0 to  MaxImageFly - 1 Do
    end;
 For i := 0 to  MaxImageFly - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if FlySpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(FlySpritesArrRight.Items[i]);
@@ -848,7 +848,7 @@ For i := 0 to  MaxImageFly - 1 Do
 
 For i := 0 to  MaxImageHitLeftFly - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if FlySpritesArrHitLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(FlySpritesArrHitLeft.Items[i]);
@@ -857,7 +857,7 @@ For i := 0 to  MaxImageHitLeftFly - 1 Do
    end;
 For i := 0 to  MaxImageHitRightFly - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
   if WormSpritesArrHitRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(FlySpritesArrHitRight.Items[i]);
@@ -867,7 +867,7 @@ For i := 0 to  MaxImageHitRightFly - 1 Do
 
 For i := 0 to MaxImageWorm - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if WormSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(WormSpritesArrLeft.Items[i]);
@@ -876,7 +876,7 @@ For i := 0 to MaxImageWorm - 1 Do
    end;
 For i := 0 to MaxImageWorm - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if WormSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(WormSpritesArrRight.Items[i]);
@@ -885,7 +885,7 @@ For i := 0 to MaxImageWorm - 1 Do
    end;
 For i := 0 to MaxImageHitLeftWorm - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if WormSpritesArrHitLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(WormSpritesArrHitLeft.Items[i]);
@@ -894,27 +894,27 @@ For i := 0 to MaxImageHitLeftWorm - 1 Do
    end;
 For i := 0 to MaxImageHitRightWorm - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if WormSpritesArrHitRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(WormSpritesArrHitRight.Items[i]);
      Freeandnil(tmpBitmap);
      end;
   end;
-//Удаляем из памяти совёнка левую фазу
+//Г“Г¤Г Г«ГїГҐГ¬ ГЁГ§ ГЇГ Г¬ГїГІГЁ Г±Г®ГўВёГ­ГЄГ  Г«ГҐГўГіГѕ ГґГ Г§Гі
 For i := 0 to MaxImageLeftOwl Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if OwlSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(OwlSpritesArrLeft.Items[i]);
      Freeandnil(tmpBitmap);
      end;
    end;
-//И правую
+//Г€ ГЇГ°Г ГўГіГѕ
 For i := 0 to MaxImageRightOwl Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if OwlSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(OwlSpritesArrRight.Items[i]);
@@ -922,20 +922,20 @@ For i := 0 to MaxImageRightOwl Do
      end;
    end;
 //
-//Удаляем из памяти погибающего совёнка левую фазу
+//Г“Г¤Г Г«ГїГҐГ¬ ГЁГ§ ГЇГ Г¬ГїГІГЁ ГЇГ®ГЈГЁГЎГ ГѕГ№ГҐГЈГ® Г±Г®ГўВёГ­ГЄГ  Г«ГҐГўГіГѕ ГґГ Г§Гі
 For i := 0 to MaxImageLeftDieOwl - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if OwlSpritesArrHitLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(OwlSpritesArrHitLeft.Items[i]);
      Freeandnil(tmpBitmap);
      end;
    end;
-//И правую
+//Г€ ГЇГ°Г ГўГіГѕ
 For i := 0 to MaxImageRightDieOwl - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if OwlSpritesArrHitRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(OwlSpritesArrHitRight.Items[i]);
@@ -946,7 +946,7 @@ For i := 0 to MaxImageRightDieOwl - 1 Do
 
 For i := 0 to MaxImageBullet - 1 Do
   begin
-  //Если объект существует в памяти, то мы его удаляем
+  //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
   if BulletSpritesArrLeft[i] <> nil then
     begin
     tmpBitmap := TBitmap(BulletSpritesArrLeft.Items[i]);
@@ -956,7 +956,7 @@ For i := 0 to MaxImageBullet - 1 Do
 //
 For i := 0 to MaxImageBullet - 1 Do
   begin
-  //Если объект существует в памяти, то мы его удаляем
+  //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
   if BulletSpritesArrRight[i] <> nil then
     begin
     tmpBitmap := TBitmap(BulletSpritesArrRight.Items[i]);
@@ -984,10 +984,10 @@ For i := 0 to MaxImageHead - 1 Do
     end;
   end;
 
-//Выгружаем из памяти дихлофос
+//Г‚Г»ГЈГ°ГіГ¦Г ГҐГ¬ ГЁГ§ ГЇГ Г¬ГїГІГЁ Г¤ГЁГµГ«Г®ГґГ®Г±
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if WeaponPssstSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(WeaponPssstSpritesArrLeft.Items[i]);
@@ -996,7 +996,7 @@ For i:=0 to MaxImageWeapon - 1 Do
    end;
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if WeaponPssstSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(WeaponPssstSpritesArrRight.Items[i]);
@@ -1004,10 +1004,10 @@ For i:=0 to MaxImageWeapon - 1 Do
      end;
    end;
 
-   //Выгружаем из памяти Тесламашину
+   //Г‚Г»ГЈГ°ГіГ¦Г ГҐГ¬ ГЁГ§ ГЇГ Г¬ГїГІГЁ Г’ГҐГ±Г«Г Г¬Г ГёГЁГ­Гі
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if WeaponLightSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(WeaponLightSpritesArrLeft.Items[i]);
@@ -1016,7 +1016,7 @@ For i:=0 to MaxImageWeapon - 1 Do
    end;
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if WeaponLightSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(WeaponLightSpritesArrRight.Items[i]);
@@ -1024,10 +1024,10 @@ For i:=0 to MaxImageWeapon - 1 Do
      end;
    end;
 
-   //Выгружаем из памяти Молнии
+   //Г‚Г»ГЈГ°ГіГ¦Г ГҐГ¬ ГЁГ§ ГЇГ Г¬ГїГІГЁ ГЊГ®Г«Г­ГЁГЁ
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if LightSpritesArrLeft[i] <> nil then
      begin
      tmpBitmap := TBitmap(LightSpritesArrLeft.Items[i]);
@@ -1036,7 +1036,7 @@ For i:=0 to MaxImageWeapon - 1 Do
    end;
 For i:=0 to MaxImageWeapon - 1 Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if LightSpritesArrRight[i] <> nil then
      begin
      tmpBitmap := TBitmap(LightSpritesArrRight.Items[i]);
@@ -1044,7 +1044,7 @@ For i:=0 to MaxImageWeapon - 1 Do
      end;
    end;
 
-//Выгружаем виртуальный канвас
+//Г‚Г»ГЈГ°ГіГ¦Г ГҐГ¬ ГўГЁГ°ГІГіГ Г«ГјГ­Г»Г© ГЄГ Г­ГўГ Г±
 VirtBitmap.Free;
 end;
 
@@ -1073,7 +1073,7 @@ begin
           res := newtick - self.BulletTick;
           if res > 100 then
             begin
-            //Сохраняем новое значение tick
+            //Г‘Г®ГµГ°Г Г­ГїГҐГ¬ Г­Г®ГўГ®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ tick
             self.BulletTick := newtick;
             for i := 0 to MaxBullet-1 do
               begin
@@ -1124,7 +1124,7 @@ begin
          end;
    vk_left:
          begin
-            //Разворачиваем спрайт совы влево с индексами 0 и 1
+            //ГђГ Г§ГўГ®Г°Г Г·ГЁГўГ ГҐГ¬ Г±ГЇГ°Г Г©ГІ Г±Г®ГўГ» ГўГ«ГҐГўГ® Г± ГЁГ­Г¤ГҐГЄГ±Г Г¬ГЁ 0 ГЁ 1
             Owl[0].ThereMove := OwldirectionLeft;
             Owl[0].AnimationShag := 1;
 
@@ -1137,7 +1137,7 @@ begin
 
    vk_right:
          begin
-           //Разворачиваем спрайт совы вправо с индексами 2 и 3
+           //ГђГ Г§ГўГ®Г°Г Г·ГЁГўГ ГҐГ¬ Г±ГЇГ°Г Г©ГІ Г±Г®ГўГ» ГўГЇГ°Г ГўГ® Г± ГЁГ­Г¤ГҐГЄГ±Г Г¬ГЁ 2 ГЁ 3
 
             Owl[0].ThereMove:=OwldirectionRight;
             Owl[0].AnimationShag := 1;
@@ -1157,32 +1157,32 @@ begin
    end;
 end;
 
-//Далее следует процедура опроса клавиатуры
+//Г„Г Г«ГҐГҐ Г±Г«ГҐГ¤ГіГҐГІ ГЇГ°Г®Г¶ГҐГ¤ГіГ°Г  Г®ГЇГ°Г®Г±Г  ГЄГ«Г ГўГЁГ ГІГіГ°Г»
 procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
    case key of
-//Опрашиваем клавишу курсора вверх
+//ГЋГЇГ°Г ГёГЁГўГ ГҐГ¬ ГЄГ«Г ГўГЁГёГі ГЄГіГ°Г±Г®Г°Г  ГўГўГҐГ°Гµ
    vk_up:
          begin
          Owl[0].shagy:=0;
          Owl[0].AnimationShag:=0;
 //         VirtBitmap.Canvas.Draw(Owl[0].XOwl, Owl[0].YOwl, Owl[0].ImgMass[1])
          end;
-//Опрашиваем клавишу курсора влево
+//ГЋГЇГ°Г ГёГЁГўГ ГҐГ¬ ГЄГ«Г ГўГЁГёГі ГЄГіГ°Г±Г®Г°Г  ГўГ«ГҐГўГ®
    vk_left:
          begin
          Owl[0].shagx:=0;
          Owl[0].AnimationShag:=0;
 //         VirtBitmap.Canvas.Draw(Owl[0].XOwl, Owl[0].YOwl, Owl[0].ImgMass[1])
          end;
-//Опрашиваем клавишу курсора вправо
+//ГЋГЇГ°Г ГёГЁГўГ ГҐГ¬ ГЄГ«Г ГўГЁГёГі ГЄГіГ°Г±Г®Г°Г  ГўГЇГ°Г ГўГ®
    vk_right:
          begin
          Owl[0].shagx:=0;
          Owl[0].AnimationShag:=0;
 //         VirtBitmap.Canvas.Draw(Owl[0].XOwl, Owl[0].YOwl, Owl[0].ImgMass[1])
          end;
-//Опрашиваем клавишу курсора вниз
+//ГЋГЇГ°Г ГёГЁГўГ ГҐГ¬ ГЄГ«Г ГўГЁГёГі ГЄГіГ°Г±Г®Г°Г  ГўГ­ГЁГ§
    vk_down:
          begin
          Owl[0].shagy:=0;
@@ -1197,14 +1197,14 @@ begin
 
 end;
 
-//Функция сравнения наложения двух прямоугольников друг на друга
+//Г”ГіГ­ГЄГ¶ГЁГї Г±Г°Г ГўГ­ГҐГ­ГЁГї Г­Г Г«Г®Г¦ГҐГ­ГЁГї Г¤ГўГіГµ ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ®Гў Г¤Г°ГіГЈ Г­Г  Г¤Г°ГіГЈГ 
 Function TForm1.FindCollision(RectBullet,
                               RectBox: TRect
                               ): Boolean;
 begin
-//ВНИМАНИЕ !!! ПЕРВЫЙ ОБЪЕКТ - ЭТО ЯЩИК, А ВТОРОЙ ОБЪЕКТ ЭТО ПУЛЯ
+//Г‚ГЌГ€ГЊГЂГЌГ€Г… !!! ГЏГ…ГђГ‚Г›Г‰ ГЋГЃГљГ…ГЉГ’ - ГќГ’ГЋ ГџГ™Г€ГЉ, ГЂ Г‚Г’ГЋГђГЋГ‰ ГЋГЃГљГ…ГЉГ’ ГќГ’ГЋ ГЏГ“Г‹Гџ
 Result := false;
-//Берём точку левого верхнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
+//ГЃГҐГ°ВёГ¬ ГІГ®Г·ГЄГі Г«ГҐГўГ®ГЈГ® ГўГҐГ°ГµГ­ГҐГЈГ® ГіГЈГ«Г  ГўГІГ®Г°Г®ГЈГ® Г­Г ГёГҐГЈГ® ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬, ГўГµГ®Г¤ГЁГІ Г«ГЁ Г®Г­Г  ГўГ­ГіГІГ°Гј ГЇГҐГ°ГўГ®ГЈГ® Г·ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄГ 
 //                                                  width
 //   (RectBox.Left, RectBox.Top) +----------------------------------------+
 //                               |     +-----------                       |
@@ -1219,7 +1219,7 @@ If (RectBullet.Left >= RectBox.Left) and (RectBullet.Left <= RectBox.Right) and
   Result := true;
   exit;
   end;
-//Берём точку правого верхнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
+//ГЃГҐГ°ВёГ¬ ГІГ®Г·ГЄГі ГЇГ°Г ГўГ®ГЈГ® ГўГҐГ°ГµГ­ГҐГЈГ® ГіГЈГ«Г  ГўГІГ®Г°Г®ГЈГ® Г­Г ГёГҐГЈГ® ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬, ГўГµГ®Г¤ГЁГІ Г«ГЁ Г®Г­Г  ГўГ­ГіГІГ°Гј ГЇГҐГ°ГўГ®ГЈГ® Г·ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄГ 
 //                                                  width
 // (RectObj1.Left, RectObj1.Top) +-----------------------------------------+
 //                               |                            --------+    |
@@ -1233,7 +1233,7 @@ If (RectBullet.Right >= RectBox.Left) and (RectBullet.Right <= RectBox.Right) an
    Result := true;
   exit;
   end;
-//Берём точку правого нижнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
+//ГЃГҐГ°ВёГ¬ ГІГ®Г·ГЄГі ГЇГ°Г ГўГ®ГЈГ® Г­ГЁГ¦Г­ГҐГЈГ® ГіГЈГ«Г  ГўГІГ®Г°Г®ГЈГ® Г­Г ГёГҐГЈГ® ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬, ГўГµГ®Г¤ГЁГІ Г«ГЁ Г®Г­Г  ГўГ­ГіГІГ°Гј ГЇГҐГ°ГўГ®ГЈГ® Г·ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄГ 
 //                                                  width
 // (RectObj1.Left, RectObj1.Top) +-----------------------------------------+
 //                               |                                    |    |
@@ -1247,7 +1247,7 @@ If (RectBullet.Right >= RectBox.Left) and (RectBullet.Right <= RectBox.Right) an
   Result := true;
   exit;
   end;
-//Берём точку левого нижнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
+//ГЃГҐГ°ВёГ¬ ГІГ®Г·ГЄГі Г«ГҐГўГ®ГЈГ® Г­ГЁГ¦Г­ГҐГЈГ® ГіГЈГ«Г  ГўГІГ®Г°Г®ГЈГ® Г­Г ГёГҐГЈГ® ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬, ГўГµГ®Г¤ГЁГІ Г«ГЁ Г®Г­Г  ГўГ­ГіГІГ°Гј ГЇГҐГ°ГўГ®ГЈГ® Г·ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄГ 
 //                                                  width
 // (RectObj1.Left, RectObj1.Top) +-----------------------------------------+
 //                               |  |                                      |
@@ -1261,7 +1261,7 @@ If (RectBullet.Left >= RectBox.Left) and (RectBullet.Left <= RectBox.Right) and
   Result := true;
   exit;
   end;
-//Пуля больше, чем объект и полностью накрывает его
+//ГЏГіГ«Гї ГЎГ®Г«ГјГёГҐ, Г·ГҐГ¬ Г®ГЎГєГҐГЄГІ ГЁ ГЇГ®Г«Г­Г®Г±ГІГјГѕ Г­Г ГЄГ°Г»ГўГ ГҐГІ ГҐГЈГ®
 //                                                            width2
 // (RectObj2.Left, RectObj2.Top) +-------------------------------------------------------------+
 //                               |  +-----------------------------------------------------+    |
@@ -1280,7 +1280,7 @@ If (RectBox.Left >= RectBullet.Left) and (RectBox.Right <= RectBullet.Right) and
 end;
 
 
-//Функция сравнения наложения двух прямоугольников друг на друга
+//Г”ГіГ­ГЄГ¶ГЁГї Г±Г°Г ГўГ­ГҐГ­ГЁГї Г­Г Г«Г®Г¦ГҐГ­ГЁГї Г¤ГўГіГµ ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ®Гў Г¤Г°ГіГЈ Г­Г  Г¤Г°ГіГЈГ 
 {
 Function TForm1.FindCollision(Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
                        Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer
@@ -1293,7 +1293,7 @@ begin
 //        |              |
 // x4, y4 +--------------+ x3, y3
 
-//Берём точку левого верхнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
+//ГЃГҐГ°ВёГ¬ ГІГ®Г·ГЄГі Г«ГҐГўГ®ГЈГ® ГўГҐГ°ГµГ­ГҐГЈГ® ГіГЈГ«Г  ГўГІГ®Г°Г®ГЈГ® Г­Г ГёГҐГЈГ® ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬, ГўГµГ®Г¤ГЁГІ Г«ГЁ Г®Г­Г  ГўГ­ГіГІГ°Гј ГЇГҐГ°ГўГ®ГЈГ® Г·ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄГ 
 //(Obj2X1, Obj2Y1)
 Result:=false;
 If (Obj2X1>=Obj1X1) and (Obj2X1<=Obj1X2) and (Obj2Y1>=Obj1Y1) and (Obj2Y1<=Obj1Y3) then
@@ -1301,20 +1301,20 @@ If (Obj2X1>=Obj1X1) and (Obj2X1<=Obj1X2) and (Obj2Y1>=Obj1Y1) and (Obj2Y1<=Obj1Y
   Result:=true;
   exit;
   end;
-//Берём точку правого верхнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
+//ГЃГҐГ°ВёГ¬ ГІГ®Г·ГЄГі ГЇГ°Г ГўГ®ГЈГ® ГўГҐГ°ГµГ­ГҐГЈГ® ГіГЈГ«Г  ГўГІГ®Г°Г®ГЈГ® Г­Г ГёГҐГЈГ® ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬, ГўГµГ®Г¤ГЁГІ Г«ГЁ Г®Г­Г  ГўГ­ГіГІГ°Гј ГЇГҐГ°ГўГ®ГЈГ® Г·ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄГ 
 //(Obj2X2, Obj2Y2)
 If (Obj2X2<=Obj1X3) and (Obj2X2>=Obj1X4) and (Obj2Y2>=Obj1Y1) and (Obj2Y2<=Obj1Y4) then
   begin
   Result:=true;
   exit;
   end;
-//Берём точку правого нижнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
+//ГЃГҐГ°ВёГ¬ ГІГ®Г·ГЄГі ГЇГ°Г ГўГ®ГЈГ® Г­ГЁГ¦Г­ГҐГЈГ® ГіГЈГ«Г  ГўГІГ®Г°Г®ГЈГ® Г­Г ГёГҐГЈГ® ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬, ГўГµГ®Г¤ГЁГІ Г«ГЁ Г®Г­Г  ГўГ­ГіГІГ°Гј ГЇГҐГ°ГўГ®ГЈГ® Г·ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄГ 
 If (Obj2X3>=Obj1X1) and (Obj2X3<=Obj1X2) and (Obj2Y3>=Obj1Y1) and (Obj2Y3<=Obj1Y4) then
   begin
   Result:=true;
   exit;
   end;
-//Берём точку левого нижнего угла второго нашего прямоугольника и сравниваем, входит ли она внутрь первого четырёхугольника
+//ГЃГҐГ°ВёГ¬ ГІГ®Г·ГЄГі Г«ГҐГўГ®ГЈГ® Г­ГЁГ¦Г­ГҐГЈГ® ГіГЈГ«Г  ГўГІГ®Г°Г®ГЈГ® Г­Г ГёГҐГЈГ® ГЇГ°ГїГ¬Г®ГіГЈГ®Г«ГјГ­ГЁГЄГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬, ГўГµГ®Г¤ГЁГІ Г«ГЁ Г®Г­Г  ГўГ­ГіГІГ°Гј ГЇГҐГ°ГўГ®ГЈГ® Г·ГҐГІГ»Г°ВёГµГіГЈГ®Г«ГјГ­ГЁГЄГ 
 If (Obj2X4<=Obj1X2) and (Obj2X4>=Obj1X1) and (Obj2Y4>=Obj1Y1) and (Obj2Y4<=Obj1Y4) then
   begin
   Result:=true;
@@ -1329,7 +1329,7 @@ i, n: integer;
 Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
 Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer;
 begin
-//если оружие уже находиться в руках, то не надо проверять соприкосновение с этим оружием
+//ГҐГ±Г«ГЁ Г®Г°ГіГ¦ГЁГҐ ГіГ¦ГҐ Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў Г°ГіГЄГ Гµ, ГІГ® Г­ГҐ Г­Г Г¤Г® ГЇГ°Г®ГўГҐГ°ГїГІГј Г±Г®ГЇГ°ГЁГЄГ®Г±Г­Г®ГўГҐГ­ГЁГҐ Г± ГЅГІГЁГ¬ Г®Г°ГіГ¦ГЁГҐГ¬
 
 if Owl[0].Weapon <> nil then
 
@@ -1348,8 +1348,8 @@ if Owl[0].Weapon <> nil then
       begin
       if Bricks[n].Direction = directionBrickLeft then
        begin
-       Obj1X1 := Bricks[n].XBrick;//верхний левый угол
-       Obj1Y1 := Bricks[n].YBrick;//верхний левый угол
+       Obj1X1 := Bricks[n].XBrick;//ГўГҐГ°ГµГ­ГЁГ© Г«ГҐГўГ»Г© ГіГЈГ®Г«
+       Obj1Y1 := Bricks[n].YBrick;//ГўГҐГ°ГµГ­ГЁГ© Г«ГҐГўГ»Г© ГіГЈГ®Г«
        Obj1X2 := Obj1X1 + Bricks[n].ImgMassLeftBrick[0].Width;
        Obj1Y2 := Obj1Y1;
        Obj1X3 := Obj1X2;
@@ -1390,14 +1390,14 @@ if Owl[0].Weapon <> nil then
        Obj2Y4 := Obj2Y3;
        end;
 
-     //спрэй столкнулся со стеной
+     //Г±ГЇГ°ГЅГ© Г±ГІГ®Г«ГЄГ­ГіГ«Г±Гї Г±Г® Г±ГІГҐГ­Г®Г©
      result:= FindCollision(Rect( Obj1X1, Obj1Y1, Obj1X3, Obj1Y3),
                            Rect( Obj2X1, Obj2Y1, Obj2X3, Obj2Y3));
      if Result = true then
        begin
        If Weapons[i].WeaponinBox = false then
          begin
-         //полка свободна
+         //ГЇГ®Г«ГЄГ  Г±ГўГ®ГЎГ®Г¤Г­Г 
          if Bricks[n].Weapon = nil then
            begin
            Weapons[i].WeaponDown(Owl[0], Bricks[n]);
@@ -1405,10 +1405,10 @@ if Owl[0].Weapon <> nil then
            end
          else
            begin
-           //полка занята
+           //ГЇГ®Г«ГЄГ  Г§Г Г­ГїГІГ 
            if Owl[0].Weapon = nil then
              begin
-             //при этом у совы ничего нет
+             //ГЇГ°ГЁ ГЅГІГ®Г¬ Гі Г±Г®ГўГ» Г­ГЁГ·ГҐГЈГ® Г­ГҐГІ
              Weapons[i].WeaponTouch(Owl[0], Bricks[n]);
              Weapons[i].WeaponinBox := true;
              end;
@@ -1430,7 +1430,7 @@ i, n, weap: integer;
 Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
 Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer;
 begin
-//если оружие уже находиться в руках, то не надо проверять соприкосновение с этим оружием
+//ГҐГ±Г«ГЁ Г®Г°ГіГ¦ГЁГҐ ГіГ¦ГҐ Г­Г ГµГ®Г¤ГЁГІГјГ±Гї Гў Г°ГіГЄГ Гµ, ГІГ® Г­ГҐ Г­Г Г¤Г® ГЇГ°Г®ГўГҐГ°ГїГІГј Г±Г®ГЇГ°ГЁГЄГ®Г±Г­Г®ГўГҐГ­ГЁГҐ Г± ГЅГІГЁГ¬ Г®Г°ГіГ¦ГЁГҐГ¬
 //            width
 // x1, y1 +--------------+ x2, y2
 //        |              |
@@ -1440,7 +1440,7 @@ begin
 for weap := 0 to MaxSpray - 1 do
   begin
   if (Owl[0].Weapon <> nil) then exit;
-//Здесь мы проверяем только на один вид оружия
+//Г‡Г¤ГҐГ±Гј Г¬Г» ГЇГ°Г®ГўГҐГ°ГїГҐГ¬ ГІГ®Г«ГјГЄГ® Г­Г  Г®Г¤ГЁГ­ ГўГЁГ¤ Г®Г°ГіГ¦ГЁГї
 //  if (Weapon[weap] = Owl[0].Weapon) then exit;
 
    if Weapons[weap].Direction = directionLeft then
@@ -1502,7 +1502,7 @@ for weap := 0 to MaxSpray - 1 do
   end;
 end;
 
-//Функция столкновения мух между собой
+//Г”ГіГ­ГЄГ¶ГЁГї Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГї Г¬ГіГµ Г¬ГҐГ¦Г¤Гі Г±Г®ГЎГ®Г©
 Function TForm1.CheckCollisionsFlyes():boolean;
 var
 i,n:integer;
@@ -1510,9 +1510,9 @@ Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
 Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer;
 Fly1, Fly2: TMyFly;
 begin
-//Сначала проверим столкновени, т.е. берём первый объект из массива и сравниваем его со вторым объектом из массива, с третьим и т.д. до последнего
-//потом берём второй объект из массива и сравниваем с третьим объектом из массива, четвёртым, пятым и т.д.
-//потом берём третий объект измассива и сравниваем его с четвёртым объектом из массива, пятым и т.д.
+//Г‘Г­Г Г·Г Г«Г  ГЇГ°Г®ГўГҐГ°ГЁГ¬ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁ, ГІ.ГҐ. ГЎГҐГ°ВёГ¬ ГЇГҐГ°ГўГ»Г© Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГҐГЈГ® Г±Г® ГўГІГ®Г°Г»Г¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ , Г± ГІГ°ГҐГІГјГЁГ¬ ГЁ ГІ.Г¤. Г¤Г® ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ®
+//ГЇГ®ГІГ®Г¬ ГЎГҐГ°ВёГ¬ ГўГІГ®Г°Г®Г© Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ Г± ГІГ°ГҐГІГјГЁГ¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ , Г·ГҐГІГўВёГ°ГІГ»Г¬, ГЇГїГІГ»Г¬ ГЁ ГІ.Г¤.
+//ГЇГ®ГІГ®Г¬ ГЎГҐГ°ВёГ¬ ГІГ°ГҐГІГЁГ© Г®ГЎГєГҐГЄГІ ГЁГ§Г¬Г Г±Г±ГЁГўГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГҐГЈГ® Г± Г·ГҐГІГўВёГ°ГІГ»Г¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ , ГЇГїГІГ»Г¬ ГЁ ГІ.Г¤.
 For n := 0 to MaxFly - 1 do
 begin
 Fly1 := Flyes[n];
@@ -1532,7 +1532,7 @@ if (Fly1 <> nil) and
 //        |              |
 // x4, y4 +--------------+ x3, y3
 
-   //Муха летит влево
+   //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®
    If (Fly1.ThereMove = directionLeft) then
       begin
       Obj1X2 := Obj1X1 + TBitMap(Fly1.ImgMassLeft.Items[Fly1.sprleftindex]).Width;
@@ -1543,7 +1543,7 @@ if (Fly1 <> nil) and
       Obj1Y4 := Obj1Y3;
 
       end;
-   //Муха летит вправо
+   //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГЇГ°Г ГўГ®
    If (Fly1.ThereMove = directionRight) then
       begin
       Obj1X2 := Obj1X1 + TBitMap(Fly1.ImgMassRight.Items[Fly1.sprrightindex]).Width;
@@ -1557,7 +1557,7 @@ if (Fly1 <> nil) and
 for i := n to MaxFly-1 do
    begin
    Fly2 := Flyes[i];
-     //Создаём мух и устанавливаем максимальную координату по X и случайную по Y
+     //Г‘Г®Г§Г¤Г ВёГ¬ Г¬ГіГµ ГЁ ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­ГіГѕ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі ГЇГ® X ГЁ Г±Г«ГіГ·Г Г©Г­ГіГѕ ГЇГ® Y
    if (Fly2 <> nil) and
       (Fly2.FlyState = stLive) then
      begin
@@ -1565,7 +1565,7 @@ for i := n to MaxFly-1 do
    begin
    Obj2X1 := Fly2.XFly;
    Obj2Y1 := Fly2.YFly;
-   //Муха летит влево
+   //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®
    If (Fly2.ThereMove = directionLeft) then
       begin
       Obj2X2 := Obj2X1+TBitMap(Fly2.ImgMassLeft.Items[Fly2.sprleftindex]).Width;
@@ -1575,7 +1575,7 @@ for i := n to MaxFly-1 do
       Obj2X4 := Obj2X1;
       Obj2Y4 := Obj2Y3;
       end;
-   //Муха летит вправо
+   //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГЇГ°Г ГўГ®
    If (Fly2.ThereMove = directionRight) then
       begin
       Obj2X2 := Obj2X1+TBitMap(Fly2.ImgMassRight.Items[Fly2.sprrightindex]).Width;
@@ -1608,7 +1608,7 @@ for i := n to MaxFly-1 do
    end;
 end;
 
-//Функция столкновения листьев подсолнуха и гусениц
+//Г”ГіГ­ГЄГ¶ГЁГї Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГї Г«ГЁГ±ГІГјГҐГў ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ  ГЁ ГЈГіГ±ГҐГ­ГЁГ¶
 Function TForm1.CheckCollisionsFlowerWorm():boolean;
 var
 i,n,k:integer;
@@ -1622,9 +1622,9 @@ begin
 k:=0;
 n:=0;
 i:=0;
-//Сначала проверим столкновение, т.е. берём первый объект из массива ствола подсолнуха и сравниваем его с первым объектом из массива мух, со вторым, с третьим и т.д. до последнего
-//потом берём второй объект из массива ствола и сравниваем с первым, вторым, третьим объектом из массива мух, четвёртым, пятым и т.д.
-//Как только мы нашли одинаковые координаты, шаг мухи должен равняться нулю.
+//Г‘Г­Г Г·Г Г«Г  ГЇГ°Г®ГўГҐГ°ГЁГ¬ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ, ГІ.ГҐ. ГЎГҐГ°ВёГ¬ ГЇГҐГ°ГўГ»Г© Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  Г±ГІГўГ®Г«Г  ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГҐГЈГ® Г± ГЇГҐГ°ГўГ»Г¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  Г¬ГіГµ, Г±Г® ГўГІГ®Г°Г»Г¬, Г± ГІГ°ГҐГІГјГЁГ¬ ГЁ ГІ.Г¤. Г¤Г® ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ®
+//ГЇГ®ГІГ®Г¬ ГЎГҐГ°ВёГ¬ ГўГІГ®Г°Г®Г© Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  Г±ГІГўГ®Г«Г  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ Г± ГЇГҐГ°ГўГ»Г¬, ГўГІГ®Г°Г»Г¬, ГІГ°ГҐГІГјГЁГ¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  Г¬ГіГµ, Г·ГҐГІГўВёГ°ГІГ»Г¬, ГЇГїГІГ»Г¬ ГЁ ГІ.Г¤.
+//ГЉГ ГЄ ГІГ®Г«ГјГЄГ® Г¬Г» Г­Г ГёГ«ГЁ Г®Г¤ГЁГ­Г ГЄГ®ГўГ»ГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ», ГёГ ГЈ Г¬ГіГµГЁ Г¤Г®Г«Г¦ГҐГ­ Г°Г ГўГ­ГїГІГјГ±Гї Г­ГіГ«Гѕ.
 //For n:=0 to MaxSunflower-1 do
 for k := 0 to MaxWorm-1 do
   begin
@@ -1636,12 +1636,12 @@ for k := 0 to MaxWorm-1 do
     begin
     WormX1:= Worm.XWorm;
     WormY1:= Worm.YWorm;
-   //Гусеница ползёт влево
+   //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГ«ГҐГўГ®
   If (Worm.ThereMove=DirectionLeft) then
     begin
     sprindex := Worm.sprleftindex;
     end;
-   //Гусеница ползёт вправо
+   //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГЇГ°Г ГўГ®
   If (Worm.ThereMove=DirectionRight) then
     begin
     sprindex := Worm.sprrightindex;
@@ -1737,7 +1737,7 @@ for k := 0 to MaxWorm-1 do
   end;
 end;
 
-//Функция столкновения ствола подсолнуха и мух
+//Г”ГіГ­ГЄГ¶ГЁГї Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГї Г±ГІГўГ®Г«Г  ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ  ГЁ Г¬ГіГµ
 Function TForm1.CheckCollisionsFlowerFly(): boolean;
 var
 i,n,k:integer;
@@ -1751,9 +1751,9 @@ begin
 result := false;
 n:=0;
 i:=0;
-//Сначала проверим столкновение, т.е. берём первый объект из массива ствола подсолнуха и сравниваем его с первым объектом из массива мух, со вторым, с третьим и т.д. до последнего
-//потом берём второй объект из массива ствола и сравниваем с первым, вторым, третьим объектом из массива мух, четвёртым, пятым и т.д.
-//Как только мы нашли одинаковые координаты, шаг мухи должен равняться нулю.
+//Г‘Г­Г Г·Г Г«Г  ГЇГ°Г®ГўГҐГ°ГЁГ¬ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ, ГІ.ГҐ. ГЎГҐГ°ВёГ¬ ГЇГҐГ°ГўГ»Г© Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  Г±ГІГўГ®Г«Г  ГЇГ®Г¤Г±Г®Г«Г­ГіГµГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГҐГЈГ® Г± ГЇГҐГ°ГўГ»Г¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  Г¬ГіГµ, Г±Г® ГўГІГ®Г°Г»Г¬, Г± ГІГ°ГҐГІГјГЁГ¬ ГЁ ГІ.Г¤. Г¤Г® ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ®
+//ГЇГ®ГІГ®Г¬ ГЎГҐГ°ВёГ¬ ГўГІГ®Г°Г®Г© Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  Г±ГІГўГ®Г«Г  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ Г± ГЇГҐГ°ГўГ»Г¬, ГўГІГ®Г°Г»Г¬, ГІГ°ГҐГІГјГЁГ¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  Г¬ГіГµ, Г·ГҐГІГўВёГ°ГІГ»Г¬, ГЇГїГІГ»Г¬ ГЁ ГІ.Г¤.
+//ГЉГ ГЄ ГІГ®Г«ГјГЄГ® Г¬Г» Г­Г ГёГ«ГЁ Г®Г¤ГЁГ­Г ГЄГ®ГўГ»ГҐ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ», ГёГ ГЈ Г¬ГіГµГЁ Г¤Г®Г«Г¦ГҐГ­ Г°Г ГўГ­ГїГІГјГ±Гї Г­ГіГ«Гѕ.
 //For n:=0 to MaxSunflower-1 do
 for k := 0 to MaxFly - 1 do
   begin
@@ -1765,12 +1765,12 @@ for k := 0 to MaxFly - 1 do
      begin
      FlyX1:= Fly.XFly;
      FlyY1:= Fly.YFly;
-     //Муха летит влево
+     //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®
      If (Fly.ThereMove = directionLeft) then
        begin
        sprindex:=Fly.sprleftindex;
        end;
-     //Муха летит вправо
+     //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГЇГ°Г ГўГ®
      If (Fly.ThereMove = directionRight) then
        begin
        sprindex := Fly.sprrightindex;
@@ -1840,8 +1840,8 @@ for k := 0 to MaxFly - 1 do
             //Bullet1.BulletWasHitToSomeObject((Worm1));
             //FreeAndNil(Worm[n]);
 //            FreeAndNil(Bullet1);
-            //т.к. пуля уничтожена, то проверять ее столкновение с оставшимися объектами в цикле не нужно
-            //прерываем цикл
+            //ГІ.ГЄ. ГЇГіГ«Гї ГіГ­ГЁГ·ГІГ®Г¦ГҐГ­Г , ГІГ® ГЇГ°Г®ГўГҐГ°ГїГІГј ГҐГҐ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ Г± Г®Г±ГІГ ГўГёГЁГ¬ГЁГ±Гї Г®ГЎГєГҐГЄГІГ Г¬ГЁ Гў Г¶ГЁГЄГ«ГҐ Г­ГҐ Г­ГіГ¦Г­Г®
+            //ГЇГ°ГҐГ°Г»ГўГ ГҐГ¬ Г¶ГЁГЄГ«
             Fly.HitByObject(Stem);
             end;
          end;
@@ -1879,7 +1879,7 @@ For n := 0 to MaxWorm - 1 do
 //        |              | height
 //        |              |
 // x4, y4 +--------------+ x3, y3
-     //Гусеница ползёт влево
+     //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГ«ГҐГўГ®
      If (Worms[n].ThereMove = directionLeft) then
        begin
        Obj1X2 := Obj1X1 + TBitmap(Worms[n].ImgMassLeft.items[Worms[n].sprleftindex]).Width;
@@ -1889,7 +1889,7 @@ For n := 0 to MaxWorm - 1 do
        Obj1X4 := Obj1X1;
        Obj1Y4 := Obj1Y3;
        end;
-   //Гусеница ползёт вправо
+   //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГЇГ°Г ГўГ®
      If (Worms[n].ThereMove = directionRight) then
        begin
        Obj1X2 := Obj1X1 + TBitmap(Worms[n].ImgMassRight.items[Worms[n].sprrightindex]).Width;
@@ -1899,7 +1899,7 @@ For n := 0 to MaxWorm - 1 do
        Obj1X4 := Obj1X1;
        Obj1Y4 := Obj1Y3;
        end;
-     //Сравниваем координаты гусеницы с совёнком и делаем так чтобы совёнок погиб
+     //Г‘Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГЈГіГ±ГҐГ­ГЁГ¶Г» Г± Г±Г®ГўВёГ­ГЄГ®Г¬ ГЁ Г¤ГҐГ«Г ГҐГ¬ ГІГ ГЄ Г·ГІГ®ГЎГ» Г±Г®ГўВёГ­Г®ГЄ ГЇГ®ГЈГЁГЎ
        if (Owl[0] <> nil) and
           (Owl[0].OwlState = stLive) and
           (Owl[0].ImgHitMassLeft <> nil) and
@@ -1973,7 +1973,7 @@ For n := 0 to MaxFly - 1 do
 //        |              | height
 //        |              |
 // x4, y4 +--------------+ x3, y3
-     //Гусеница ползёт влево
+     //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГ«ГҐГўГ®
      If (Flyes[n].ThereMove = directionLeft) then
        begin
        Obj1X2 := Obj1X1 + TBitmap(Flyes[n].ImgMassLeft.items[Flyes[n].sprleftindex]).Width;
@@ -1983,7 +1983,7 @@ For n := 0 to MaxFly - 1 do
        Obj1X4 := Obj1X1;
        Obj1Y4 := Obj1Y3;
        end;
-   //Гусеница ползёт вправо
+   //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГЇГ°Г ГўГ®
      If (Flyes[n].ThereMove = directionRight) then
        begin
        Obj1X2 := Obj1X1 + TBitmap(Flyes[n].ImgMassRight.items[Flyes[n].sprrightindex]).Width;
@@ -1993,7 +1993,7 @@ For n := 0 to MaxFly - 1 do
        Obj1X4 := Obj1X1;
        Obj1Y4 := Obj1Y3;
        end;
-     //Сравниваем координаты гусеницы с совёнком и делаем так чтобы совёнок погиб
+     //Г‘Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГЈГіГ±ГҐГ­ГЁГ¶Г» Г± Г±Г®ГўВёГ­ГЄГ®Г¬ ГЁ Г¤ГҐГ«Г ГҐГ¬ ГІГ ГЄ Г·ГІГ®ГЎГ» Г±Г®ГўВёГ­Г®ГЄ ГЇГ®ГЈГЁГЎ
        if (Owl[0] <> nil) and
           (Owl[0].OwlState = stLive) and
           (Owl[0].ImgHitMassLeft <> nil) and
@@ -2041,7 +2041,7 @@ For n := 0 to MaxFly - 1 do
 end;
 
 
-//Функция столкновения гусениц
+//Г”ГіГ­ГЄГ¶ГЁГї Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГї ГЈГіГ±ГҐГ­ГЁГ¶
 Function TForm1.CheckCollisionsWorms():boolean;
 var
 i,n:integer;
@@ -2049,9 +2049,9 @@ Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
 Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4:integer;
 Worm1, Worm2: TMyWorm;
 begin
-//Сначала проверим столкновени, т.е. берём первый объект из массива и сравниваем его со вторым объектом из массива, с третьим и т.д. до последнего
-//потом берём второй объект из массива и сравниваем с третьим объектом из массива, четвёртым, пятым и т.д.
-//потом берём третий объект измассива и сравниваем его с четвёртым объектом из массива, пятым и т.д.
+//Г‘Г­Г Г·Г Г«Г  ГЇГ°Г®ГўГҐГ°ГЁГ¬ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁ, ГІ.ГҐ. ГЎГҐГ°ВёГ¬ ГЇГҐГ°ГўГ»Г© Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГҐГЈГ® Г±Г® ГўГІГ®Г°Г»Г¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ , Г± ГІГ°ГҐГІГјГЁГ¬ ГЁ ГІ.Г¤. Г¤Г® ГЇГ®Г±Г«ГҐГ¤Г­ГҐГЈГ®
+//ГЇГ®ГІГ®Г¬ ГЎГҐГ°ВёГ¬ ГўГІГ®Г°Г®Г© Г®ГЎГєГҐГЄГІ ГЁГ§ Г¬Г Г±Г±ГЁГўГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ Г± ГІГ°ГҐГІГјГЁГ¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ , Г·ГҐГІГўВёГ°ГІГ»Г¬, ГЇГїГІГ»Г¬ ГЁ ГІ.Г¤.
+//ГЇГ®ГІГ®Г¬ ГЎГҐГ°ВёГ¬ ГІГ°ГҐГІГЁГ© Г®ГЎГєГҐГЄГІ ГЁГ§Г¬Г Г±Г±ГЁГўГ  ГЁ Г±Г°Г ГўГ­ГЁГўГ ГҐГ¬ ГҐГЈГ® Г± Г·ГҐГІГўВёГ°ГІГ»Г¬ Г®ГЎГєГҐГЄГІГ®Г¬ ГЁГ§ Г¬Г Г±Г±ГЁГўГ , ГЇГїГІГ»Г¬ ГЁ ГІ.Г¤.
 For n := 0 to MaxWorm - 1 do
   begin
   Worm1 := Worms[n];
@@ -2071,7 +2071,7 @@ For n := 0 to MaxWorm - 1 do
 //        |              |
 // x4, y4 +--------------+ x3, y3
 
-     //Гусеница ползёт влево
+     //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГ«ГҐГўГ®
      If (Worm1.ThereMove = directionLeft) then
        begin
        Obj1X2 := Obj1X1 + TBitmap(Worm1.ImgMassLeft.items[Worm1.sprleftindex]).Width;
@@ -2081,7 +2081,7 @@ For n := 0 to MaxWorm - 1 do
        Obj1X4 := Obj1X1;
        Obj1Y4 := Obj1Y3;
        end;
-   //Гусеница ползёт вправо
+   //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГЇГ°Г ГўГ®
      If (Worm1.ThereMove = directionRight) then
        begin
        Obj1X2 := Obj1X1 + TBitmap(Worm1.ImgMassRight.items[Worm1.sprrightindex]).Width;
@@ -2095,7 +2095,7 @@ For n := 0 to MaxWorm - 1 do
      for i := n to MaxWorm - 1 do
        begin
        Worm2 := Worms[i];
-     //Создаём гусениц и устанавливаем максимальную координату по X и случайную по Y
+     //Г‘Г®Г§Г¤Г ВёГ¬ ГЈГіГ±ГҐГ­ГЁГ¶ ГЁ ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­ГіГѕ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі ГЇГ® X ГЁ Г±Г«ГіГ·Г Г©Г­ГіГѕ ГЇГ® Y
        if (Worm2 <> nil) and
           (Worm2.WormState = stLive) and
           (Worm2.ImgMassLeft <> nil) and
@@ -2106,7 +2106,7 @@ For n := 0 to MaxWorm - 1 do
            begin
            Obj2X1 := Worm2.XWorm;
            Obj2Y1 := Worm2.YWorm;
-       //Гусеница ползёт влево
+       //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГ«ГҐГўГ®
            If (Worm2.ThereMove = directionLeft) then
              begin
              Obj2X2:= Obj2X1 + TBitmap(Worm2.ImgMassLeft.items[Worm1.sprleftindex]).Width;
@@ -2116,7 +2116,7 @@ For n := 0 to MaxWorm - 1 do
              Obj2X4:= Obj2X1;
              Obj2Y4:= Obj2Y3;
              end;
-      //Гусеница ползёт вправо
+      //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГЇГ°Г ГўГ®
            If (Worm2.ThereMove = directionRight) then
              begin
              Obj2X2:= Obj2X1 + TBitmap(Worm2.ImgMassRight.items[Worm1.sprrightindex]).Width;
@@ -2134,14 +2134,14 @@ For n := 0 to MaxWorm - 1 do
 
       if Result = true then
         begin
-        //Муха летит влево
+        //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®
         If Worm1.ThereMove =directionLeft then
           begin
           Worm1.ThereMove:=directionRight;
           Worm1.shagx1:=4;
           end
         else
-          //Муха летит вправо
+          //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГЇГ°Г ГўГ®
           begin
           Worm1.ThereMove:=directionLeft;
           Worm1.shagx1:=-4;
@@ -2152,7 +2152,7 @@ For n := 0 to MaxWorm - 1 do
           Worm2.shagx1:=4;
           end
         else
-          //Иначе муха летит влево
+          //Г€Г­Г Г·ГҐ Г¬ГіГµГ  Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®
           begin
           Worm2.ThereMove:=directionLeft;
           Worm2.shagx1:=-4;
@@ -2194,7 +2194,7 @@ if self.Sunflowers[0].ShowHeadOn = 1 then
 
 end;
 
-//Функция столкновения гусениц c пулями
+//Г”ГіГ­ГЄГ¶ГЁГї Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГї ГЈГіГ±ГҐГ­ГЁГ¶ c ГЇГіГ«ГїГ¬ГЁ
 Function TForm1.CheckCollisionsBulletWorm():boolean;
 var
 i,n:integer;
@@ -2205,8 +2205,8 @@ Bullet1: TBullet;
 Bulletsprindex: integer;
 //sprindex:integer;
 begin
-//Сначала берём первую пулю и прогоняем её по всему массиву гусениц, сравнивая координаты. Потом берём следующую пулю
-// и прогоняем её по массиву с гусеницами и т.д, пока не прогоним по всему массиву гусениц.
+//Г‘Г­Г Г·Г Г«Г  ГЎГҐГ°ВёГ¬ ГЇГҐГ°ГўГіГѕ ГЇГіГ«Гѕ ГЁ ГЇГ°Г®ГЈГ®Г­ГїГҐГ¬ ГҐВё ГЇГ® ГўГ±ГҐГ¬Гі Г¬Г Г±Г±ГЁГўГі ГЈГіГ±ГҐГ­ГЁГ¶, Г±Г°Г ГўГ­ГЁГўГ Гї ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ». ГЏГ®ГІГ®Г¬ ГЎГҐГ°ВёГ¬ Г±Г«ГҐГ¤ГіГѕГ№ГіГѕ ГЇГіГ«Гѕ
+// ГЁ ГЇГ°Г®ГЈГ®Г­ГїГҐГ¬ ГҐВё ГЇГ® Г¬Г Г±Г±ГЁГўГі Г± ГЈГіГ±ГҐГ­ГЁГ¶Г Г¬ГЁ ГЁ ГІ.Г¤, ГЇГ®ГЄГ  Г­ГҐ ГЇГ°Г®ГЈГ®Г­ГЁГ¬ ГЇГ® ГўГ±ГҐГ¬Гі Г¬Г Г±Г±ГЁГўГі ГЈГіГ±ГҐГ­ГЁГ¶.
 For n := 0 to MaxBullet - 1 do
   begin
   Bullet1 := Bullets[n];
@@ -2223,7 +2223,7 @@ For n := 0 to MaxBullet - 1 do
         if Worm1.WormState = stLive then
           begin
 
-// Получаем координаты гусеницы
+// ГЏГ®Г«ГіГ·Г ГҐГ¬ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГЈГіГ±ГҐГ­ГЁГ¶Г»
 //            width
 // x1, y1 +--------------+ x2, y2
 //        |              |
@@ -2231,11 +2231,11 @@ For n := 0 to MaxBullet - 1 do
 //        |              |
 // x4, y4 +--------------+ x3, y3
 
-//TODO: ДОДЕЛАТЬ: НЕТ АНИМАЦИИ У ПУЛИ
-          //Взяли первую пулю и получили её координаты
+//TODO: Г„ГЋГ„Г…Г‹ГЂГ’Гњ: ГЌГ…Г’ ГЂГЌГ€ГЊГЂГ–Г€Г€ Г“ ГЏГ“Г‹Г€
+          //Г‚Г§ГїГ«ГЁ ГЇГҐГ°ГўГіГѕ ГЇГіГ«Гѕ ГЁ ГЇГ®Г«ГіГ·ГЁГ«ГЁ ГҐВё ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ»
           If (Bullet1.BulletDirection = blDirRight) then
             begin
-            //пуля летит вправо, значит OldXBullet отстают (меньше) от XBullet
+            //ГЇГіГ«Гї Г«ГҐГІГЁГІ ГўГЇГ°Г ГўГ®, Г§Г­Г Г·ГЁГІ OldXBullet Г®ГІГ±ГІГ ГѕГІ (Г¬ГҐГ­ГјГёГҐ) Г®ГІ XBullet
             Bulletsprindex := 0;
             Obj1X1 := Bullet1.OldXBullet;
             Obj1Y1 := Bullet1.OldYBullet;
@@ -2249,7 +2249,7 @@ For n := 0 to MaxBullet - 1 do
           else
             begin
             Bulletsprindex := 0;
-            //пуля летит влево, значит OldXBullet больше, чем XBullet
+            //ГЇГіГ«Гї Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®, Г§Г­Г Г·ГЁГІ OldXBullet ГЎГ®Г«ГјГёГҐ, Г·ГҐГ¬ XBullet
             Obj1X1 := Bullet1.XBullet;
             Obj1Y1 := Bullet1.YBullet;
             Obj1X2 := Bullet1.OldXBullet + TBitmap(Bullet1.ImgMassBulletLeft.Items[Bulletsprindex]).Width;
@@ -2264,12 +2264,12 @@ For n := 0 to MaxBullet - 1 do
 
           If (Worm1.ThereMove = directionLeft) then
             begin
-            //Гусеница ползёт влево
+            //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГ«ГҐГўГ®
             Obj2X2 := Obj2X1 + TBitmap(Worm1.ImgMassLeft.items[Worm1.sprleftindex]).Width;
             end
           else
             begin
-            //Гёсеница ползёт вправо
+            //ГѓВёГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГЇГ°Г ГўГ®
             Obj2X2 := Obj2X1 + TBitmap(Worm1.ImgMassRight.items[Worm1.sprRightindex]).Width;
             end;
           Obj2Y2 := Obj2Y1;
@@ -2286,16 +2286,16 @@ For n := 0 to MaxBullet - 1 do
           Obj2X4 := Obj2X1;
           Obj2Y4 := Obj2Y3;
 
-//Включаем саски спрайтов
+//Г‚ГЄГ«ГѕГ·Г ГҐГ¬ Г±Г Г±ГЄГЁ Г±ГЇГ°Г Г©ГІГ®Гў
 //VirtBitmap.Canvas.Rectangle(Rect(Obj1X1, Obj1Y1, Obj1X3, Obj1Y3));
 //VirtBitmap.Canvas.Rectangle(Rect(Obj2X1, Obj2Y2, Obj2X3, Obj2Y3));
 
-          //Проверяем столкновение пули и червя
+          //ГЏГ°Г®ГўГҐГ°ГїГҐГ¬ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ ГЇГіГ«ГЁ ГЁ Г·ГҐГ°ГўГї
           //result := FindCollision(Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
           //                        Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4
           //                        );
-          result := FindCollision( Rect(Obj1X1, Obj1Y1, Obj1X3, Obj1Y3), //а это пуля !!!
-                                   Rect(Obj2X1, Obj2Y2, Obj2X3, Obj2Y3)); // это у нас гусеница,
+          result := FindCollision( Rect(Obj1X1, Obj1Y1, Obj1X3, Obj1Y3), //Г  ГЅГІГ® ГЇГіГ«Гї !!!
+                                   Rect(Obj2X1, Obj2Y2, Obj2X3, Obj2Y3)); // ГЅГІГ® Гі Г­Г Г± ГЈГіГ±ГҐГ­ГЁГ¶Г ,
           if Result = true then
             begin
 //            if Bullet1.WeaponType = wtPssst then
@@ -2306,8 +2306,8 @@ For n := 0 to MaxBullet - 1 do
 //
 //            end;
 //            FreeAndNil(Bullet1);
-            //т.к. пуля уничтожена, то проверять ее столкновение с оставшимися объектами в цикле не нужно
-            //прерываем цикл
+            //ГІ.ГЄ. ГЇГіГ«Гї ГіГ­ГЁГ·ГІГ®Г¦ГҐГ­Г , ГІГ® ГЇГ°Г®ГўГҐГ°ГїГІГј ГҐГҐ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ Г± Г®Г±ГІГ ГўГёГЁГ¬ГЁГ±Гї Г®ГЎГєГҐГЄГІГ Г¬ГЁ Гў Г¶ГЁГЄГ«ГҐ Г­ГҐ Г­ГіГ¦Г­Г®
+            //ГЇГ°ГҐГ°Г»ГўГ ГҐГ¬ Г¶ГЁГЄГ«
             break;
             end;
           end;
@@ -2317,7 +2317,7 @@ For n := 0 to MaxBullet - 1 do
   end;
 end;
 
-//Функция столкновения мушек c пулями
+//Г”ГіГ­ГЄГ¶ГЁГї Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГї Г¬ГіГёГҐГЄ c ГЇГіГ«ГїГ¬ГЁ
 Function TForm1.CheckCollisionsBulletFly():boolean;
 var
 i,n:integer;
@@ -2328,8 +2328,8 @@ Bullet1: TBullet;
 Bulletsprindex: integer;
 sprindex: integer;
 begin
-//Сначала берём первую пулю и прогоняем её по всему массиву гусениц, сравнивая координаты. Потом берём следующую пулю
-// и прогоняем её по массиву с гусеницами и т.д, пока не прогоним по всему массиву гусениц.
+//Г‘Г­Г Г·Г Г«Г  ГЎГҐГ°ВёГ¬ ГЇГҐГ°ГўГіГѕ ГЇГіГ«Гѕ ГЁ ГЇГ°Г®ГЈГ®Г­ГїГҐГ¬ ГҐВё ГЇГ® ГўГ±ГҐГ¬Гі Г¬Г Г±Г±ГЁГўГі ГЈГіГ±ГҐГ­ГЁГ¶, Г±Г°Г ГўГ­ГЁГўГ Гї ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ». ГЏГ®ГІГ®Г¬ ГЎГҐГ°ВёГ¬ Г±Г«ГҐГ¤ГіГѕГ№ГіГѕ ГЇГіГ«Гѕ
+// ГЁ ГЇГ°Г®ГЈГ®Г­ГїГҐГ¬ ГҐВё ГЇГ® Г¬Г Г±Г±ГЁГўГі Г± ГЈГіГ±ГҐГ­ГЁГ¶Г Г¬ГЁ ГЁ ГІ.Г¤, ГЇГ®ГЄГ  Г­ГҐ ГЇГ°Г®ГЈГ®Г­ГЁГ¬ ГЇГ® ГўГ±ГҐГ¬Гі Г¬Г Г±Г±ГЁГўГі ГЈГіГ±ГҐГ­ГЁГ¶.
 For n := 0 to MaxBullet - 1 do
 begin
 Bullet1 := Bullets[n];
@@ -2345,28 +2345,28 @@ if (Bullet1 <> nil) and
       begin
       if Fly1.FlyState = stLive then
         begin
-        //Муха летит влево
+        //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®
         If (Fly1.ThereMove = directionLeft) then
           begin
           sprindex := Fly1.sprleftindex;
           end;
-        //Муха летит вправо
+        //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГЇГ°Г ГўГ®
         If (Fly1.ThereMove = directionRight) then
           begin
           sprindex := Fly1.sprrightindex;
           end;
-        // Получаем координаты гусеницы
+        // ГЏГ®Г«ГіГ·Г ГҐГ¬ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» ГЈГіГ±ГҐГ­ГЁГ¶Г»
         //            width
         // x1, y1 +--------------+ x2, y2
         //        |              |
         //        |              | height
         //        |              |
         // x4, y4 +--------------+ x3, y3
-//TODO: ДОДЕЛАТЬ: НЕТ АНИМАЦИИ У ПУЛИ
-        //Взяли первую пулю и получили её координаты
+//TODO: Г„ГЋГ„Г…Г‹ГЂГ’Гњ: ГЌГ…Г’ ГЂГЌГ€ГЊГЂГ–Г€Г€ Г“ ГЏГ“Г‹Г€
+        //Г‚Г§ГїГ«ГЁ ГЇГҐГ°ГўГіГѕ ГЇГіГ«Гѕ ГЁ ГЇГ®Г«ГіГ·ГЁГ«ГЁ ГҐВё ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ»
         If (Bullet1.BulletDirection = blDirRight) then
           begin
-          //пуля летит вправо, значит OldXBullet отстают (меньше) от XBullet
+          //ГЇГіГ«Гї Г«ГҐГІГЁГІ ГўГЇГ°Г ГўГ®, Г§Г­Г Г·ГЁГІ OldXBullet Г®ГІГ±ГІГ ГѕГІ (Г¬ГҐГ­ГјГёГҐ) Г®ГІ XBullet
           Bulletsprindex := 0;
           Obj1X1 := Bullet1.OldXBullet;
           Obj1Y1 := Bullet1.OldYBullet;
@@ -2380,7 +2380,7 @@ if (Bullet1 <> nil) and
         else
           begin
           Bulletsprindex := 0;
-          //пуля летит влево, значит OldXBullet больше, чем XBullet
+          //ГЇГіГ«Гї Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®, Г§Г­Г Г·ГЁГІ OldXBullet ГЎГ®Г«ГјГёГҐ, Г·ГҐГ¬ XBullet
           Obj1X1 := Bullet1.XBullet;
           Obj1Y1 := Bullet1.YBullet;
           Obj1X2 := Bullet1.OldXBullet + TBitmap(Bullet1.ImgMassBulletLeft.Items[Bulletsprindex]).Width;
@@ -2395,12 +2395,12 @@ if (Bullet1 <> nil) and
     Obj2Y1 := Fly1.YFly;
          If (Fly1.ThereMove = directionLeft) then
             begin
-            //Гусеница ползёт влево
+            //ГѓГіГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГ«ГҐГўГ®
             Obj2X2 := Obj2X1 + TBitmap(Fly1.ImgMassLeft.items[Fly1.sprleftindex]).Width;
             end
           else
             begin
-            //Гёсеница ползёт вправо
+            //ГѓВёГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГЇГ°Г ГўГ®
             Obj2X2 := Obj2X1 + TBitmap(Fly1.ImgMassRight.items[Fly1.sprRightindex]).Width;
             end;
           Obj2Y2 := Obj2Y1;
@@ -2423,7 +2423,7 @@ if (Bullet1 <> nil) and
 //      begin
 //      sprindex:=Worm1.sprleftindex;
 //      end;
-   //Гёсеница ползёт вправо
+   //ГѓВёГ±ГҐГ­ГЁГ¶Г  ГЇГ®Г«Г§ВёГІ ГўГЇГ°Г ГўГ®
 //   If (Worm1.ThereMove=WdirectionRight) then
 //      begin
 //      sprindex:=Worm1.sprrightindex;
@@ -2455,22 +2455,22 @@ if (Bullet1 <> nil) and
       Fly1.HitByBullet(Bullet1);
       Bullet1.BulletWasHitToSomeObject(Fly1);
       FreeAndNil(Bullets[n]);
-      //т.к. пуля уничтожена, то проверять ее столкновение с оставшимися объектами в цикле не нужно
-      //прерываем цикл
+      //ГІ.ГЄ. ГЇГіГ«Гї ГіГ­ГЁГ·ГІГ®Г¦ГҐГ­Г , ГІГ® ГЇГ°Г®ГўГҐГ°ГїГІГј ГҐГҐ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГҐ Г± Г®Г±ГІГ ГўГёГЁГ¬ГЁГ±Гї Г®ГЎГєГҐГЄГІГ Г¬ГЁ Гў Г¶ГЁГЄГ«ГҐ Г­ГҐ Г­ГіГ¦Г­Г®
+      //ГЇГ°ГҐГ°Г»ГўГ ГҐГ¬ Г¶ГЁГЄГ«
       break;
 //      FreeAndNil(Bullet1);
 
 //      Worm1.shagx1:=0;
 //      Worm1.shagx2:=0;
 //      Worm1.shagy2:=4;
-      //Муха летит влево
+      //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®
 //      If Worm1.ThereMove =WdirectionLeft then
 //         begin
 //         Worm1.ThereMove:=WdirectionRight;
 //         Worm1.shagx1:=4;
 //         end
 //      else
-      //Муха летит вправо
+      //ГЊГіГµГ  Г«ГҐГІГЁГІ ГўГЇГ°Г ГўГ®
 //         begin
 //         Worm1.ThereMove:=WdirectionLeft;
 //         Worm1.shagy2:=-4;
@@ -2481,7 +2481,7 @@ if (Bullet1 <> nil) and
 //         Bullet1.shagx1:=4;
 //         end
 //      else
-      //Иначе муха летит влево
+      //Г€Г­Г Г·ГҐ Г¬ГіГµГ  Г«ГҐГІГЁГІ ГўГ«ГҐГўГ®
 //         begin
 //         Obj2.ThereMove:=WdirectionLeft;
 //         Obj2.shagx1:=-4;
@@ -2494,13 +2494,13 @@ if (Bullet1 <> nil) and
    end;
 end;
 
-//Таймер пуль
+//Г’Г Г©Г¬ГҐГ° ГЇГіГ«Гј
 procedure TForm1.TimerBulletsTimer(Sender: TObject);
 begin
 ProcessingBullets;
 end;
 
-//Таймер движка
+//Г’Г Г©Г¬ГҐГ° Г¤ГўГЁГ¦ГЄГ 
 procedure TForm1.TimerFPSTimer(Sender: TObject);
 var
 i,j:byte;
@@ -2510,18 +2510,18 @@ VirtBitmap.Height := YScreenMax;
 Form1.Width := VirtBitmap.Width;
 Form1.Height := VirtBitmap.Height;
 
-//Заполняем виртуальный экран чёрным цветом
-//(если нет заднего плана, а просто игра на черном фоне)
+//Г‡Г ГЇГ®Г«Г­ГїГҐГ¬ ГўГЁГ°ГІГіГ Г«ГјГ­Г»Г© ГЅГЄГ°Г Г­ Г·ВёГ°Г­Г»Г¬ Г¶ГўГҐГІГ®Г¬
+//(ГҐГ±Г«ГЁ Г­ГҐГІ Г§Г Г¤Г­ГҐГЈГ® ГЇГ«Г Г­Г , Г  ГЇГ°Г®Г±ГІГ® ГЁГЈГ°Г  Г­Г  Г·ГҐГ°Г­Г®Г¬ ГґГ®Г­ГҐ)
 //VirtBitmap.Canvas.Brush.Color:=clBlack;
 //VirtBitmap.Canvas.FillRect(Rect(xmin,ymin,XScreenMax,YScreenMax));
 
-//Копируем на виртуальный экран задний план
+//ГЉГ®ГЇГЁГ°ГіГҐГ¬ Г­Г  ГўГЁГ°ГІГіГ Г«ГјГ­Г»Г© ГЅГЄГ°Г Г­ Г§Г Г¤Г­ГЁГ© ГЇГ«Г Г­
 //VirtBitmap.Canvas.Draw(0, 0, BackGroundBitmap);
-//Заливаем черный фон на виртуальный экран
+//Г‡Г Г«ГЁГўГ ГҐГ¬ Г·ГҐГ°Г­Г»Г© ГґГ®Г­ Г­Г  ГўГЁГ°ГІГіГ Г«ГјГ­Г»Г© ГЅГЄГ°Г Г­
 VirtBitmap.Canvas.FillRect(Rect(0, 0, VirtBitmap.Width, VirtBitmap.Height));
 
-//Вызываем функциии наших столкновений, чтобы проверить есть ли стоклкновения
-//Перебираем все объекты по очереди
+//Г‚Г»Г§Г»ГўГ ГҐГ¬ ГґГіГ­ГЄГ¶ГЁГЁГЁ Г­Г ГёГЁГµ Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГ©, Г·ГІГ®ГЎГ» ГЇГ°Г®ГўГҐГ°ГЁГІГј ГҐГ±ГІГј Г«ГЁ Г±ГІГ®ГЄГ«ГЄГ­Г®ГўГҐГ­ГЁГї
+//ГЏГҐГ°ГҐГЎГЁГ°Г ГҐГ¬ ГўГ±ГҐ Г®ГЎГєГҐГЄГІГ» ГЇГ® Г®Г·ГҐГ°ГҐГ¤ГЁ
 CheckCollisionsFlyes();
 CheckCollisionsWorms();
 CheckCollisionsFlowerFly();
@@ -2533,8 +2533,8 @@ CheckCollisionWeaponBrick();
 CheckCollisionsOwlWorms();
 CheckCollisionsOwlFlyes();
 
-//Каждый объект отрисовываем на виртуальный канвас
-//Гусениц
+//ГЉГ Г¦Г¤Г»Г© Г®ГЎГєГҐГЄГІ Г®ГІГ°ГЁГ±Г®ГўГ»ГўГ ГҐГ¬ Г­Г  ГўГЁГ°ГІГіГ Г«ГјГ­Г»Г© ГЄГ Г­ГўГ Г±
+//ГѓГіГ±ГҐГ­ГЁГ¶
 for i := 0 to MaxWorm - 1 do
    begin
    If Worms[i] <> nil then
@@ -2545,7 +2545,7 @@ for i := 0 to MaxWorm - 1 do
        Form1.TableWormsScore := Form1.TableWormsScore + 1;
        If CheckEndGame() = true then
          begin
-         //Устанавливаем флаг Победы
+         //Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ГґГ«Г ГЈ ГЏГ®ГЎГҐГ¤Г»
          TheVictory := true;
          end;
        end
@@ -2555,7 +2555,7 @@ for i := 0 to MaxWorm - 1 do
        end;
      end;
    end;
-//И мух
+//Г€ Г¬ГіГµ
 for i := 0 to MaxFly - 1 do
    begin
    If Flyes[i] <> nil then
@@ -2566,7 +2566,7 @@ for i := 0 to MaxFly - 1 do
        Form1.TableFlyesScore := Form1.TableFlyesScore + 1;
        If CheckEndGame() = true then
          begin
-         //Устанавливаем флаг Победы
+         //Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ ГґГ«Г ГЈ ГЏГ®ГЎГҐГ¤Г»
          TheVictory := true;
          end;
        end
@@ -2575,18 +2575,18 @@ for i := 0 to MaxFly - 1 do
      end;
    end;
 
-//Выводим на канвас облака
+//Г‚Г»ГўГ®Г¤ГЁГ¬ Г­Г  ГЄГ Г­ГўГ Г± Г®ГЎГ«Г ГЄГ 
 for i := 0 to MaxInGameClouds - 1 do
   begin
   Clouds[i].Show;
   end;
 
-//Выводим на канвас подсолнухи
+//Г‚Г»ГўГ®Г¤ГЁГ¬ Г­Г  ГЄГ Г­ГўГ Г± ГЇГ®Г¤Г±Г®Г«Г­ГіГµГЁ
 for i := 0 to MaxSunflower - 1 do
   begin
   Sunflowers[i].Show;
   end;
-//Выводим на канвас Савёнка
+//Г‚Г»ГўГ®Г¤ГЁГ¬ Г­Г  ГЄГ Г­ГўГ Г± Г‘Г ГўВёГ­ГЄГ 
 Owl[0].Show;
 for i := 0 to 1 do
   begin
@@ -2622,9 +2622,9 @@ if Sunflowers[0].SunFlowerLose = true then
   begin
   VirtBitmap.Canvas.Font.Size := 18;
   VirtBitmap.Canvas.Font.Color:=clWhite;
-  VirtBitmap.Canvas.TextOut(200,30,'Жаль ! Подсолнух съеден. Вы проиграли ...');
+  VirtBitmap.Canvas.TextOut(200,30,'Г†Г Г«Гј ! ГЏГ®Г¤Г±Г®Г«Г­ГіГµ Г±ГєГҐГ¤ГҐГ­. Г‚Г» ГЇГ°Г®ГЁГЈГ°Г Г«ГЁ ...');
   end;
- //Копируем виртуальный канвас
+ //ГЉГ®ГЇГЁГ°ГіГҐГ¬ ГўГЁГ°ГІГіГ Г«ГјГ­Г»Г© ГЄГ Г­ГўГ Г±
 Form1.Image1.Canvas.Draw(0, 0, VirtBitmap);
 end;
 
@@ -2632,8 +2632,8 @@ Procedure TForm1.ProcessingBullets;
 var
 j:byte;
 begin
-//Таймер полёта пули
-//Здесь будет таймер пуль
+//Г’Г Г©Г¬ГҐГ° ГЇГ®Г«ВёГІГ  ГЇГіГ«ГЁ
+//Г‡Г¤ГҐГ±Гј ГЎГіГ¤ГҐГІ ГІГ Г©Г¬ГҐГ° ГЇГіГ«Гј
 for j := 0 to MaxBullet-1 do
   begin
   If Bullets[j]<> nil then
