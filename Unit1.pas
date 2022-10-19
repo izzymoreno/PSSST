@@ -366,6 +366,7 @@ For i := 0 to MaxImageWorm - 1 Do
 
 
 //Загружаем все спрайты разрушения гусениц влево
+//Load all caterpillar sprites pointing left
 WormSpritesArrHitLeft := TList.Create;
 For i := 0 to MaxImageHitLeftWorm - 1 Do
    begin
@@ -377,6 +378,7 @@ For i := 0 to MaxImageHitLeftWorm - 1 Do
    WormSpritesArrHitLeft.Add(tmpBitmap);
    end;
 //Загружаем все спрайты разрушения гусениц вправо
+
 WormSpritesArrHitRight := TList.Create;
 For i := 0 to MaxImageHitRightWorm - 1 Do
    begin
@@ -388,6 +390,7 @@ For i := 0 to MaxImageHitRightWorm - 1 Do
    WormSpritesArrHitRight.Add(tmpBitmap);
    end;
 //Загружаем в спрайты совы смотрящей влево
+
 OwlSpritesArrLeft := TList.Create;
 For i:=0 to MaxImageLeftOwl Do
    begin
