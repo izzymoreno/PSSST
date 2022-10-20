@@ -2355,12 +2355,12 @@ For n := 0 to MaxBullet - 1 do
 //VirtBitmap.Canvas.Rectangle(Rect(Obj1X1, Obj1Y1, Obj1X3, Obj1Y3));
 //VirtBitmap.Canvas.Rectangle(Rect(Obj2X1, Obj2Y2, Obj2X3, Obj2Y3));
 
-          //Ïðîâåðÿåì ñòîëêíîâåíèå ïóëè è ÷åðâÿ
+          //Проверяем столкновение пули и гусеницы
           //result := FindCollision(Obj1X1, Obj1Y1, Obj1X2, Obj1Y2, Obj1X3, Obj1Y3, Obj1X4, Obj1Y4,
           //                        Obj2X1, Obj2Y1, Obj2X2, Obj2Y2, Obj2X3, Obj2Y3, Obj2X4, Obj2Y4
           //                        );
-          result := FindCollision( Rect(Obj1X1, Obj1Y1, Obj1X3, Obj1Y3), //à ýòî ïóëÿ !!!
-                                   Rect(Obj2X1, Obj2Y2, Obj2X3, Obj2Y3)); // ýòî ó íàñ ãóñåíèöà,
+          result := FindCollision( Rect(Obj1X1, Obj1Y1, Obj1X3, Obj1Y3), //а это пуля !!!
+                                   Rect(Obj2X1, Obj2Y2, Obj2X3, Obj2Y3)); // это у нас гусеница
           if Result = true then
             begin
 //            if Bullet1.WeaponType = wtPssst then
@@ -2371,8 +2371,8 @@ For n := 0 to MaxBullet - 1 do
 //
 //            end;
 //            FreeAndNil(Bullet1);
-            //ò.ê. ïóëÿ óíè÷òîæåíà, òî ïðîâåðÿòü åå ñòîëêíîâåíèå ñ îñòàâøèìèñÿ îáúåêòàìè â öèêëå íå íóæíî
-            //ïðåðûâàåì öèêë
+             //т.к. пуля уничтожена, то проверять ее столкновение с оставшимися объектами в цикле не нужно
+            //прерываем цикл
             break;
             end;
           end;
@@ -2382,7 +2382,7 @@ For n := 0 to MaxBullet - 1 do
   end;
 end;
 
-//Ôóíêöèÿ ñòîëêíîâåíèÿ ìóøåê c ïóëÿìè
+//Функция столкновения мушек c пулями
 Function TForm1.CheckCollisionsBulletFly():boolean;
 var
 i,n:integer;
@@ -2393,8 +2393,8 @@ Bullet1: TBullet;
 Bulletsprindex: integer;
 sprindex: integer;
 begin
-//Ñíà÷àëà áåð¸ì ïåðâóþ ïóëþ è ïðîãîíÿåì å¸ ïî âñåìó ìàññèâó ãóñåíèö, ñðàâíèâàÿ êîîðäèíàòû. Ïîòîì áåð¸ì ñëåäóþùóþ ïóëþ
-// è ïðîãîíÿåì å¸ ïî ìàññèâó ñ ãóñåíèöàìè è ò.ä, ïîêà íå ïðîãîíèì ïî âñåìó ìàññèâó ãóñåíèö.
+//Сначала берём первую пулю и прогоняем её по всему массиву гусениц, сравнивая координаты. Потом берём следующую пулю
+// и прогоняем её по массиву с гусеницами и т.д, пока не прогоним по всему массиву гусениц.
 For n := 0 to MaxBullet - 1 do
 begin
 Bullet1 := Bullets[n];
@@ -2410,28 +2410,28 @@ if (Bullet1 <> nil) and
       begin
       if Fly1.FlyState = stLive then
         begin
-        //Ìóõà ëåòèò âëåâî
+        //Муха летит влево
         If (Fly1.ThereMove = directionLeft) then
           begin
           sprindex := Fly1.sprleftindex;
           end;
-        //Ìóõà ëåòèò âïðàâî
+        //Муха летит вправо
         If (Fly1.ThereMove = directionRight) then
           begin
           sprindex := Fly1.sprrightindex;
           end;
-        // Ïîëó÷àåì êîîðäèíàòû ãóñåíèöû
+        // Получаем координаты гусеницы
         //            width
         // x1, y1 +--------------+ x2, y2
         //        |              |
         //        |              | height
         //        |              |
         // x4, y4 +--------------+ x3, y3
-//TODO: ÄÎÄÅËÀÒÜ: ÍÅÒ ÀÍÈÌÀÖÈÈ Ó ÏÓËÈ
-        //Âçÿëè ïåðâóþ ïóëþ è ïîëó÷èëè å¸ êîîðäèíàòû
+//TODO: ДОДЕЛАТЬ: НЕТ АНИМАЦИИ У ПУЛИ
+        //Взяли первую пулю и получили её координаты
         If (Bullet1.BulletDirection = blDirRight) then
           begin
-          //ïóëÿ ëåòèò âïðàâî, çíà÷èò OldXBullet îòñòàþò (ìåíüøå) îò XBullet
+          //пуля летит вправо, значит OldXBullet отстают (меньше) от XBullet
           Bulletsprindex := 0;
           Obj1X1 := Bullet1.OldXBullet;
           Obj1Y1 := Bullet1.OldYBullet;
@@ -2445,7 +2445,7 @@ if (Bullet1 <> nil) and
         else
           begin
           Bulletsprindex := 0;
-          //ïóëÿ ëåòèò âëåâî, çíà÷èò OldXBullet áîëüøå, ÷åì XBullet
+          //пуля летит влево, значит OldXBullet больше, чем XBullet
           Obj1X1 := Bullet1.XBullet;
           Obj1Y1 := Bullet1.YBullet;
           Obj1X2 := Bullet1.OldXBullet + TBitmap(Bullet1.ImgMassBulletLeft.Items[Bulletsprindex]).Width;
@@ -2460,12 +2460,12 @@ if (Bullet1 <> nil) and
     Obj2Y1 := Fly1.YFly;
          If (Fly1.ThereMove = directionLeft) then
             begin
-            //Ãóñåíèöà ïîëç¸ò âëåâî
+            //Гусеница ползёт влево
             Obj2X2 := Obj2X1 + TBitmap(Fly1.ImgMassLeft.items[Fly1.sprleftindex]).Width;
             end
           else
             begin
-            //Ã¸ñåíèöà ïîëç¸ò âïðàâî
+            //Гусеница ползёт вправо
             Obj2X2 := Obj2X1 + TBitmap(Fly1.ImgMassRight.items[Fly1.sprRightindex]).Width;
             end;
           Obj2Y2 := Obj2Y1;
@@ -2488,7 +2488,7 @@ if (Bullet1 <> nil) and
 //      begin
 //      sprindex:=Worm1.sprleftindex;
 //      end;
-   //Ã¸ñåíèöà ïîëç¸ò âïðàâî
+   //Гусеница ползёт вправо
 //   If (Worm1.ThereMove=WdirectionRight) then
 //      begin
 //      sprindex:=Worm1.sprrightindex;
@@ -2520,22 +2520,22 @@ if (Bullet1 <> nil) and
       Fly1.HitByBullet(Bullet1);
       Bullet1.BulletWasHitToSomeObject(Fly1);
       FreeAndNil(Bullets[n]);
-      //ò.ê. ïóëÿ óíè÷òîæåíà, òî ïðîâåðÿòü åå ñòîëêíîâåíèå ñ îñòàâøèìèñÿ îáúåêòàìè â öèêëå íå íóæíî
-      //ïðåðûâàåì öèêë
+      //т.к. пуля уничтожена, то проверять ее столкновение с оставшимися объектами в цикле не нужно
+      //прерываем цикл
       break;
 //      FreeAndNil(Bullet1);
 
 //      Worm1.shagx1:=0;
 //      Worm1.shagx2:=0;
 //      Worm1.shagy2:=4;
-      //Ìóõà ëåòèò âëåâî
+      //Гусеница ползёт влево
 //      If Worm1.ThereMove =WdirectionLeft then
 //         begin
 //         Worm1.ThereMove:=WdirectionRight;
 //         Worm1.shagx1:=4;
 //         end
 //      else
-      //Ìóõà ëåòèò âïðàâî
+      //Гусеница ползёт вправо
 //         begin
 //         Worm1.ThereMove:=WdirectionLeft;
 //         Worm1.shagy2:=-4;
@@ -2546,7 +2546,7 @@ if (Bullet1 <> nil) and
 //         Bullet1.shagx1:=4;
 //         end
 //      else
-      //Èíà÷å ìóõà ëåòèò âëåâî
+      //Иначе муха летит влево
 //         begin
 //         Obj2.ThereMove:=WdirectionLeft;
 //         Obj2.shagx1:=-4;
@@ -2559,13 +2559,13 @@ if (Bullet1 <> nil) and
    end;
 end;
 
-//Òàéìåð ïóëü
+//Таймер пуль
 procedure TForm1.TimerBulletsTimer(Sender: TObject);
 begin
 ProcessingBullets;
 end;
 
-//Òàéìåð äâèæêà
+//Таймер движка
 procedure TForm1.TimerFPSTimer(Sender: TObject);
 var
 i,j:byte;
@@ -2591,7 +2591,7 @@ Form1.Height := VirtBitmap.Height;
 //Копируем на виртуальный экран задний план
 //VirtBitmap.Canvas.Draw(0, 0, BackGroundBitmap);
 //Заливаем черный фон на виртуальный экран
-VirtBitmap.Canvas.FillRect(Rect(0, 0, VirtBitmap.Width, VirtBitmap.Height));
+//VirtBitmap.Canvas.FillRect(Rect(0, 0, VirtBitmap.Width, VirtBitmap.Height));
 
 //Çàïîëíÿåì âèðòóàëüíûé ýêðàí ÷¸ðíûì öâåòîì
 //(åñëè íåò çàäíåãî ïëàíà, à ïðîñòî èãðà íà ÷åðíîì ôîíå)
