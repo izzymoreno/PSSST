@@ -2573,7 +2573,25 @@ begin
 VirtBitmap.Width := XScreenMax;
 VirtBitmap.Height := YScreenMax;
 Form1.Width := VirtBitmap.Width;
+Form1.Height := VirtBitmap.Height;//Таймер движка
+procedure TForm1.TimerFPSTimer(Sender: TObject);
+var
+i,j:byte;
+begin
+VirtBitmap.Width := XScreenMax;
+VirtBitmap.Height := YScreenMax;
+Form1.Width := VirtBitmap.Width;
 Form1.Height := VirtBitmap.Height;
+
+//Заполняем виртуальный экран чёрным цветом
+//(если нет заднего плана, а просто игра на черном фоне)
+//VirtBitmap.Canvas.Brush.Color:=clBlack;
+//VirtBitmap.Canvas.FillRect(Rect(xmin,ymin,XScreenMax,YScreenMax));
+
+//Копируем на виртуальный экран задний план
+//VirtBitmap.Canvas.Draw(0, 0, BackGroundBitmap);
+//Заливаем черный фон на виртуальный экран
+VirtBitmap.Canvas.FillRect(Rect(0, 0, VirtBitmap.Width, VirtBitmap.Height));
 
 //Çàïîëíÿåì âèðòóàëüíûé ýêðàí ÷¸ðíûì öâåòîì
 //(åñëè íåò çàäíåãî ïëàíà, à ïðîñòî èãðà íà ÷åðíîì ôîíå)
@@ -2585,8 +2603,8 @@ Form1.Height := VirtBitmap.Height;
 //Çàëèâàåì ÷åðíûé ôîí íà âèðòóàëüíûé ýêðàí
 VirtBitmap.Canvas.FillRect(Rect(0, 0, VirtBitmap.Width, VirtBitmap.Height));
 
-//Âûçûâàåì ôóíêöèèè íàøèõ ñòîëêíîâåíèé, ÷òîáû ïðîâåðèòü åñòü ëè ñòîêëêíîâåíèÿ
-//Ïåðåáèðàåì âñå îáúåêòû ïî î÷åðåäè
+//Вызываем функциии наших столкновений, чтобы проверить есть ли стоклкновения
+//Перебираем все объекты по очереди
 CheckCollisionsFlyes();
 CheckCollisionsWorms();
 CheckCollisionsFlowerFly();
@@ -2598,8 +2616,8 @@ CheckCollisionWeaponBrick();
 CheckCollisionsOwlWorms();
 CheckCollisionsOwlFlyes();
 
-//Êàæäûé îáúåêò îòðèñîâûâàåì íà âèðòóàëüíûé êàíâàñ
-//Ãóñåíèö
+//Каждый объект отрисовываем на виртуальный канвас
+//Гусениц
 for i := 0 to MaxWorm - 1 do
    begin
    If Worms[i] <> nil then
@@ -2610,7 +2628,7 @@ for i := 0 to MaxWorm - 1 do
        Form1.TableWormsScore := Form1.TableWormsScore + 1;
        If CheckEndGame() = true then
          begin
-         //Óñòàíàâëèâàåì ôëàã Ïîáåäû
+         //Устанавливаем флаг Победы
          TheVictory := true;
          end;
        end
@@ -2620,7 +2638,7 @@ for i := 0 to MaxWorm - 1 do
        end;
      end;
    end;
-//È ìóõ
+//И мух
 for i := 0 to MaxFly - 1 do
    begin
    If Flyes[i] <> nil then
@@ -2631,7 +2649,7 @@ for i := 0 to MaxFly - 1 do
        Form1.TableFlyesScore := Form1.TableFlyesScore + 1;
        If CheckEndGame() = true then
          begin
-         //Óñòàíàâëèâàåì ôëàã Ïîáåäû
+         //Устанавливаем флаг Победы
          TheVictory := true;
          end;
        end
@@ -2640,18 +2658,18 @@ for i := 0 to MaxFly - 1 do
      end;
    end;
 
-//Âûâîäèì íà êàíâàñ îáëàêà
+//Выводим на канвас облака
 for i := 0 to MaxInGameClouds - 1 do
   begin
   Clouds[i].Show;
   end;
 
-//Âûâîäèì íà êàíâàñ ïîäñîëíóõè
+//Выводим на канвас подсолнухи
 for i := 0 to MaxSunflower - 1 do
   begin
   Sunflowers[i].Show;
   end;
-//Âûâîäèì íà êàíâàñ Ñàâ¸íêà
+//Выводим на канвас Совёнка
 Owl[0].Show;
 for i := 0 to 1 do
   begin
@@ -2689,7 +2707,7 @@ if Sunflowers[0].SunFlowerLose = true then
   VirtBitmap.Canvas.Font.Color:=clWhite;
   VirtBitmap.Canvas.TextOut(200,30,'Æàëü ! Ïîäñîëíóõ ñúåäåí. Âû ïðîèãðàëè ...');
   end;
- //Êîïèðóåì âèðòóàëüíûé êàíâàñ
+ //Копируем виртуальный канвас
 Form1.Image1.Canvas.Draw(0, 0, VirtBitmap);
 end;
 
@@ -2697,8 +2715,8 @@ Procedure TForm1.ProcessingBullets;
 var
 j:byte;
 begin
-//Òàéìåð ïîë¸òà ïóëè
-//Çäåñü áóäåò òàéìåð ïóëü
+//Таймер полёта пули
+//Здесь будет таймер пуль
 for j := 0 to MaxBullet-1 do
   begin
   If Bullets[j]<> nil then
