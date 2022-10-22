@@ -8,7 +8,7 @@ uses
 
 Const
 
-//Максимальное значение спрайтов совы, ворона
+//РљРѕРЅСЃС‚Р°РЅС‚С‹ РёР·РѕР±СЂР°Р¶РµРЅРёР№ РЎРѕРІС‘РЅРєР°
 MaxImageOwl = 3;
 MaxImageLeftOwl = 1;
 MaxImageRightOwl = 1;
@@ -35,7 +35,7 @@ type
   TMyOwl = class (TObject)
   public
   Name: string;
-
+// РР·РѕР±СЂР°Р¶РµРЅРёСЏ С…СЂР°РЅСЏС‚СЃСЏ РІ СЃРїРёСЃРєРµ
   ImgMassLeft: TList;
   ImgMassRight: TList;
   ImgHitMassLeft: TList;
@@ -70,12 +70,12 @@ constructor TMyOwl.CreateOwl(ownerForm: TWinControl;
 var
 i:integer;
 begin
-//Инициализируем генератор случайных чисел для мух
+//Г€Г­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°ГіГҐГ¬ ГЈГҐГ­ГҐГ°Г ГІГ®Г° Г±Г«ГіГ·Г Г©Г­Г»Гµ Г·ГЁГ±ГҐГ« Г¤Г«Гї Г¬ГіГµ
 //Randomize;
 self.Timer:=TTimer.Create(nil);
 self.Timer.OnTimer:=self.TimerAnimationOwl1;
 self.Timer.Interval:=100;  //500
-//Максимальная координата по X для мухи, чтобы она развернулась
+//ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ  ГЇГ® X Г¤Г«Гї Г¬ГіГµГЁ, Г·ГІГ®ГЎГ» Г®Г­Г  Г°Г Г§ГўГҐГ°Г­ГіГ«Г Г±Гј
 XOwl:=200;
 YOwl:=200;
 //self.grad:=0;
@@ -86,7 +86,7 @@ ImgHitMassRight := pOwlSpritesHitRight;
 
 self.owner:=ownerForm;
 
-//Заводим переменные для анимации совы
+//Г‡Г ГўГ®Г¤ГЁГ¬ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ Г¤Г«Гї Г Г­ГЁГ¬Г Г¶ГЁГЁ Г±Г®ГўГ»
 self.TheLoseOwl := false;
 self.OwlState := stLive;
 sprmin:=0;
@@ -97,10 +97,10 @@ sprrightdieindex := 0;
 shagx:=0;
 shagy:=0;
 AnimationShag := 0;
-//Изначально у совы оружия нет
+//Г€Г§Г­Г Г·Г Г«ГјГ­Г® Гі Г±Г®ГўГ» Г®Г°ГіГ¦ГЁГї Г­ГҐГІ
 Weapon := nil;
 //ThereMove:=OwldirectionCenter;
-//Включаем таймер совы
+//Г‚ГЄГ«ГѕГ·Г ГҐГ¬ ГІГ Г©Г¬ГҐГ° Г±Г®ГўГ»
 //self.Timer.Enabled:=true;
 end;
 
@@ -116,7 +116,7 @@ i:byte;
 begin
 self.OwlState := stHit;
 self.Timer.Interval := 300;
-//обнуляем счетчик анимации чтобы один раз прокрутить все спрайты смерти
+//Г®ГЎГ­ГіГ«ГїГҐГ¬ Г±Г·ГҐГІГ·ГЁГЄ Г Г­ГЁГ¬Г Г¶ГЁГЁ Г·ГІГ®ГЎГ» Г®Г¤ГЁГ­ Г°Г Г§ ГЇГ°Г®ГЄГ°ГіГІГЁГІГј ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г±Г¬ГҐГ°ГІГЁ
 self.sprleftdieindex := 0;
 self.sprrightdieindex := 0;
 self.shagx := 0;
@@ -131,7 +131,7 @@ i:byte;
 begin
 self.OwlState := stHit;
 self.Timer.Interval := 300;
-//обнуляем счетчик анимации чтобы один раз прокрутить все спрайты смерти
+//Г®ГЎГ­ГіГ«ГїГҐГ¬ Г±Г·ГҐГІГ·ГЁГЄ Г Г­ГЁГ¬Г Г¶ГЁГЁ Г·ГІГ®ГЎГ» Г®Г¤ГЁГ­ Г°Г Г§ ГЇГ°Г®ГЄГ°ГіГІГЁГІГј ГўГ±ГҐ Г±ГЇГ°Г Г©ГІГ» Г±Г¬ГҐГ°ГІГЁ
 self.sprleftdieindex := 0;
 self.sprrightdieindex := 0;
 self.shagx := 0;
@@ -140,6 +140,7 @@ self.shagy := 0;
 //Form1.TableFlyesScore := 0;
 end;
 
+//РђРЅРёРјР°С†РёСЏ РЎРѕРІС‘РЅРєР°
 procedure TMyOwl.TimerAnimationOwl1(Sender: TObject);
 begin
 self.sprindex := self.sprindex + AnimationShag;
@@ -167,7 +168,7 @@ end;
 procedure TMyOwl.Show;
 var modalRes: integer;
 begin
-//Определяем в какую сторону идёт сова и присваеваем нужный индекс спрайта с направлением
+//ГЋГЇГ°ГҐГ¤ГҐГ«ГїГҐГ¬ Гў ГЄГ ГЄГіГѕ Г±ГІГ®Г°Г®Г­Гі ГЁГ¤ВёГІ Г±Г®ГўГ  ГЁ ГЇГ°ГЁГ±ГўГ ГҐГўГ ГҐГ¬ Г­ГіГ¦Г­Г»Г© ГЁГ­Г¤ГҐГЄГ± Г±ГЇГ°Г Г©ГІГ  Г± Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГҐГ¬
 case self.OwlState of
   stLive:
     begin
@@ -236,10 +237,10 @@ case self.OwlState of
         end;
     end;
 
-    //Тут происходит ожидание инициализации новой игры
+    //Г’ГіГІ ГЇГ°Г®ГЁГ±ГµГ®Г¤ГЁГІ Г®Г¦ГЁГ¤Г Г­ГЁГҐ ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГЁ Г­Г®ГўГ®Г© ГЁГЈГ°Г»
     if modalRes = mrOk then
       begin
-      //Начинается новая игра
+      //ГЌГ Г·ГЁГ­Г ГҐГІГ±Гї Г­Г®ГўГ Гї ГЁГЈГ°Г 
       end;
     end;
 
@@ -261,37 +262,37 @@ case self.OwlState of
 end;
 end;
 
-//Это деструктор совы
+//Р’С‹РіСЂСѓР¶Р°РµРј РІСЃРµ СЃРїСЂР°Р№С‚С‹ Рё РѕСЃРІРѕР±РѕР¶РґР°РµРј РїР°РјСЏС‚СЊ РџРљ
 destructor TMyOwl.Destroy;
 var
 i:byte;
 begin
-//Здесь мы удаляем из памяти сову
+//
 (*For i:=0 to  MaxImageLeftOwl Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if ImgMassLeftOwl[i]<>nil then ImgMassLeftOwl[i].free;
    end;
 For i:=0 to  MaxImageRightOwl Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if ImgMassRightOwl[i]<>nil then ImgMassRightOwl[i].free;
    end;
 
 For i:=0 to  MaxImageLeftDieOwl Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if ImgMassLeftDieOwl[i]<>nil then ImgMassLeftDieOwl[i].free;
    end;
 For i:=0 to  MaxImageRightDieOwl Do
    begin
-   //Если объект существует в памяти, то мы его удаляем
+   //Г…Г±Г«ГЁ Г®ГЎГєГҐГЄГІ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ Гў ГЇГ Г¬ГїГІГЁ, ГІГ® Г¬Г» ГҐГЈГ® ГіГ¤Г Г«ГїГҐГ¬
    if ImgMassRightDieOwl[i]<>nil then ImgMassRightDieOwl[i].free;
    end; *)
 
-//Удаляем таймер
+//Г“Г¤Г Г«ГїГҐГ¬ ГІГ Г©Г¬ГҐГ°
 If Timer <> nil then Timer.free;
-//Вызов деструктора родительского класса
+//Р’С‹РіСЂСѓР¶Р°РµРј С‚Р°Р№РјРµСЂ РёР· РїР°РјСЏС‚Рё
 inherited;
 end;
 
