@@ -15,6 +15,7 @@ MaxImageRightOwl = 1;
 MaxImageLeftDieOwl = 3;
 MaxImageRightDieOwl = 3;
 
+//Константы изображений Воронёнка
 MaxImageCrow = 3;
 MaxImageLeftCrow = 1;
 MaxImageRightCrow = 1;
