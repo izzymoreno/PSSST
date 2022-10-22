@@ -130,9 +130,10 @@ procedure TMyOwl.HitByFly(Sender: TObject);
 var
 i:byte;
 begin
+//Устанавливаем маркер, что Совёнок подбит.
 self.OwlState := stHit;
 self.Timer.Interval := 300;
-//îáíóëÿåì ñ÷åò÷èê àíèìàöèè ÷òîáû îäèí ðàç ïðîêðóòèòü âñå ñïðàéòû ñìåðòè
+//
 self.sprleftdieindex := 0;
 self.sprrightdieindex := 0;
 self.shagx := 0;
@@ -169,7 +170,7 @@ end;
 procedure TMyOwl.Show;
 var modalRes: integer;
 begin
-//Îïðåäåëÿåì â êàêóþ ñòîðîíó èä¸ò ñîâà è ïðèñâàåâàåì íóæíûé èíäåêñ ñïðàéòà ñ íàïðàâëåíèåì
+//Отрисовываем Совёнка.
 case self.OwlState of
   stLive:
     begin
@@ -188,7 +189,7 @@ case self.OwlState of
       self.XOwl:=self.XOwl + shagx;
       self.YOwl:=self.YOwl + shagy;
      end;
-
+//Анимация подбитого совёнка
   stHit:
     begin
     If (ThereMove=OwldirectionCenter) then
@@ -206,7 +207,7 @@ case self.OwlState of
       self.XOwl:=self.XOwl + shagx;
       self.YOwl:=self.YOwl + shagy;
     end;
-
+//помечаем совёнка маркером, который выгружает его из памяти
   stReadyForDestroy:
     begin
     If (ThereMove=OwldirectionLeft) then
