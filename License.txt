@@ -1,7 +1,9 @@
 Данная скомпилированная игра пока распространяется бесплатно на территории России, СНГ, США, КНР, Японии, Англии, Израиля, Бразилии, Ирана, Ирака, Республика Йемен, Камерун, Ганы, Египта, Малайзии и др. Для активации продукта введите кодовое слово "xUSSR" или "СССР". Авторство на графику принадлежит двум людям: Ринату Гильманшину [Nick: Dart Hydra] и Александру Владимировичу Баженову[Nick: Teador Izzy Moreno], программный код принадлежит
 компании "Fox Soft Inc." а так же CEO компании и фрилансеру Александру Владимировичу Баженову, Россия, Санкт-Петербург.
-October, 2018 - 2023 Copyright©.
+October, 2005 - 2024 Copyright©.
+
+###
 
 This compiled game is still distributed free of charge in Russia, the CIS, the USA, China, Japan, England, Israel, Brazil, Iran, Iraq, Respublic of Yemen, India, Cameroon, Gana etc. To activate the product, enter the code word "xUSSR" or "СССР". The authorship of the graphics belongs to two people: Rinat Gilmanshin [Dart Hydra] and Alexander Bazhenov [Izzy Moreno], the program code belongs to
 Fox Soft Inc. as well as the CEO of the company and freelancer Alexander Vladimirovich Bazhenov, Russia, St. Petersburg.
-October, Copyright © 2020 - 2023. 
+October, Copyright © 2020 - 2024. 
